@@ -1,2 +1,64 @@
-# hydrologic_modeling_course_2024
-Course repo for CEE 5450/6450 Hydrologic Modeling
+# Instructions for setting up and running Docker
+
+## Prerequisites
+- GitHub account
+- Windows/Mac with git installed
+
+## Instructions
+
+1. Download and install Docker Desktop. Go to [Docker](https://www.docker.com/products/docker-desktop/) and download Docker Desktop. Make sure you download the correct version based on your computer’s operating system and architecture. Follow the instructions to install Docker Desktop.
+2. Launch Docker Desktop. The application should be running while you do the next steps. (You might need to create a Docker account and sign in if you don’t already have one.)
+3. Download Docker image. Start a new terminal session (outside Docker). For example, open the Powershell on Windows or the Terminal on Mac. Copy and paste the following command into the terminal:
+
+```bash
+docker pull pshuai/jupyter-pflotran-multiplatform:latest
+```
+
+This will start downloading the docker image (~2G).
+
+4. Download course repository. In the terminal/powershell, run the following command
+
+```bash
+git clone https://github.com/hydroaggie/hydrologic_modeling_course_2024.git 
+```
+
+5. Launch Docker. Run the following command in your terminal:
+- On Mac. Use `$(pwd)` as your current working directory.
+
+```bash
+# navigate into the downloaded course folder
+cd hydrologic_modeling_course_2024
+
+# launch docker
+docker run -it --rm -p 8888:8888  -v $(pwd):/home/aggie/work pshuai/jupyter-pflotran-multiplatform:latest jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''
+```
+- On Windows, replace `$(pwd)` with the actual path to the course material folder, e.g., `C:\Users\USERNAME\hydrologic_modeling_course_2024` (where `USERNAME` is your Windows username).
+
+```bash
+# navigate into the downloaded course folder
+cd hydrologic_modeling_course_2024
+
+# launch docker
+docker run -it --rm -p 8888:8888  -v C:\Users\USERNAME\hydrologic_modeling_course_2024:/home/aggie/work pshuai/jupyter-pflotran-multiplatform:latest jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''
+```
+
+6. Connect to the JupyterLab. If the above command is successful, you will see output like the following at the bottom of the screen.
+
+```bash
+    Jupyter Server 2.15.0 is running at:
+    http://6392a6f60965:8888/lab
+    http://127.0.0.1:8888/lab
+```
+
+Copy and paste the URL: http://127.0.0.1:8888/lab into your browser and you should see the JupyterLab interface like below.
+
+7. Congratulations! You are all set!
+
+## Troubleshoot
+
+- If your Docker is running out of space, you might need to use [docker system prune](https://docs.docker.com/reference/cli/docker/system/prune/) with the appropriate options to clear out old containers and make space for the new one.
+
+```bash
+$ docker system prune
+```
+

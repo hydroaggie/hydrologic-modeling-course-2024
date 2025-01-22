@@ -19,7 +19,7 @@ This will start downloading the docker image (~2G).
 4. Download course repository. In the terminal/powershell, run the following command
 
 ```bash
-git clone https://github.com/hydroaggie/hydrologic_modeling_course_2024.git 
+git clone https://github.com/hydroaggie/hydrologic-modeling-course-2024.git 
 ```
 
 5. Launch Docker. Run the following command in your terminal:
@@ -27,30 +27,33 @@ git clone https://github.com/hydroaggie/hydrologic_modeling_course_2024.git
 
 ```bash
 # navigate into the downloaded course folder
-cd hydrologic_modeling_course_2024
+cd hydrologic-modeling-course-2024
 
 # launch docker
 docker run -it --rm -p 8888:8888  -v $(pwd):/home/aggie/work pshuai/jupyter-pflotran-multiplatform:latest jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''
 ```
-- On Windows, replace `$(pwd)` with the actual path to the course material folder, e.g., `C:\Users\USERNAME\hydrologic_modeling_course_2024` (where `USERNAME` is your Windows username).
+- On Windows, replace `$(pwd)` with the actual path to the course material folder, e.g., `C:\Users\USERNAME\hydrologic-modeling-course-2024` (where `USERNAME` is your Windows username).
 
 ```bash
-# navigate into the downloaded course folder
-cd hydrologic_modeling_course_2024
+# Navigate into the downloaded course folder
+cd hydrologic-modeling-course-2024
 
 # launch docker
-docker run -it --rm -p 8888:8888  -v C:\Users\USERNAME\hydrologic_modeling_course_2024:/home/aggie/work pshuai/jupyter-pflotran-multiplatform:latest jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''
+docker run -it --rm -p 8888:8888  -v C:\Users\USERNAME\hydrologic-modeling-course-2024:/home/aggie/work pshuai/jupyter-pflotran-multiplatform:latest jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''
 ```
 
 6. Connect to the JupyterLab. If the above command is successful, you will see output like the following at the bottom of the screen.
 
 ```bash
-    Jupyter Server 2.15.0 is running at:
-    http://6392a6f60965:8888/lab
-    http://127.0.0.1:8888/lab
+[I 2025-01-22 05:49:28.562 ServerApp] Jupyter Server 2.15.0 is running at:
+[I 2025-01-22 05:49:28.562 ServerApp] http://2f1be613bce1:8888/lab
+[I 2025-01-22 05:49:28.562 ServerApp]     http://127.0.0.1:8888/lab
+[I 2025-01-22 05:49:28.562 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 ```
 
 Copy and paste the URL: http://127.0.0.1:8888/lab into your browser and you should see the JupyterLab interface like below.
+
+
 
 7. Congratulations! You are all set!
 

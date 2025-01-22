@@ -53,6 +53,7 @@ docker run -it --rm -p 8888:8888  -v C:\Users\USERNAME\hydrologic-modeling-cours
 
 Copy and paste the URL: http://127.0.0.1:8888/lab into your browser and you should see the JupyterLab interface like below.
 
+<img width="1608" alt="image" src="https://github.com/user-attachments/assets/2f7ab2a1-6e7b-4997-926e-5bbc8f327f48" />
 
 
 7. Congratulations! You are all set!

@@ -1,8 +1,8 @@
 # Instructions for setting up and running Docker
 
 ## Prerequisites
-- GitHub account
-- Windows/Mac with git installed
+- GitHub account. Sign up [here](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
+- Windows/Mac with git installed. See [Instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on how to install Git.
 
 ## Instructions
 

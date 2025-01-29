@@ -3,6 +3,7 @@
 ## Prerequisites
 - GitHub account. Sign up [here](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
 - Windows/Mac with git installed. See [Instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) on how to install Git.
+- Docker Desktop. Go to [Docker](https://www.docker.com/products/docker-desktop/) and download Docker Desktop.
 
 ## Instructions
 

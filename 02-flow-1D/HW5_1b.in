@@ -103,11 +103,11 @@ FLOW_CONDITION initial_pressure
   LIQUID_PRESSURE 101325.d0
 END
 
-FLOW_CONDITION recharge
+FLOW_CONDITION evaporation
   TYPE
     LIQUID_FLUX NEUMANN
   /
-  LIQUID_FLUX 10.d0 cm/y
+  LIQUID_FLUX -10.d0 cm/y
 END
 
 #=========================== condition couplers ===============================
@@ -123,7 +123,7 @@ BOUNDARY_CONDITION outlet
 END
 
 BOUNDARY_CONDITION inlet
-  FLOW_CONDITION recharge
+  FLOW_CONDITION evaporation
   REGION top
 END
 

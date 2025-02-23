@@ -1,6 +1,6 @@
-#Description: 1D test problem for tracer transport
+#Description: 1D problem for flow and tracer transport
 
-#=========================== flow mode ========================================
+#=========================== flow and transport mode ========================================
 SIMULATION
   SIMULATION_TYPE SUBSURFACE
   PROCESS_MODELS
@@ -17,41 +17,28 @@ SUBSURFACE
 #=========================== numerical methods ================================
 NUMERICAL_METHODS FLOW
   NEWTON_SOLVER
-#    DTOL 1.d20
   /
 END 
 
 NUMERICAL_METHODS TRANSPORT
   TIMESTEPPER
-    CFL_GOVERNOR 1.d0
+    CFL_GOVERNOR 1.d0 #set CFL=1 to limit timestep so dt<dx/v_max
   /
   NEWTON_SOLVER
-#    DTOL 1.d20
   /
 END
 
 #=========================== chemistry ========================================
 CHEMISTRY
   PRIMARY_SPECIES
-    Tracer
+    Tracer # add conservative tracer as the species
   /
-  OUTPUT
+  OUTPUT #! IMPORTANT: add output block to write concentration to file
     ALL
     TOTAL
   /  
 END
 
-#=========================== runtime ==========================================
-#CHECKPOINT 1000
-#RESTART ./ss/restart.chk 0.d0
-#OVERWRITE_RESTART_TRANSPORT
-#WALLCLOCK_STOP 23.75
-
-
-#=========================== solver options ===================================
-FLUID_PROPERTY
-  DIFFUSION_COEFFICIENT 1.d-9
-/
 #=========================== discretization ===================================
 GRID
   TYPE STRUCTURED
@@ -64,7 +51,7 @@ END
 
 #=========================== fluid properties =================================
 FLUID_PROPERTY 
-  DIFFUSION_COEFFICIENT 1.d-9
+  DIFFUSION_COEFFICIENT 1.d-9 
 /
 
 #=========================== material properties ==============================
@@ -76,6 +63,7 @@ MATERIAL_PROPERTY soil1
     PERM_ISO 2.d-11 
   /
   CHARACTERISTIC_CURVES default
+  LONGITUDINAL_DISPERSIVITY 4 #m, note only longitudinal dispersivity is considered here since it's just a 1D column
 END
 
 #=========================== characteristic curves ============================
@@ -94,12 +82,11 @@ END
 #=========================== output options ===================================
 OUTPUT
   TIME_UNITS d
-#SCREEN PERIODIC 10
-#MASS_BALANCE
-#  TIMES d 0.5 1.0 2.0 5.0 10.0 35.0 100. 200.
-  PERIODIC TIME 1. d 
-#  PERIODIC TIME 100. d between 1. y and 2. y
-  FORMAT TECPLOT POINT
+  SNAPSHOT_FILE
+      NO_PRINT_INITIAL
+      PERIODIC TIME 1. d between 1. d and 9. d
+      FORMAT TECPLOT POINT
+  /
   FORMAT HDF5
   PERIODIC_OBSERVATION TIMESTEP 1
 #  VELOCITY_AT_CENTER
@@ -107,8 +94,7 @@ END
 
 #=========================== times ============================================
 TIME
-#FINAL_TIME 1000.d0 y
-  FINAL_TIME 20.d0 d
+  FINAL_TIME 10.d0 d
   INITIAL_TIMESTEP_SIZE 1.d-3 h
   MAXIMUM_TIMESTEP_SIZE 1.d0 d
 END
@@ -156,26 +142,16 @@ FLOW_CONDITION initial
   /
   DATUM 0.d0 0.d0 5.d0
   GRADIENT
-    LIQUID_PRESSURE -0.1 0.d0 0.d0 #head gradient dh/dx  0.1
+    LIQUID_PRESSURE -0.1 0.d0 0.d0 #head gradient dh/dx = (1-5)/40 = 0.1 m/m
   /
   LIQUID_PRESSURE 101325.0 
 END
-
-skip
-FLOW_CONDITION initial
-  TYPE
-    LIQUID_PRESSURE DIRICHLET
-  /
-  LIQUID_PRESSURE 29353.1877 ! 3 meter pressure head (3*997.32*9.81)
-/
-noskip
 
 FLOW_CONDITION inlet
   TYPE
     LIQUID_PRESSURE HYDROSTATIC
   /
   DATUM 0.d0 0.d0 5.d0
-#  LIQUID_PRESSURE 150192.7 ! 5 meter piezometric head (5*997.32*9.81 + 101325)
   LIQUID_PRESSURE 101325.0 
 /
 
@@ -184,14 +160,13 @@ FLOW_CONDITION outlet
     LIQUID_PRESSURE HYDROSTATIC
   /
   DATUM 0.d0 0.d0 1.d0
-#  LIQUID_PRESSURE 111098.54 ! 1 meter piezometric head (1*997.32*9.81 + 101325)
   LIQUID_PRESSURE 101325.0 
 /
 
 
 #=========================== transport conditions =============================
 TRANSPORT_CONDITION initial
-  TYPE ZERO_GRADIENT
+  TYPE ZERO_GRADIENT #mass is allowed to exit via advection with the following water, but not due to dispersion
   CONSTRAINT_LIST
     0.d0 initial
   /
@@ -201,14 +176,13 @@ TRANSPORT_CONDITION inlet
   TYPE DIRICHLET_ZERO_GRADIENT
   CONSTRAINT_LIST
     0.d0 inlet
-#    6000.d0 inlet #release of solute starts at 6000 sec
   /
 END
 
 #=========================== constraints ======================================
 CONSTRAINT initial
   CONCENTRATIONS
-    Tracer 1.d-20  T
+    Tracer 1.d-20  T #! T = total aqueous component concentration. Default units [mol/L]
   /
 END
 

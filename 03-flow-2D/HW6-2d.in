@@ -1,0 +1,178 @@
+#Description: 2D RICHARDS  mode sloping water table with recharge
+
+SIMULATION
+  SIMULATION_TYPE SUBSURFACE
+  PROCESS_MODELS
+    SUBSURFACE_FLOW flow
+      MODE RICHARDS
+    /
+  /
+  RESTART
+    FILENAME ./HW6-2c-restart.h5
+    RESET_TO_TIME_ZERO
+  /
+END
+
+SUBSURFACE
+
+#=========================== numerical methods ================================
+NUMERICAL_METHODS FLOW
+
+  NEWTON_SOLVER
+#    USE_INFINITY_NORM_CONVERGENCE
+  /
+
+END
+
+#=========================== discretization ===================================
+GRID
+  TYPE STRUCTURED
+  NXYZ 300 1 150
+  BOUNDS
+    0.d0 0.d0 0.d0
+    300.d0 1.d0 15.d0
+  /
+END
+#=========================== material properties ==============================
+MATERIAL_PROPERTY soil1
+  ID 1
+  CHARACTERISTIC_CURVES default
+  POROSITY 0.25
+  PERMEABILITY
+    PERM_ISO 5.25d-12 
+  /
+END
+
+#=========================== characteristic curves ============================
+CHARACTERISTIC_CURVES default
+  SATURATION_FUNCTION VAN_GENUCHTEN
+    ALPHA 1.d-4
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+  /
+  PERMEABILITY_FUNCTION MUALEM_VG_LIQ
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+  /
+END
+#=========================== output options ===================================
+OUTPUT
+  SNAPSHOT_FILE
+    FORMAT HDF5
+    PERIODIC TIME 10. d between 0. y and 1. y
+  /
+  VARIABLES
+    LIQUID_PRESSURE
+    LIQUID_SATURATION
+  /
+END
+
+#=========================== times ============================================
+TIME
+  FINAL_TIME 1.d0 y
+  INITIAL_TIMESTEP_SIZE 1.d0 h
+  MAXIMUM_TIMESTEP_SIZE 1.d0 y
+END
+
+#=========================== regions ==========================================
+REGION all
+  COORDINATES
+    0.d0 0.d0 0.d0
+    300.d0 1.d0 15.d0
+  /
+END
+
+REGION top
+  FACE TOP
+  COORDINATES
+    0.d0 0.d0 15.d0
+    300.d0 1.d0 15.d0
+  /
+END
+
+REGION bottom
+  FACE BOTTOM
+  COORDINATES
+    0.d0 0.d0 0.d0
+    300.d0 1.d0 0.d0
+  /
+END
+
+REGION east
+  FACE EAST
+  COORDINATES
+    300.d0 0.d0 0.d0
+    300.d0 1.d0 15.d0
+  /
+END
+
+REGION west
+  FACE WEST
+  COORDINATES
+    0.d0 0.d0 0.d0
+    0.d0 1.d0 15.d0
+  /
+END
+
+#=========================== flow conditions ==================================
+FLOW_CONDITION initial
+  TYPE
+    LIQUID_PRESSURE HYDROSTATIC
+  /
+  DATUM 0.d0 0.d0 11.d0
+  LIQUID_PRESSURE 101325.d0
+END
+
+FLOW_CONDITION recharge
+  TYPE
+    LIQUID_FLUX NEUMANN
+  /
+  INTERPOLATION LINEAR 
+  LIQUID_FLUX FILE ./recharge_rates.txt   #! use external file for datum
+END
+
+FLOW_CONDITION west
+  TYPE
+    LIQUID_PRESSURE HYDROSTATIC
+  /
+  DATUM 0.d0 0.5 12.d0
+  LIQUID_PRESSURE 101325.d0
+END
+
+FLOW_CONDITION east
+  TYPE
+    LIQUID_PRESSURE HYDROSTATIC
+  /
+  DATUM 300.d0 0.5 10.d0
+  LIQUID_PRESSURE 101325.d0
+END
+
+#=========================== condition couplers ===============================
+INITIAL_CONDITION
+  FLOW_CONDITION initial
+  REGION all
+END
+
+BOUNDARY_CONDITION top
+  FLOW_CONDITION recharge
+  REGION top
+END
+
+BOUNDARY_CONDITION east
+  FLOW_CONDITION east
+  REGION east
+END
+
+BOUNDARY_CONDITION west
+  FLOW_CONDITION west
+  REGION west
+END
+
+#=========================== stratigraphy couplers ============================
+STRATA
+  REGION all
+  MATERIAL soil1
+END
+
+
+END_SUBSURFACE

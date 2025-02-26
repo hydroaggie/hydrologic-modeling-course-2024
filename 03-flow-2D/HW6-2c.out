@@ -1,0 +1,1182 @@
+
+=================
+  PFLOTRAN v6.0
+=================
+
+"grid_structured_type" set to default value.
+pflotran card:: NUMERICAL_METHODS
+pflotran card:: GRID
+pflotran card:: MATERIAL_PROPERTY
+  Name :: soil1
+pflotran card:: CHARACTERISTIC_CURVES
+  Name :: default
+ WARNING: Mualem-van Genuchten relative permeability function is being used without SMOOTH option.
+pflotran card:: OUTPUT
+"OUTPUT,SNAPSHOT_FILE,FORMAT,HDF5" set to default value.
+pflotran card:: TIME
+pflotran card:: REGION
+all
+pflotran card:: REGION
+top
+pflotran card:: REGION
+bottom
+pflotran card:: REGION
+east
+pflotran card:: REGION
+west
+pflotran card:: FLOW_CONDITION
+initial
+pflotran card:: FLOW_CONDITION
+recharge
+pflotran card:: FLOW_CONDITION
+west
+pflotran card:: FLOW_CONDITION
+east
+pflotran card:: INITIAL_CONDITION
+"Initial Condition name" set to default value.
+pflotran card:: BOUNDARY_CONDITION
+pflotran card:: BOUNDARY_CONDITION
+pflotran card:: BOUNDARY_CONDITION
+pflotran card:: STRATA
+pflotran card:: END_SUBSURFACE
+
+Extent of Gridded Domain
+ X: 0.000000E+00 - 3.000000E+02
+ Y: 0.000000E+00 - 1.000000E+00
+ Z: 0.000000E+00 - 1.500000E+01
+
+Size of Gridded Domain
+ Number of grid cells: 45000
+
+Number of active grid cells: 45000
+Number of inactive grid cells: 0
+
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Initial Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   initial
+                  Region:   all
+--------------------------------------------------------------------------------
+
+  Flow Condition: initial
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  3
+
+    Sub Condition: pressure
+      Type: hydrostatic
+      Gradient:
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Boundary Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   recharge
+                  Region:   top
+--------------------------------------------------------------------------------
+
+  Flow Condition: recharge
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+
+    Sub Condition: pressure
+      Type: neumann
+      Gradient:
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Boundary Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   east
+                  Region:   east
+--------------------------------------------------------------------------------
+
+  Flow Condition: east
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  3
+
+    Sub Condition: pressure
+      Type: hydrostatic
+      Gradient:
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Boundary Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   west
+                  Region:   west
+--------------------------------------------------------------------------------
+
+  Flow Condition: west
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  3
+
+    Sub Condition: pressure
+      Type: hydrostatic
+      Gradient:
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+Default HDF5 method is used in Initialization
+  Beginning setup of FLOW SNES
+ number of dofs =   1, number of phases =   1
+ mode = Richards: p
+  Finished setting up FLOW SNES
+
+ Requested processors and decomposition =     1, npx,y,z=   -1  -1  -1
+ Actual decomposition: npx,y,z=    1   1   1
+
+WARNING: Waypoint at time:  3.4690E+08 is beyond the end of simulation
+WARNING: Waypoint at time:  3.7843E+08 is beyond the end of simulation
+WARNING: Waypoint at time:  4.0997E+08 is beyond the end of simulation
+WARNING: Waypoint at time:  4.4150E+08 is beyond the end of simulation
+WARNING: Waypoint at time:  4.7304E+08 is beyond the end of simulation
+WARNING: Waypoint at time:  5.0458E+08 is beyond the end of simulation
+WARNING: Waypoint at time:  5.3611E+08 is beyond the end of simulation
+WARNING: Waypoint at time:  5.6765E+08 is beyond the end of simulation
+WARNING: Waypoint at time:  5.9918E+08 is beyond the end of simulation
+WARNING: Waypoint at time:  6.3072E+08 is beyond the end of simulation
+
+FLOW Time Stepper SNES
+      maximum number of steps: 999999
+constant time steps threshold: 5
+       maximum number of cuts: 16
+             reduction factor: 5.000000E-01
+        maximum growth factor: 2.000000E+00
+                 acceleration: on
+       acceleration threshold: 5
+       number of ramp entries: 5
+                ramp entry #1: 2.0000
+                ramp entry #2: 2.0000
+                ramp entry #3: 2.0000
+                ramp entry #4: 2.0000
+                ramp entry #5: 2.0000
+                ramp entry #6: 1.8000
+                ramp entry #7: 1.6000
+                ramp entry #8: 1.4000
+                ramp entry #9: 1.2000
+               ramp entry #10: 1.0000
+               ramp entry #11: 1.0000
+               ramp entry #12: 1.0000
+               ramp entry #13: 1.0000
+
+FLOW Newton Solver
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-08
+                         stol: 1.000000E-08
+                         dtol: 1.000000E+04
+                      maxnorm: 1.000000E+20
+                    inftolres: -9.990000E+02
+                    inftolupd: -9.990000E+02
+                 inftolrelupd: -9.990000E+02
+                 inftolsclres: -9.990000E+02
+                     max iter: 50
+                     min iter: 1
+                         maxf: 10000
+                  matrix type: baij
+         precond. matrix type: baij
+               inexact newton: off
+            print convergence: on
+   print detailed convergence: off
+          check infinity norm: on
+
+FLOW Linear Solver
+                       solver: bcgs
+               preconditioner: ilu
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-05
+                         dtol: 1.000000E+04
+            maximum iteration: 10000
+
+ --> creating hdf5 output file: HW6-2c.h5
+      0.10 Seconds to write HDF5 file.
+
+ Finished Initialization
+
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.77E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 6.38E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 9.91E-04 2x: 3.01E+07 2u: 3.14E+05 ir: 3.05E-04 iu: 9.43E+03 rsn:   0
+  2 2r: 2.59E-04 2x: 3.01E+07 2u: 1.33E+04 ir: 1.87E-04 iu: 2.95E+03 rsn:   0
+  3 2r: 8.50E-06 2x: 3.01E+07 2u: 1.16E+03 ir: 4.52E-06 iu: 3.75E+02 rsn:   0
+  4 2r: 1.62E-08 2x: 3.01E+07 2u: 2.80E+01 ir: 1.07E-08 iu: 1.38E+01 rsn:   0
+  5 2r: 8.15E-14 2x: 3.01E+07 2u: 4.63E-02 ir: 6.37E-14 iu: 2.05E-02 rsn: rtol
+
+ Step      1 Time=  1.14155E-04 Dt=  1.14155E-04 [y] conv_reason: 3
+  newton =   5 [       5] linear =   190 [       190] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 190 / 5
+  --> SNES Residual: 0.815334E-13 0.181185E-17 0.636801E-13
+  --> max change: dpmx=   9.4306E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.31E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 9.36E-05 iu: 0.00E+00 rsn:   0
+  1 2r: 1.07E-04 2x: 3.01E+07 2u: 2.30E+04 ir: 5.57E-05 iu: 1.32E+03 rsn:   0
+  2 2r: 3.86E-07 2x: 3.01E+07 2u: 6.62E+02 ir: 1.59E-07 iu: 5.95E+01 rsn:   0
+  3 2r: 3.64E-12 2x: 3.01E+07 2u: 8.95E-01 ir: 1.59E-12 iu: 3.21E-01 rsn: rtol
+
+ Step      2 Time=  1.51826E-04 Dt=  3.76712E-05 [y] conv_reason: 3
+  newton =   3 [       8] linear =   132 [       322] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 132 / 3
+  --> SNES Residual: 0.363818E-11 0.808484E-16 0.159222E-11
+  --> max change: dpmx=   1.2938E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.82E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 5.15E-05 iu: 0.00E+00 rsn:   0
+  1 2r: 9.71E-05 2x: 3.01E+07 2u: 3.42E+04 ir: 3.65E-05 iu: 1.93E+03 rsn:   0
+  2 2r: 1.90E-06 2x: 3.01E+07 2u: 1.13E+03 ir: 1.26E-06 iu: 1.61E+02 rsn:   0
+  3 2r: 1.19E-10 2x: 3.01E+07 2u: 4.82E+00 ir: 7.57E-11 iu: 2.10E+00 rsn:   0
+  4 2r: 1.09E-14 2x: 3.01E+07 2u: 4.10E-03 ir: 1.85E-16 iu: 4.15E-04 rsn: rtol
+
+ Step      3 Time=  2.27169E-04 Dt=  7.53425E-05 [y] conv_reason: 3
+  newton =   4 [      12] linear =   160 [       482] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 160 / 4
+  --> SNES Residual: 0.108998E-13 0.242218E-18 0.185073E-15
+  --> max change: dpmx=   1.7847E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.75E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 2.90E-05 iu: 0.00E+00 rsn:   0
+  1 2r: 1.03E-04 2x: 3.01E+07 2u: 5.15E+04 ir: 3.75E-05 iu: 2.56E+03 rsn:   0
+  2 2r: 1.11E-06 2x: 3.01E+07 2u: 1.92E+03 ir: 3.23E-07 iu: 2.97E+02 rsn:   0
+  3 2r: 7.20E-10 2x: 3.01E+07 2u: 1.87E+01 ir: 3.67E-10 iu: 7.31E+00 rsn:   0
+  4 2r: 1.19E-14 2x: 3.01E+07 2u: 1.93E-02 ir: 2.85E-16 iu: 4.68E-03 rsn: rtol
+
+ Step      4 Time=  3.77854E-04 Dt=  1.50685E-04 [y] conv_reason: 3
+  newton =   4 [      16] linear =   159 [       641] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 159 / 4
+  --> SNES Residual: 0.118937E-13 0.264305E-18 0.285037E-15
+  --> max change: dpmx=   2.2665E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.92E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 1.58E-05 iu: 0.00E+00 rsn:   0
+  1 2r: 9.79E-05 2x: 3.01E+07 2u: 7.57E+04 ir: 2.80E-05 iu: 2.98E+03 rsn:   0
+  2 2r: 1.29E-06 2x: 3.01E+07 2u: 3.22E+03 ir: 4.10E-07 iu: 3.96E+02 rsn:   0
+  3 2r: 1.34E-09 2x: 3.01E+07 2u: 4.39E+01 ir: 6.51E-10 iu: 1.31E+01 rsn:   0
+  4 2r: 9.36E-13 2x: 3.01E+07 2u: 7.42E-02 ir: 6.62E-13 iu: 1.48E-02 rsn: rtol
+
+ Step      5 Time=  6.79224E-04 Dt=  3.01370E-04 [y] conv_reason: 3
+  newton =   4 [      20] linear =   183 [       824] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 183 / 4
+  --> SNES Residual: 0.936433E-12 0.208096E-16 0.662108E-12
+  --> max change: dpmx=   2.5919E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.29E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 7.70E-06 iu: 0.00E+00 rsn:   0
+  1 2r: 7.62E-05 2x: 3.02E+07 2u: 1.08E+05 ir: 2.07E-05 iu: 3.30E+03 rsn:   0
+  2 2r: 8.88E-07 2x: 3.02E+07 2u: 5.23E+03 ir: 3.08E-07 iu: 4.68E+02 rsn:   0
+  3 2r: 9.85E-10 2x: 3.02E+07 2u: 7.26E+01 ir: 3.65E-10 iu: 1.70E+01 rsn:   0
+  4 2r: 3.52E-14 2x: 3.02E+07 2u: 1.37E-01 ir: 2.13E-15 iu: 2.26E-02 rsn: rtol
+
+ Step      6 Time=  1.28196E-03 Dt=  6.02740E-04 [y] conv_reason: 3
+  newton =   4 [      24] linear =   206 [      1030] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 206 / 4
+  --> SNES Residual: 0.351909E-13 0.782021E-18 0.212983E-14
+  --> max change: dpmx=   2.8810E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.46E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 3.56E-06 iu: 0.00E+00 rsn:   0
+  1 2r: 5.60E-05 2x: 3.02E+07 2u: 1.47E+05 ir: 1.31E-05 iu: 4.34E+03 rsn:   0
+  2 2r: 4.63E-07 2x: 3.02E+07 2u: 8.86E+03 ir: 6.37E-08 iu: 6.37E+02 rsn:   0
+  3 2r: 5.83E-10 2x: 3.02E+07 2u: 1.42E+02 ir: 1.85E-10 iu: 2.39E+01 rsn:   0
+  4 2r: 5.16E-14 2x: 3.02E+07 2u: 4.79E-01 ir: 7.45E-16 iu: 3.42E-02 rsn: rtol
+
+ Step      7 Time=  2.48744E-03 Dt=  1.20548E-03 [y] conv_reason: 3
+  newton =   4 [      28] linear =   233 [      1263] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 233 / 4
+  --> SNES Residual: 0.515764E-13 0.114614E-17 0.744528E-15
+  --> max change: dpmx=   3.6910E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.50E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 1.73E-06 iu: 0.00E+00 rsn:   0
+  1 2r: 4.21E-05 2x: 3.02E+07 2u: 1.86E+05 ir: 8.99E-06 iu: 4.33E+03 rsn:   0
+  2 2r: 1.81E-06 2x: 3.02E+07 2u: 1.34E+04 ir: 4.73E-07 iu: 7.55E+02 rsn:   0
+  3 2r: 3.29E-08 2x: 3.02E+07 2u: 2.45E+02 ir: 2.07E-08 iu: 3.16E+01 rsn:   0
+  4 2r: 9.97E-13 2x: 3.02E+07 2u: 1.40E+00 ir: 5.96E-13 iu: 4.93E-01 rsn:   0
+  5 2r: 1.09E-14 2x: 3.02E+07 2u: 6.15E-03 ir: 1.87E-16 iu: 6.08E-05 rsn: rtol
+
+ Step      8 Time=  4.89840E-03 Dt=  2.41096E-03 [y] conv_reason: 3
+  newton =   5 [      33] linear =   387 [      1650] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 387 / 5
+  --> SNES Residual: 0.108734E-13 0.241632E-18 0.187001E-15
+  --> max change: dpmx=   3.5585E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.53E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 9.52E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 4.73E-06 2x: 3.02E+07 2u: 5.16E+04 ir: 1.32E-06 iu: 8.78E+02 rsn:   0
+  2 2r: 5.27E-08 2x: 3.02E+07 2u: 7.92E+02 ir: 1.81E-08 iu: 3.24E+01 rsn:   0
+  3 2r: 1.11E-12 2x: 3.02E+07 2u: 1.98E+00 ir: 4.30E-13 iu: 3.08E-01 rsn:   0
+  4 2r: 1.11E-14 2x: 3.02E+07 2u: 2.97E-03 ir: 1.88E-16 iu: 2.75E-05 rsn: rtol
+
+ Step      9 Time=  5.69402E-03 Dt=  7.95616E-04 [y] conv_reason: 3
+  newton =   4 [      37] linear =   242 [      1892] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 242 / 4
+  --> SNES Residual: 0.110800E-13 0.246223E-18 0.188367E-15
+  --> max change: dpmx=   8.4575E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.14E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 8.51E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 8.41E-06 2x: 3.03E+07 2u: 8.72E+04 ir: 2.11E-06 iu: 1.24E+03 rsn:   0
+  2 2r: 4.41E-07 2x: 3.03E+07 2u: 1.94E+03 ir: 9.04E-08 iu: 6.67E+01 rsn:   0
+  3 2r: 1.36E-11 2x: 3.03E+07 2u: 8.75E+00 ir: 4.50E-12 iu: 8.60E-01 rsn:   0
+  4 2r: 1.10E-14 2x: 3.03E+07 2u: 2.51E-02 ir: 1.88E-16 iu: 2.50E-04 rsn: rtol
+
+ Step     10 Time=  7.28525E-03 Dt=  1.59123E-03 [y] conv_reason: 3
+  newton =   4 [      41] linear =   309 [      2201] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 309 / 4
+  --> SNES Residual: 0.110019E-13 0.244487E-18 0.187950E-15
+  --> max change: dpmx=   1.1745E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.67E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 7.19E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.36E-05 2x: 3.04E+07 2u: 1.49E+05 ir: 2.78E-06 iu: 1.56E+03 rsn:   0
+  2 2r: 2.47E-06 2x: 3.04E+07 2u: 3.69E+03 ir: 4.22E-07 iu: 9.44E+01 rsn:   0
+  3 2r: 5.08E-10 2x: 3.04E+07 2u: 3.69E+01 ir: 2.15E-10 iu: 1.58E+00 rsn:   0
+  4 2r: 1.10E-14 2x: 3.04E+07 2u: 7.65E-02 ir: 1.85E-16 iu: 1.02E-03 rsn: rtol
+
+ Step     11 Time=  1.04677E-02 Dt=  3.18247E-03 [y] conv_reason: 3
+  newton =   4 [      45] linear =   392 [      2593] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 392 / 4
+  --> SNES Residual: 0.110086E-13 0.244636E-18 0.185202E-15
+  --> max change: dpmx=   1.4801E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.26E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 6.04E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.77E-05 2x: 3.06E+07 2u: 2.61E+05 ir: 3.08E-06 iu: 2.09E+03 rsn:   0
+  2 2r: 3.94E-06 2x: 3.06E+07 2u: 5.21E+03 ir: 6.19E-07 iu: 7.38E+01 rsn:   0
+  3 2r: 5.51E-10 2x: 3.06E+07 2u: 4.90E+01 ir: 8.05E-11 iu: 9.68E-01 rsn:   0
+  4 2r: 1.10E-14 2x: 3.06E+07 2u: 1.75E-01 ir: 1.83E-16 iu: 1.78E-03 rsn: rtol
+
+ Step     12 Time=  1.68326E-02 Dt=  6.36493E-03 [y] conv_reason: 3
+  newton =   4 [      49] linear =   484 [      3077] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 484 / 4
+  --> SNES Residual: 0.109654E-13 0.243675E-18 0.183329E-15
+  --> max change: dpmx=   2.0979E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.93E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 4.96E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.55E-05 2x: 3.09E+07 2u: 3.66E+05 ir: 2.22E-06 iu: 2.74E+03 rsn:   0
+  2 2r: 5.64E-07 2x: 3.09E+07 2u: 6.01E+03 ir: 8.81E-08 iu: 8.47E+01 rsn:   0
+  3 2r: 4.26E-09 2x: 3.09E+07 2u: 1.64E+01 ir: 2.24E-09 iu: 5.30E-01 rsn:   0
+  4 2r: 1.12E-14 2x: 3.09E+07 2u: 2.27E-02 ir: 4.39E-16 iu: 7.80E-04 rsn: rtol
+
+ Step     13 Time=  2.73973E-02 Dt=  1.05646E-02 [y] conv_reason: 3
+  newton =   4 [      53] linear =   537 [      3614] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 537 / 4
+  --> SNES Residual: 0.111658E-13 0.248129E-18 0.439098E-15
+  --> max change: dpmx=   2.7710E+03
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.59E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 3.95E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.18E-05 2x: 3.12E+07 2u: 3.64E+05 ir: 1.32E-06 iu: 2.62E+03 rsn:   0
+  2 2r: 6.77E-08 2x: 3.12E+07 2u: 5.58E+03 ir: 1.38E-08 iu: 1.07E+02 rsn:   0
+  3 2r: 1.27E-11 2x: 3.12E+07 2u: 4.53E+01 ir: 3.70E-13 iu: 1.03E+00 rsn:   0
+  4 2r: 1.13E-14 2x: 3.12E+07 2u: 2.49E-01 ir: 1.85E-16 iu: 1.85E-03 rsn: rtol
+
+ Step     14 Time=  4.01271E-02 Dt=  1.27299E-02 [y] conv_reason: 3
+  newton =   4 [      57] linear =   556 [      4170] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 556 / 4
+  --> SNES Residual: 0.112643E-13 0.250318E-18 0.185124E-15
+  --> max change: dpmx=   2.6509E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.29E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 3.13E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.28E-05 2x: 3.15E+07 2u: 3.37E+05 ir: 1.62E-06 iu: 2.37E+03 rsn:   0
+  2 2r: 3.54E-08 2x: 3.15E+07 2u: 4.73E+03 ir: 1.26E-08 iu: 9.54E+01 rsn:   0
+  3 2r: 6.69E-12 2x: 3.15E+07 2u: 3.99E+01 ir: 1.99E-13 iu: 8.55E-01 rsn:   0
+  4 2r: 1.14E-14 2x: 3.15E+07 2u: 5.68E-02 ir: 1.87E-16 iu: 5.49E-04 rsn: rtol
+
+ Step     15 Time=  5.47945E-02 Dt=  1.46674E-02 [y] conv_reason: 3
+  newton =   4 [      61] linear =   588 [      4758] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 588 / 4
+  --> SNES Residual: 0.114446E-13 0.254325E-18 0.187322E-15
+  --> max change: dpmx=   2.3901E+03
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.03E-05 2x: 0.00E+00 2u: 0.00E+00 ir: 2.45E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 2.33E-05 2x: 3.19E+07 2u: 4.33E+05 ir: 2.20E-06 iu: 2.97E+03 rsn:   0
+  2 2r: 9.54E-08 2x: 3.19E+07 2u: 6.74E+03 ir: 3.21E-08 iu: 1.62E+02 rsn:   0
+  3 2r: 3.22E-10 2x: 3.19E+07 2u: 8.70E+01 ir: 2.62E-10 iu: 2.62E+00 rsn:   0
+  4 2r: 1.17E-14 2x: 3.19E+07 2u: 1.06E+00 ir: 2.09E-16 iu: 7.67E-03 rsn: rtol
+
+ Step     16 Time=  8.21918E-02 Dt=  2.73973E-02 [y] conv_reason: 3
+  newton =   4 [      65] linear =   608 [      5366] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 608 / 4
+  --> SNES Residual: 0.117436E-13 0.260970E-18 0.209013E-15
+  --> max change: dpmx=   2.9938E+03
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.07 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.97E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 1.63E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 2.10E-05 2x: 3.22E+07 2u: 2.97E+05 ir: 2.25E-06 iu: 2.02E+03 rsn:   0
+  2 2r: 3.31E-08 2x: 3.22E+07 2u: 3.27E+03 ir: 1.52E-08 iu: 7.87E+01 rsn:   0
+  3 2r: 4.76E-12 2x: 3.22E+07 2u: 2.63E+01 ir: 3.16E-13 iu: 6.57E-01 rsn:   0
+  4 2r: 1.16E-14 2x: 3.22E+07 2u: 2.32E-01 ir: 1.83E-16 iu: 1.63E-03 rsn: rtol
+
+ Step     17 Time=  1.09589E-01 Dt=  2.73973E-02 [y] conv_reason: 3
+  newton =   4 [      69] linear =   571 [      5937] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 571 / 4
+  --> SNES Residual: 0.115819E-13 0.257376E-18 0.183198E-15
+  --> max change: dpmx=   2.0288E+03
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.75E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 1.11E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.57E-05 2x: 3.24E+07 2u: 2.01E+05 ir: 1.95E-06 iu: 1.35E+03 rsn:   0
+  2 2r: 1.18E-08 2x: 3.24E+07 2u: 1.56E+03 ir: 5.92E-09 iu: 3.58E+01 rsn:   0
+  3 2r: 5.59E-13 2x: 3.24E+07 2u: 9.21E+00 ir: 3.87E-14 iu: 1.50E-01 rsn:   0
+  4 2r: 1.16E-14 2x: 3.24E+07 2u: 2.54E-02 ir: 1.83E-16 iu: 1.77E-04 rsn: rtol
+
+ Step     18 Time=  1.36986E-01 Dt=  2.73973E-02 [y] conv_reason: 3
+  newton =   4 [      73] linear =   601 [      6538] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 601 / 4
+  --> SNES Residual: 0.115508E-13 0.256684E-18 0.182981E-15
+  --> max change: dpmx=   1.3598E+03
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.19E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 7.47E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.10E-05 2x: 3.25E+07 2u: 1.34E+05 ir: 1.44E-06 iu: 8.99E+02 rsn:   0
+  2 2r: 3.72E-09 2x: 3.25E+07 2u: 7.16E+02 ir: 2.47E-09 iu: 1.57E+01 rsn:   0
+  3 2r: 7.10E-14 2x: 3.25E+07 2u: 4.19E+00 ir: 5.06E-15 iu: 3.70E-02 rsn:   0
+  4 2r: 1.16E-14 2x: 3.25E+07 2u: 1.10E-03 ir: 1.89E-16 iu: 9.99E-06 rsn: rtol
+
+ Step     19 Time=  1.64384E-01 Dt=  2.73973E-02 [y] conv_reason: 3
+  newton =   4 [      77] linear =   626 [      7164] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 626 / 4
+  --> SNES Residual: 0.116346E-13 0.258547E-18 0.188627E-15
+  --> max change: dpmx=   9.0199E+02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.11E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 4.96E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 5.91E-06 2x: 3.26E+07 2u: 8.86E+04 ir: 1.04E-06 iu: 5.91E+02 rsn:   0
+  2 2r: 3.00E-10 2x: 3.26E+07 2u: 3.37E+02 ir: 5.44E-11 iu: 6.91E+00 rsn:   0
+  3 2r: 2.58E-14 2x: 3.26E+07 2u: 1.52E+00 ir: 4.06E-16 iu: 1.27E-02 rsn:   0
+  4 2r: 1.16E-14 2x: 3.26E+07 2u: 1.06E-03 ir: 1.89E-16 iu: 8.51E-06 rsn: rtol
+
+ Step     20 Time=  1.91781E-01 Dt=  2.73973E-02 [y] conv_reason: 3
+  newton =   4 [      81] linear =   694 [      7858] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 694 / 4
+  --> SNES Residual: 0.116033E-13 0.257852E-18 0.189244E-15
+  --> max change: dpmx=   5.9317E+02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.39E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 3.26E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 3.31E-06 2x: 3.26E+07 2u: 5.81E+04 ir: 6.68E-07 iu: 3.87E+02 rsn:   0
+  2 2r: 7.58E-11 2x: 3.26E+07 2u: 1.44E+02 ir: 1.78E-11 iu: 2.95E+00 rsn:   0
+  3 2r: 1.28E-14 2x: 3.26E+07 2u: 3.47E-01 ir: 2.21E-16 iu: 2.66E-03 rsn: rtol
+
+ Step     21 Time=  2.19178E-01 Dt=  2.73973E-02 [y] conv_reason: 3
+  newton =   3 [      84] linear =   457 [      8315] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 457 / 3
+  --> SNES Residual: 0.128081E-13 0.284624E-18 0.221075E-15
+  --> max change: dpmx=   3.8729E+02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.03 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.08E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 2.13E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.74E-06 2x: 3.26E+07 2u: 3.78E+04 ir: 4.49E-07 iu: 2.51E+02 rsn:   0
+  2 2r: 1.93E-11 2x: 3.26E+07 2u: 6.38E+01 ir: 6.45E-12 iu: 1.26E+00 rsn:   0
+  3 2r: 1.17E-14 2x: 3.26E+07 2u: 7.79E-02 ir: 1.87E-16 iu: 5.59E-04 rsn: stol
+
+ Step     22 Time=  2.46575E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   3 [      87] linear =   471 [      8786] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 471 / 3
+  --> SNES Residual: 0.116681E-13 0.259291E-18 0.186976E-15
+  --> max change: dpmx=   2.5170E+02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.90E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.38E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 9.66E-07 2x: 3.27E+07 2u: 2.45E+04 ir: 3.11E-07 iu: 1.63E+02 rsn:   0
+  2 2r: 6.50E-12 2x: 3.27E+07 2u: 2.92E+01 ir: 2.63E-12 iu: 5.27E-01 rsn:   0
+  3 2r: 1.17E-14 2x: 3.27E+07 2u: 7.34E-02 ir: 1.85E-16 iu: 6.13E-04 rsn: stol
+
+ Step     23 Time=  2.73973E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   3 [      90] linear =   483 [      9269] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 483 / 3
+  --> SNES Residual: 0.117335E-13 0.260744E-18 0.184999E-15
+  --> max change: dpmx=   1.6314E+02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.82E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 8.96E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 6.58E-07 2x: 3.27E+07 2u: 1.59E+04 ir: 1.87E-07 iu: 1.05E+02 rsn:   0
+  2 2r: 2.65E-12 2x: 3.27E+07 2u: 1.20E+01 ir: 8.48E-13 iu: 2.31E-01 rsn:   0
+  3 2r: 1.18E-14 2x: 3.27E+07 2u: 3.65E-02 ir: 1.85E-16 iu: 3.11E-04 rsn: stol
+
+ Step     24 Time=  3.01370E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   3 [      93] linear =   501 [      9770] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 501 / 3
+  --> SNES Residual: 0.117685E-13 0.261521E-18 0.185121E-15
+  --> max change: dpmx=   1.0547E+02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.47E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 5.79E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 2.66E-07 2x: 3.27E+07 2u: 1.03E+04 ir: 1.12E-07 iu: 6.81E+01 rsn:   0
+  2 2r: 8.83E-13 2x: 3.27E+07 2u: 4.80E+00 ir: 5.01E-13 iu: 9.38E-02 rsn:   0
+  3 2r: 1.17E-14 2x: 3.27E+07 2u: 1.32E-02 ir: 1.88E-16 iu: 1.07E-04 rsn: stol
+
+ Step     25 Time=  3.28767E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   3 [      96] linear =   512 [     10282] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 512 / 3
+  --> SNES Residual: 0.117065E-13 0.260145E-18 0.188012E-15
+  --> max change: dpmx=   6.8093E+01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.59E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 3.74E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 1.16E-07 2x: 3.27E+07 2u: 6.62E+03 ir: 5.07E-08 iu: 4.39E+01 rsn:   0
+  2 2r: 7.95E-14 2x: 3.27E+07 2u: 2.31E+00 ir: 2.90E-14 iu: 3.95E-02 rsn:   0
+  3 2r: 1.17E-14 2x: 3.27E+07 2u: 1.61E-03 ir: 1.87E-16 iu: 1.33E-05 rsn: stol
+
+ Step     26 Time=  3.56164E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   3 [      99] linear =   560 [     10842] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 560 / 3
+  --> SNES Residual: 0.116931E-13 0.259846E-18 0.187341E-15
+  --> max change: dpmx=   4.3914E+01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.03E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 2.41E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 7.26E-08 2x: 3.27E+07 2u: 4.27E+03 ir: 4.22E-08 iu: 2.83E+01 rsn:   0
+  2 2r: 1.55E-13 2x: 3.27E+07 2u: 1.40E+00 ir: 6.04E-14 iu: 3.00E-02 rsn:   0
+  3 2r: 1.17E-14 2x: 3.27E+07 2u: 3.83E-03 ir: 1.84E-16 iu: 3.30E-05 rsn: stol
+
+ Step     27 Time=  3.83562E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   3 [     102] linear =   495 [     11337] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 495 / 3
+  --> SNES Residual: 0.117175E-13 0.260388E-18 0.184067E-15
+  --> max change: dpmx=   2.8306E+01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.63E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 1.55E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 3.27E-08 2x: 3.27E+07 2u: 2.75E+03 ir: 2.56E-08 iu: 1.82E+01 rsn:   0
+  2 2r: 4.28E-14 2x: 3.27E+07 2u: 6.75E-01 ir: 7.52E-15 iu: 1.33E-02 rsn:   0
+  3 2r: 1.17E-14 2x: 3.27E+07 2u: 1.64E-03 ir: 1.84E-16 iu: 1.20E-05 rsn: stol
+
+ Step     28 Time=  4.10959E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   3 [     105] linear =   534 [     11871] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 534 / 3
+  --> SNES Residual: 0.117492E-13 0.261094E-18 0.184445E-15
+  --> max change: dpmx=   1.8236E+01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.27E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 1.00E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 3.38E-08 2x: 3.27E+07 2u: 1.77E+03 ir: 2.38E-08 iu: 1.17E+01 rsn:   0
+  2 2r: 4.67E-14 2x: 3.27E+07 2u: 4.30E-01 ir: 2.42E-14 iu: 1.58E-02 rsn:   0
+  3 2r: 1.18E-14 2x: 3.27E+07 2u: 9.48E-04 ir: 1.88E-16 iu: 7.86E-06 rsn: stol
+
+ Step     29 Time=  4.38356E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   3 [     108] linear =   566 [     12437] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 566 / 3
+  --> SNES Residual: 0.117523E-13 0.261162E-18 0.187527E-15
+  --> max change: dpmx=   1.1746E+01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.75E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 6.45E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.33E-08 2x: 3.27E+07 2u: 1.14E+03 ir: 1.48E-08 iu: 7.56E+00 rsn:   0
+  2 2r: 2.65E-14 2x: 3.27E+07 2u: 3.10E-01 ir: 8.30E-15 iu: 8.99E-03 rsn: stol
+
+ Step     30 Time=  4.65753E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     110] linear =   340 [     12777] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 340 / 2
+  --> SNES Residual: 0.264825E-13 0.588500E-18 0.829544E-14
+  --> max change: dpmx=   7.5659E+00
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.77E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 4.15E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 3.91E-11 2x: 3.27E+07 2u: 7.35E+02 ir: 4.60E-12 iu: 4.87E+00 rsn:   0
+  2 2r: 1.19E-14 2x: 3.27E+07 2u: 1.39E-01 ir: 1.97E-16 iu: 1.25E-03 rsn: stol
+
+ Step     31 Time=  4.93151E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     112] linear =   325 [     13102] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 325 / 2
+  --> SNES Residual: 0.119032E-13 0.264515E-18 0.196869E-15
+  --> max change: dpmx=   4.8724E+00
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.03 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.14E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 2.68E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 5.93E-09 2x: 3.27E+07 2u: 4.73E+02 ir: 4.79E-09 iu: 3.14E+00 rsn:   0
+  2 2r: 1.35E-14 2x: 3.27E+07 2u: 1.03E-01 ir: 7.27E-16 iu: 2.81E-03 rsn: stol
+
+ Step     32 Time=  5.20548E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     114] linear =   356 [     13458] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 356 / 2
+  --> SNES Residual: 0.134523E-13 0.298941E-18 0.727093E-15
+  --> max change: dpmx=   3.1376E+00
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.35E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.72E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 6.72E-12 2x: 3.27E+07 2u: 3.05E+02 ir: 8.03E-13 iu: 2.02E+00 rsn:   0
+  2 2r: 1.19E-14 2x: 3.27E+07 2u: 1.50E-02 ir: 2.11E-16 iu: 1.40E-04 rsn: stol
+
+ Step     33 Time=  5.47945E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     116] linear =   329 [     13787] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 329 / 2
+  --> SNES Residual: 0.119156E-13 0.264791E-18 0.210788E-15
+  --> max change: dpmx=   2.0203E+00
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.73E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.11E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.85E-12 2x: 3.27E+07 2u: 1.96E+02 ir: 3.35E-13 iu: 1.30E+00 rsn:   0
+  2 2r: 1.16E-14 2x: 3.27E+07 2u: 3.10E-02 ir: 1.88E-16 iu: 2.90E-04 rsn: stol
+
+ Step     34 Time=  5.75342E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     118] linear =   347 [     14134] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 347 / 2
+  --> SNES Residual: 0.116141E-13 0.258091E-18 0.187738E-15
+  --> max change: dpmx=   1.3008E+00
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.05E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 7.14E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.26E-12 2x: 3.27E+07 2u: 1.26E+02 ir: 1.38E-13 iu: 8.38E-01 rsn:   0
+  2 2r: 1.17E-14 2x: 3.27E+07 2u: 2.32E-02 ir: 1.85E-16 iu: 2.23E-04 rsn: stol
+
+ Step     35 Time=  6.02740E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     120] linear =   334 [     14468] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 334 / 2
+  --> SNES Residual: 0.117352E-13 0.260783E-18 0.185001E-15
+  --> max change: dpmx=   8.3757E-01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.96E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 4.60E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 5.59E-13 2x: 3.27E+07 2u: 8.13E+01 ir: 5.57E-14 iu: 5.39E-01 rsn:   0
+  2 2r: 1.18E-14 2x: 3.27E+07 2u: 1.14E-02 ir: 1.88E-16 iu: 1.03E-04 rsn: stol
+
+ Step     36 Time=  6.30137E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     122] linear =   327 [     14795] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 327 / 2
+  --> SNES Residual: 0.118255E-13 0.262788E-18 0.187801E-15
+  --> max change: dpmx=   5.3928E-01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.26E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.96E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.63E-13 2x: 3.27E+07 2u: 5.24E+01 ir: 2.40E-14 iu: 3.47E-01 rsn:   0
+  2 2r: 1.18E-14 2x: 3.27E+07 2u: 8.10E-03 ir: 1.83E-16 iu: 7.77E-05 rsn: stol
+
+ Step     37 Time=  6.57534E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     124] linear =   334 [     15129] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 334 / 2
+  --> SNES Residual: 0.117651E-13 0.261446E-18 0.182987E-15
+  --> max change: dpmx=   3.4722E-01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.13E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.91E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.51E-13 2x: 3.27E+07 2u: 3.37E+01 ir: 1.04E-14 iu: 2.24E-01 rsn:   0
+  2 2r: 1.16E-14 2x: 3.27E+07 2u: 6.40E-03 ir: 1.84E-16 iu: 5.90E-05 rsn: stol
+
+ Step     38 Time=  6.84932E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     126] linear =   334 [     15463] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 334 / 2
+  --> SNES Residual: 0.116230E-13 0.258290E-18 0.184354E-15
+  --> max change: dpmx=   2.2355E-01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.24E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.23E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 9.05E-14 2x: 3.27E+07 2u: 2.17E+01 ir: 4.45E-15 iu: 1.44E-01 rsn:   0
+  2 2r: 1.17E-14 2x: 3.27E+07 2u: 3.55E-03 ir: 1.88E-16 iu: 3.46E-05 rsn: stol
+
+ Step     39 Time=  7.12329E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     128] linear =   350 [     15813] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 350 / 2
+  --> SNES Residual: 0.116788E-13 0.259528E-18 0.187516E-15
+  --> max change: dpmx=   1.4394E-01
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.37E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 7.90E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.24E-14 2x: 3.27E+07 2u: 1.40E+01 ir: 2.33E-15 iu: 9.27E-02 rsn:   0
+  2 2r: 1.17E-14 2x: 3.27E+07 2u: 2.66E-03 ir: 1.85E-16 iu: 2.40E-05 rsn: stol
+
+ Step     40 Time=  7.39726E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     130] linear =   349 [     16162] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 349 / 2
+  --> SNES Residual: 0.117412E-13 0.260915E-18 0.185476E-15
+  --> max change: dpmx=   9.2672E-02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.17E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 5.09E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.42E-14 2x: 3.27E+07 2u: 9.00E+00 ir: 9.31E-16 iu: 5.97E-02 rsn:   0
+  2 2r: 1.17E-14 2x: 3.27E+07 2u: 1.48E-03 ir: 1.84E-16 iu: 1.19E-05 rsn: stol
+
+ Step     41 Time=  7.67123E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     132] linear =   368 [     16530] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 368 / 2
+  --> SNES Residual: 0.117093E-13 0.260207E-18 0.183544E-15
+  --> max change: dpmx=   5.9667E-02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.40E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 3.28E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.60E-14 2x: 3.27E+07 2u: 5.79E+00 ir: 4.31E-16 iu: 3.84E-02 rsn:   0
+  2 2r: 1.18E-14 2x: 3.27E+07 2u: 1.10E-03 ir: 1.88E-16 iu: 1.04E-05 rsn: stol
+
+ Step     42 Time=  7.94521E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     134] linear =   324 [     16854] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 324 / 2
+  --> SNES Residual: 0.117903E-13 0.262007E-18 0.187732E-15
+  --> max change: dpmx=   3.8416E-02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.00E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.11E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.70E-14 2x: 3.27E+07 2u: 3.73E+00 ir: 3.05E-16 iu: 2.47E-02 rsn:   0
+  2 2r: 1.18E-14 2x: 3.27E+07 2u: 6.09E-04 ir: 1.85E-16 iu: 5.67E-06 rsn: stol
+
+ Step     43 Time=  8.21918E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     136] linear =   332 [     17186] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 332 / 2
+  --> SNES Residual: 0.117557E-13 0.261238E-18 0.184647E-15
+  --> max change: dpmx=   2.4734E-02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.79E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.36E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.52E-14 2x: 3.27E+07 2u: 2.40E+00 ir: 2.78E-16 iu: 1.59E-02 rsn:   0
+  2 2r: 1.16E-14 2x: 3.27E+07 2u: 4.35E-04 ir: 1.89E-16 iu: 4.23E-06 rsn: stol
+
+ Step     44 Time=  8.49315E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     138] linear =   345 [     17531] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 345 / 2
+  --> SNES Residual: 0.116329E-13 0.258508E-18 0.188883E-15
+  --> max change: dpmx=   1.5925E-02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.73E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.75E-13 iu: 0.00E+00 rsn:   0
+  1 2r: 1.30E-14 2x: 3.27E+07 2u: 1.55E+00 ir: 2.25E-16 iu: 1.03E-02 rsn:   0
+  2 2r: 1.17E-14 2x: 3.27E+07 2u: 2.90E-04 ir: 1.87E-16 iu: 2.57E-06 rsn: stol
+
+ Step     45 Time=  8.76712E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     140] linear =   351 [     17882] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 351 / 2
+  --> SNES Residual: 0.116915E-13 0.259810E-18 0.186900E-15
+  --> max change: dpmx=   1.0253E-02
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.40E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 5.63E-13 iu: 0.00E+00 rsn:   0
+  1 2r: 1.22E-14 2x: 3.27E+07 2u: 9.96E-01 ir: 2.13E-16 iu: 6.60E-03 rsn:   0
+  2 2r: 1.18E-14 2x: 3.27E+07 2u: 1.11E-04 ir: 1.89E-16 iu: 9.87E-07 rsn: stol
+
+ Step     46 Time=  9.04110E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     142] linear =   340 [     18222] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 340 / 2
+  --> SNES Residual: 0.117698E-13 0.261551E-18 0.189065E-15
+  --> max change: dpmx=   6.6014E-03
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.55E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 3.63E-13 iu: 0.00E+00 rsn:   0
+  1 2r: 1.20E-14 2x: 3.27E+07 2u: 6.41E-01 ir: 2.03E-16 iu: 4.25E-03 rsn:   0
+  2 2r: 1.17E-14 2x: 3.27E+07 2u: 1.21E-04 ir: 1.84E-16 iu: 1.16E-06 rsn: stol
+
+ Step     47 Time=  9.31507E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     144] linear =   328 [     18550] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 328 / 2
+  --> SNES Residual: 0.116771E-13 0.259492E-18 0.183503E-15
+  --> max change: dpmx=   4.2503E-03
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.95E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 2.33E-13 iu: 0.00E+00 rsn:   0
+  1 2r: 1.18E-14 2x: 3.27E+07 2u: 4.13E-01 ir: 1.96E-16 iu: 2.74E-03 rsn:   0
+  2 2r: 1.17E-14 2x: 3.27E+07 2u: 7.59E-05 ir: 1.85E-16 iu: 7.13E-07 rsn: stol
+
+ Step     48 Time=  9.58904E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   2 [     146] linear =   343 [     18893] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 343 / 2
+  --> SNES Residual: 0.117236E-13 0.260525E-18 0.185300E-15
+  --> max change: dpmx=   2.7365E-03
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.41E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.50E-13 iu: 0.00E+00 rsn:   0
+  1 2r: 1.18E-14 2x: 3.27E+07 2u: 2.66E-01 ir: 1.94E-16 iu: 1.76E-03 rsn: stol
+
+ Step     49 Time=  9.86301E-01 Dt=  2.73973E-02 [y] conv_reason: 4
+  newton =   1 [     147] linear =   146 [     19039] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 146 / 1
+  --> SNES Residual: 0.117508E-13 0.261129E-18 0.194229E-15
+  --> max change: dpmx=   1.7619E-03
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.13E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 9.68E-14 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 1.04E-01 ir: 1.88E-16 iu: 6.90E-04 rsn: stol
+
+ Step     50 Time=  1.00000E+00 Dt=  1.36986E-02 [y] conv_reason: 4
+  newton =   1 [     148] linear =   137 [     19176] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 137 / 1
+  --> SNES Residual: 0.116593E-13 0.259095E-18 0.188012E-15
+  --> max change: dpmx=   6.9004E-04
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.23E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 7.58E-14 iu: 0.00E+00 rsn:   0
+  1 2r: 1.16E-14 2x: 3.27E+07 2u: 1.28E-01 ir: 1.89E-16 iu: 8.47E-04 rsn: stol
+
+ Step     51 Time=  1.02546E+00 Dt=  2.54597E-02 [y] conv_reason: 4
+  newton =   1 [     149] linear =   145 [     19321] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 145 / 1
+  --> SNES Residual: 0.116078E-13 0.257952E-18 0.188904E-15
+  --> max change: dpmx=   8.4706E-04
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.13E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 5.01E-14 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 1.26E-01 ir: 1.87E-16 iu: 8.35E-04 rsn: stol
+
+ Step     52 Time=  1.07638E+00 Dt=  5.09195E-02 [y] conv_reason: 4
+  newton =   1 [     150] linear =   148 [     19469] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 148 / 1
+  --> SNES Residual: 0.117261E-13 0.260579E-18 0.187009E-15
+  --> max change: dpmx=   8.3533E-04
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.05E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 2.47E-14 iu: 0.00E+00 rsn:   0
+  1 2r: 1.16E-14 2x: 3.27E+07 2u: 8.25E-02 ir: 1.87E-16 iu: 5.47E-04 rsn: stol
+
+ Step     53 Time=  1.17822E+00 Dt=  1.01839E-01 [y] conv_reason: 4
+  newton =   1 [     151] linear =   152 [     19621] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 152 / 1
+  --> SNES Residual: 0.116244E-13 0.258319E-18 0.187418E-15
+  --> max change: dpmx=   5.4671E-04
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.45E-13 2x: 0.00E+00 2u: 0.00E+00 ir: 8.08E-15 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 2.64E-02 ir: 1.89E-16 iu: 1.75E-04 rsn: stol
+
+ Step     54 Time=  1.27397E+00 Dt=  9.57545E-02 [y] conv_reason: 4
+  newton =   1 [     152] linear =   151 [     19772] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 151 / 1
+  --> SNES Residual: 0.116920E-13 0.259821E-18 0.189230E-15
+  --> max change: dpmx=   1.7527E-04
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.18E-13 2x: 0.00E+00 2u: 0.00E+00 ir: 2.76E-15 iu: 0.00E+00 rsn:   0
+  1 2r: 1.16E-14 2x: 3.27E+07 2u: 1.10E-02 ir: 1.85E-16 iu: 7.29E-05 rsn: stol
+
+ Step     55 Time=  1.47765E+00 Dt=  2.03678E-01 [y] conv_reason: 4
+  newton =   1 [     153] linear =   153 [     19925] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 153 / 1
+  --> SNES Residual: 0.115978E-13 0.257730E-18 0.184910E-15
+  --> max change: dpmx=   7.2930E-05
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.57E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 5.47E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.15E-14 2x: 3.27E+07 2u: 1.57E-03 ir: 1.87E-16 iu: 1.04E-05 rsn: stol
+
+ Step     56 Time=  1.54795E+00 Dt=  7.02948E-02 [y] conv_reason: 4
+  newton =   1 [     154] linear =   149 [     20074] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 149 / 1
+  --> SNES Residual: 0.115471E-13 0.256603E-18 0.186555E-15
+  --> max change: dpmx=   1.0405E-05
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.03 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.50E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 2.34E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.16E-14 2x: 3.27E+07 2u: 9.36E-04 ir: 1.88E-16 iu: 6.21E-06 rsn: stol
+
+ Step     57 Time=  1.82192E+00 Dt=  2.73973E-01 [y] conv_reason: 4
+  newton =   1 [     155] linear =   154 [     20228] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 154 / 1
+  --> SNES Residual: 0.115888E-13 0.257529E-18 0.187847E-15
+  --> max change: dpmx=   6.2086E-06
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.88E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 1.32E-04 ir: 1.85E-16 iu: 8.78E-07 rsn: stol
+
+ Step     58 Time=  2.00000E+00 Dt=  1.78082E-01 [y] conv_reason: 4
+  newton =   1 [     156] linear =   153 [     20381] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 153 / 1
+  --> SNES Residual: 0.117407E-13 0.260905E-18 0.184801E-15
+  --> max change: dpmx=   8.7825E-07
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.85E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 3.29E-05 ir: 1.86E-16 iu: 2.18E-07 rsn: stol
+
+ Step     59 Time=  2.40736E+00 Dt=  4.07356E-01 [y] conv_reason: 4
+  newton =   1 [     157] linear =   157 [     20538] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 157 / 1
+  --> SNES Residual: 0.117282E-13 0.260627E-18 0.186295E-15
+  --> max change: dpmx=   2.1784E-07
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.86E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 3.69E-06 ir: 1.86E-16 iu: 2.45E-08 rsn: stol
+
+ Step     60 Time=  3.00000E+00 Dt=  5.92644E-01 [y] conv_reason: 4
+  newton =   1 [     158] linear =   154 [     20692] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 154 / 1
+  --> SNES Residual: 0.117248E-13 0.260550E-18 0.185935E-15
+  --> max change: dpmx=   2.4462E-08
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.86E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.16E-14 2x: 3.27E+07 2u: 2.91E-07 ir: 1.84E-16 iu: 1.93E-09 rsn: stol
+
+ Step     61 Time=  3.81471E+00 Dt=  8.14711E-01 [y] conv_reason: 4
+  newton =   1 [     159] linear =   167 [     20859] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 167 / 1
+  --> SNES Residual: 0.116329E-13 0.258510E-18 0.183581E-15
+  --> max change: dpmx=   1.9354E-09
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.16E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.84E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 1.41E-08 ir: 1.84E-16 iu: 1.07E-10 rsn: stol
+
+ Step     62 Time=  4.00000E+00 Dt=  1.85289E-01 [y] conv_reason: 4
+  newton =   1 [     160] linear =   162 [     21021] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 162 / 1
+  --> SNES Residual: 0.116718E-13 0.259374E-18 0.184193E-15
+  --> max change: dpmx=   1.1642E-10
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.84E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 3.87E-09 ir: 1.87E-16 iu: 3.80E-11 rsn: stol
+
+ Step     63 Time=  5.00000E+00 Dt=  1.00000E+00 [y] conv_reason: 4
+  newton =   1 [     161] linear =   165 [     21186] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 165 / 1
+  --> SNES Residual: 0.116840E-13 0.259644E-18 0.186900E-15
+  --> max change: dpmx=   2.9104E-11
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.06 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.87E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 1.51E-09 ir: 1.87E-16 iu: 1.52E-11 rsn: stol
+
+ Step     64 Time=  6.00000E+00 Dt=  1.00000E+00 [y] conv_reason: 4
+  newton =   1 [     162] linear =    85 [     21271] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 85 / 1
+  --> SNES Residual: 0.116723E-13 0.259384E-18 0.186900E-15
+  --> max change: dpmx=   2.9104E-11
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.87E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 1.50E-09 ir: 1.87E-16 iu: 1.49E-11 rsn: stol
+
+ Step     65 Time=  7.00000E+00 Dt=  1.00000E+00 [y] conv_reason: 4
+  newton =   1 [     163] linear =    86 [     21357] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 86 / 1
+  --> SNES Residual: 0.116658E-13 0.259241E-18 0.186900E-15
+  --> max change: dpmx=   2.9104E-11
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.87E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 1.52E-09 ir: 1.89E-16 iu: 1.63E-11 rsn: stol
+
+ Step     66 Time=  8.00000E+00 Dt=  1.00000E+00 [y] conv_reason: 4
+  newton =   1 [     164] linear =   108 [     21465] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 108 / 1
+  --> SNES Residual: 0.117148E-13 0.260329E-18 0.189298E-15
+  --> max change: dpmx=   2.9104E-11
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.04 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.89E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 1.50E-09 ir: 1.87E-16 iu: 1.47E-11 rsn: stol
+
+ Step     67 Time=  9.00000E+00 Dt=  1.00000E+00 [y] conv_reason: 4
+  newton =   1 [     165] linear =    62 [     21527] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 62 / 1
+  --> SNES Residual: 0.117022E-13 0.260048E-18 0.186913E-15
+  --> max change: dpmx=   2.9104E-11
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.17E-14 2x: 0.00E+00 2u: 0.00E+00 ir: 1.87E-16 iu: 0.00E+00 rsn:   0
+  1 2r: 1.17E-14 2x: 3.27E+07 2u: 1.50E-09 ir: 1.87E-16 iu: 1.47E-11 rsn: stol
+
+ Step     68 Time=  1.00000E+01 Dt=  1.00000E+00 [y] conv_reason: 4
+  newton =   1 [     166] linear =    49 [     21576] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 49 / 1
+  --> SNES Residual: 0.116794E-13 0.259542E-18 0.186900E-15
+  --> max change: dpmx=   2.9104E-11
+
+ --> appending to hdf5 output file: HW6-2c.h5
+      0.05 Seconds to write HDF5 file.
+ --> Dump checkpoint file: HW6-2c-restart.h5
+      Seconds to write to checkpoint file:       0.12
+
+PMCSubsurfaceFlow
+ Total Time: 1.7299E+02 seconds
+
+ FLOW TS SNES steps = 68  newton = 166  linear = 21576  cuts = 0
+ FLOW TS SNES Wasted Linear Iterations = 0
+ FLOW TS SNES Wasted Newton Iterations = 0
+ FLOW TS SNES time = 171.1 seconds
+
+ Wall Clock Time:  1.7564E+02 [sec]   2.9274E+00 [min]   4.8790E-02 [hr]

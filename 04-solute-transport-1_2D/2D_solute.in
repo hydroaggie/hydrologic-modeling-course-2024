@@ -1,0 +1,288 @@
+#Description: 2D problem for flow and transport
+
+SIMULATION
+  SIMULATION_TYPE SUBSURFACE
+  PROCESS_MODELS
+    SUBSURFACE_FLOW flow
+      MODE RICHARDS
+    /
+    SUBSURFACE_TRANSPORT transport
+      MODE GIRT
+    /
+  /
+  # RESTART
+  #   FILENAME ../03-flow-2D/2D_flow-steady-state-restart.h5
+  #   RESET_TO_TIME_ZERO
+  # /
+END
+
+SUBSURFACE
+
+#=========================== numerical methods ================================
+NUMERICAL_METHODS FLOW
+  NEWTON_SOLVER
+      ITOL_UPDATE 1.d0     ! Convergences with max change in pressure is 1 Pa.
+  /
+END 
+
+NUMERICAL_METHODS TRANSPORT
+  TIMESTEPPER
+    CFL_GOVERNOR 1.d0 #set CFL=1 to limit timestep so dt<dx/v_max
+  /
+
+  NEWTON_SOLVER
+  /
+END
+
+#=========================== chemistry ========================================
+CHEMISTRY
+  PRIMARY_SPECIES
+    Tracer # add conservative tracer as the species
+  /
+  OUTPUT #! IMPORTANT: add output block to write concentration to file
+    ALL
+    TOTAL
+  /  
+END
+#=========================== discretization ===================================
+GRID
+  TYPE STRUCTURED
+  NXYZ 100 1 100 # refine mesh so dx=1 m
+  BOUNDS
+    0.d0 0.d0 0.d0
+    100.d0 1.d0 10.d0
+  /
+END
+
+
+#=========================== fluid properties =================================
+FLUID_PROPERTY 
+  DIFFUSION_COEFFICIENT 1.d-9 
+/
+
+#=========================== material properties ==============================
+MATERIAL_PROPERTY soil1
+  ID 1
+  CHARACTERISTIC_CURVES default
+  POROSITY 0.25
+  TORTUOSITY 1.d0 #for calculating effective diffusion coefficient
+  PERMEABILITY
+    PERM_ISO 1.d-12 
+  /
+  LONGITUDINAL_DISPERSIVITY 10 #m, note only longitudinal dispersivity is considered here since it's just a 1D column
+  TRANSVERSE_DISPERSIVITY_H 5.d0 #m, Horizontal transverse dispersivity
+  TRANSVERSE_DISPERSIVITY_V 1.d0 #m, Vertical transverse dispersivity 
+END
+
+#=========================== characteristic curves ============================
+CHARACTERISTIC_CURVES default
+  SATURATION_FUNCTION VAN_GENUCHTEN
+    ALPHA 1.d-4
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+  /
+  PERMEABILITY_FUNCTION MUALEM_VG_LIQ
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+  /
+END
+#=========================== output options ===================================
+OUTPUT
+  TIME_UNITS y
+  SNAPSHOT_FILE
+    FORMAT HDF5
+    PERIODIC TIME 100. d between 0. y and 2. y
+    PERIODIC TIME 30. d between 2. y and 15. y
+#    PERIODIC TIME 365. d between 2. y and 20. y
+  /
+  VARIABLES
+    LIQUID_PRESSURE
+    LIQUID_SATURATION
+  /
+  # velocity
+  VELOCITY_AT_CENTER
+END
+
+#=========================== times ============================================
+TIME
+  FINAL_TIME 15.d0 y
+  INITIAL_TIMESTEP_SIZE 0.1 h
+  MAXIMUM_TIMESTEP_SIZE 30 d
+END
+
+#=========================== regions ==========================================
+REGION all
+  COORDINATES
+    0.d0 0.d0 0.d0
+    100.d0 1.d0 10.d0
+  /
+END
+
+REGION top
+  FACE TOP
+  COORDINATES
+    0.d0 0.d0 10.d0
+    100.d0 1.d0 10.d0
+  /
+END
+
+REGION bottom
+  FACE BOTTOM
+  COORDINATES
+    0.d0 0.d0 0.d0
+    100.d0 1.d0 0.d0
+  /
+END
+
+REGION east
+  FACE EAST
+  COORDINATES
+    100.d0 0.d0 0.d0
+    100.d0 1.d0 10.d0
+  /
+END
+
+REGION west
+  FACE WEST
+  COORDINATES
+    0.d0 0.d0 0.d0
+    0.d0 1.d0 10.d0
+  /
+END
+
+REGION west_up #define a region above the lake on the west side
+  FACE WEST
+  COORDINATES
+    0.d0 0.d0 3.d0
+    0.d0 1.d0 10.d0
+  /
+END
+
+REGION lake #define the lake region on the west
+  FACE WEST
+  COORDINATES
+    0.d0 0.d0 0.d0
+    0.d0 1.d0 3.d0
+  /
+END
+
+#=========================== flow conditions ==================================
+FLOW_CONDITION initial
+  TYPE
+    LIQUID_PRESSURE HYDROSTATIC
+  /
+  DATUM 0.d0 0.d0 3.d0
+  INTERPOLATION LINEAR 
+  GRADIENT
+    LIQUID_PRESSURE -0.02 0.d0 0.d0 #head gradient dh/dx = (1-3)/100 = -0.02 m/m
+  /
+  LIQUID_PRESSURE 101325.0 
+END
+
+# FLOW_CONDITION recharge
+#   TYPE
+#     LIQUID_FLUX NEUMANN
+#   /
+#   LIQUID_FLUX 10.d0 cm/y
+# END
+
+FLOW_CONDITION west
+  TYPE
+    LIQUID_PRESSURE HYDROSTATIC
+  /
+  DATUM 0.d0 0.d0 3.d0
+  LIQUID_PRESSURE 101325.d0
+END
+
+# FLOW_CONDITION east
+#   TYPE
+#     LIQUID_PRESSURE HYDROSTATIC
+#   /
+#   DATUM 0.d0 0.d0 1.d0
+#   LIQUID_PRESSURE 101325.d0
+# END
+
+FLOW_CONDITION east
+  TYPE
+    LIQUID_PRESSURE SEEPAGE #use seepage BC
+  /
+  INTERPOLATION LINEAR 
+  CYCLIC #enable cyclic so river stage will repeat itself after two years
+  DATUM FILE ./river_stage.txt   #! use external file for datum
+  LIQUID_PRESSURE 101325.d0
+END
+
+#=========================== transport conditions =============================
+TRANSPORT_CONDITION initial
+  TYPE ZERO_GRADIENT #mass is allowed to exit via advection with the following water, but not due to dispersion
+  CONSTRAINT_LIST
+    0.d0 initial
+  /
+END
+
+TRANSPORT_CONDITION lake
+  TYPE DIRICHLET_ZERO_GRADIENT
+  CONSTRAINT_LIST
+    0.d0 initial
+    63072000.d0 lake #in seconds, release contaminant after 2 years. This will make flow field reach steady state before releasing the tracer
+  /
+END
+
+#=========================== constraints ======================================
+CONSTRAINT initial
+  CONCENTRATIONS
+    Tracer 1.d-10  T #! T = total aqueous component concentration. Default units [mol/L]
+  /
+END
+
+CONSTRAINT lake
+  CONCENTRATIONS
+    Tracer 1.d0  T
+  /
+END
+
+#=========================== condition couplers ===============================
+# initial condition
+INITIAL_CONDITION
+  FLOW_CONDITION initial
+  TRANSPORT_CONDITION initial
+  REGION all
+END
+
+
+# west up side boundary condition
+BOUNDARY_CONDITION west_up
+  FLOW_CONDITION west
+  TRANSPORT_CONDITION initial
+  REGION west_up
+END
+
+# lake boundary condition
+BOUNDARY_CONDITION lake
+  FLOW_CONDITION west
+  TRANSPORT_CONDITION lake
+  REGION lake
+END
+
+# east boundary condition
+BOUNDARY_CONDITION river
+  FLOW_CONDITION east
+  TRANSPORT_CONDITION initial
+  REGION east
+END
+
+# # top boundary condition
+# BOUNDARY_CONDITION top
+#   FLOW_CONDITION recharge
+#   TRANSPORT_CONDITION initial
+#   REGION top
+# END
+
+#=========================== stratigraphy couplers ============================
+STRATA
+  REGION all
+  MATERIAL soil1
+END
+
+
+END_SUBSURFACE

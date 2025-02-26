@@ -19,11 +19,11 @@ This will start downloading the docker image (~2G).
 
 4. Create a working folder (e.g., `work`) on your system. This is where you will store your course material and class exercises.
 
-5. Launch Docker. Replace `PATH/TO/WORKING_FOLDER` with the actual path to your working folder on your system, e.g., `C:\Users\USERNAME\work` (where `USERNAME` is your Windows username) or `/Users/shuai/work` (on Mac). Run the following command in your terminal/PowerShell.
+5. Launch Docker. Replace `<Local_path_to_your_work_directory>` with the actual path to your working folder on your system, e.g., `C:\Users\USERNAME\work` (where `USERNAME` is your Windows username) or `/Users/shuai/work` (on Mac). Run the following command in your terminal/PowerShell.
 
 ```bash
-# launch docker. Replace the PATH/TO/WORKING_FOLDER!
-docker run -it --rm -p 8888:8888  -v PATH/TO/WORKING_FOLDER:/home/aggie/work pshuai/jupyter-pflotran-multiplatform:latest jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''
+# launch docker. Replace the <Local_path_to_your_work_directory> with your actual local path!
+docker run -it --rm -p 8888:8888  -v <Local_path_to_your_work_directory>:/home/aggie/work pshuai/jupyter-pflotran-multiplatform:latest jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.token=''
 ```
 
 6. Connect to the JupyterLab. If the above command is successful, you will see output like the following at the bottom of the screen.

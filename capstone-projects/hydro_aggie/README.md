@@ -2,7 +2,7 @@
 This repository contains data and scripts necessary for reproducing the xx model.
 
 ## Summary
-Provide a summary of the proposed project with the following format: 1~2 sentences about the background, one sentence on knowledge gap or motivation, one sentence on the overall goal of this project, 2~3 sentences on the objectives, 1~2 sentences on the expected outcome.
+Provide a summary of the proposed project with the following format: 1-2 sentences about the background, one sentence on knowledge gap or motivation, one sentence on the overall goal of this project, 2-3 sentences on the objectives, 1-2 sentences on the expected outcome.
 
 ## Methods
 - Modeling tool

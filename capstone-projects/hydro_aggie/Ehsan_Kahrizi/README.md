@@ -28,3 +28,13 @@ For ATS simulation, I will retrieve the required inputs, like soil texture, prec
 
 ## Citation
 Provide any citation for the model or data (if it is stored somewhere else).
+
+
+## References
+Reitan, T. (2022). Review of methods for automation of quality control on hydrologic time series and considerations for a research approach at NVE.
+Horsburgh, J. S., Reeder, S. L., Jones, A. S., & Meline, J. (2015). Open source software for visualization and quality control of continuous hydrologic and water quality sensor data. Environmental Modelling & Software, 70, 32-44.
+Gibert, K., Horsburgh, J. S., Athanasiadis, I. N., & Holmes, G. (2018). Environmental data science. Environmental Modelling & Software, 106, 4-12.
+Shen, C. (2018). A transdisciplinary review of deep learning research and its relevance for water resources scientists. Water Resources Research, 54(11), 8558-8593.
+Jones, A. S., Jones, T. L., & Horsburgh, J. S. (2022). Toward automating post processing of aquatic sensor data. Environmental Modelling & Software, 151, 105364.
+![image](https://github.com/user-attachments/assets/1f02b9be-eb32-45f3-858a-fad20d64702d)
+

@@ -1,3 +1,5 @@
 **/.DS_Store
 **/__pycache__/
 **/.ipynb_checkpoints/
+*.pvsm                  # ParaView state files
+*.h5                    # HDF5 files

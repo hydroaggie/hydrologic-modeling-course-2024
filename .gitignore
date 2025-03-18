@@ -1,5 +1,8 @@
 **/.DS_Store
 **/__pycache__/
 **/.ipynb_checkpoints/
-*.pvsm                  # ParaView state files
-*.h5                    # HDF5 files
+04-solute-transport-1_2D/2D_solute.h5
+04-solute-transport-1_2D/2D_solute.pvsm
+05-solute-transport-3D/3D_solute.h5
+05-solute-transport-3D/solute-3D-end.pvsm
+05-solute-transport-3D/solute-3D.pvsm

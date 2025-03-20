@@ -1,0 +1,1293 @@
+
+=================
+  PFLOTRAN v6.0
+=================
+
+"grid_structured_type" set to default value.
+pflotran card:: NUMERICAL_METHODS
+pflotran card:: NUMERICAL_METHODS
+pflotran card:: CHEMISTRY
+pflotran card:: GRID
+pflotran card:: FLUID_PROPERTY
+"FLUID_PROPERTY,diffusion_coefficient units" set to default value.
+pflotran card:: MATERIAL_PROPERTY
+  Name :: soil1
+pflotran card:: CHARACTERISTIC_CURVES
+  Name :: default
+ WARNING: Mualem-van Genuchten relative permeability function is being used without SMOOTH option.
+pflotran card:: OUTPUT
+"OUTPUT,FORMAT,HDF5,# FILES" set to default value.
+pflotran card:: TIME
+pflotran card:: REGION
+all
+pflotran card:: REGION
+west
+pflotran card:: REGION
+east
+pflotran card:: REGION
+middle
+pflotran card:: OBSERVATION
+pflotran card:: FLOW_CONDITION
+initial
+pflotran card:: FLOW_CONDITION
+inlet
+pflotran card:: FLOW_CONDITION
+outlet
+pflotran card:: TRANSPORT_CONDITION
+initial
+pflotran card:: TRANSPORT_CONDITION
+inlet
+pflotran card:: CONSTRAINT
+initial
+Constraint Species: Tracer
+pflotran card:: CONSTRAINT
+inlet
+Constraint Species: Tracer
+pflotran card:: INITIAL_CONDITION
+"Initial Condition name" set to default value.
+pflotran card:: BOUNDARY_CONDITION
+pflotran card:: BOUNDARY_CONDITION
+pflotran card:: STRATA
+pflotran card:: END_SUBSURFACE
+--------------------------------------------------------------------------------
+
+     1  Primary Species
+
+              Tracer              
+
+     0  Secondary Complex Species
+
+
+
+     0  Active Gas Species
+
+
+
+     0  Passive Gas Species
+
+
+
+     0  Reference Minerals
+
+
+
+     0  Kinetic Mineral Reactions
+
+
+
+     0  Ion Exchange Reactions
+
+     0  Ion Exchange Cations
+--------------------------------------------------------------------------------
+
+Extent of Gridded Domain
+ X: 0.000000E+00 - 4.000000E+01
+ Y: 0.000000E+00 - 1.000000E+00
+ Z: 0.000000E+00 - 1.000000E+00
+
+Size of Gridded Domain
+ Number of grid cells: 20
+
+Number of active grid cells: 20
+Number of inactive grid cells: 0
+
+  Setting up TRAN Realization
+  Finished setting up TRAN Realization
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Initial Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   initial
+     Transport Condition:   initial
+                  Region:   all
+--------------------------------------------------------------------------------
+
+  Flow Condition: initial
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  3
+
+    Sub Condition: pressure
+      Type: hydrostatic
+      Gradient:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  3
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+
+  Transport Condition: initial
+
+  Constraint: initial
+
+  species       molality
+  Tracer        1.0028E-20
+
+
+--------------------------------------------------------------------------------
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Boundary Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   inlet
+     Transport Condition:   inlet
+                  Region:   west
+--------------------------------------------------------------------------------
+
+  Flow Condition: inlet
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  3
+
+    Sub Condition: pressure
+      Type: hydrostatic
+      Gradient:
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+
+  Transport Condition: inlet
+
+  Constraint: inlet
+
+  species       molality
+  Tracer        1.0028E+00
+
+
+--------------------------------------------------------------------------------
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Boundary Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   outlet
+     Transport Condition:   initial
+                  Region:   east
+--------------------------------------------------------------------------------
+
+  Flow Condition: outlet
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  3
+
+    Sub Condition: pressure
+      Type: hydrostatic
+      Gradient:
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+
+  Transport Condition: initial
+
+  Constraint: initial
+
+  species       molality
+  Tracer        1.0028E-20
+
+
+--------------------------------------------------------------------------------
+Default HDF5 method is used in Initialization
+  Beginning setup of FLOW SNES
+ number of dofs =   1, number of phases =   1
+ mode = Richards: p
+  Finished setting up FLOW SNES
+mode = Reactive Transport
+  Beginning setup of TRAN SNES
+  Finished setting up TRAN SNES
+
+ Requested processors and decomposition =     1, npx,y,z=   -1  -1  -1
+ Actual decomposition: npx,y,z=    1   1   1
+
+
+FLOW Time Stepper SNES
+      maximum number of steps: 999999
+constant time steps threshold: 5
+       maximum number of cuts: 16
+             reduction factor: 5.000000E-01
+        maximum growth factor: 2.000000E+00
+                 acceleration: on
+       acceleration threshold: 5
+       number of ramp entries: 5
+                ramp entry #1: 2.0000
+                ramp entry #2: 2.0000
+                ramp entry #3: 2.0000
+                ramp entry #4: 2.0000
+                ramp entry #5: 2.0000
+                ramp entry #6: 1.8000
+                ramp entry #7: 1.6000
+                ramp entry #8: 1.4000
+                ramp entry #9: 1.2000
+               ramp entry #10: 1.0000
+               ramp entry #11: 1.0000
+               ramp entry #12: 1.0000
+               ramp entry #13: 1.0000
+
+FLOW Newton Solver
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-08
+                         stol: 1.000000E-08
+                         dtol: 1.000000E+04
+                      maxnorm: 1.000000E+20
+                    inftolres: -9.990000E+02
+                    inftolupd: -9.990000E+02
+                 inftolrelupd: -9.990000E+02
+                 inftolsclres: -9.990000E+02
+                     max iter: 50
+                     min iter: 1
+                         maxf: 10000
+                  matrix type: baij
+         precond. matrix type: baij
+               inexact newton: off
+            print convergence: on
+   print detailed convergence: off
+          check infinity norm: on
+
+FLOW Linear Solver
+                       solver: bcgs
+               preconditioner: ilu
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-05
+                         dtol: 1.000000E+04
+            maximum iteration: 10000
+
+TRAN Time Stepper SNES
+      maximum number of steps: 999999
+constant time steps threshold: 5
+       maximum number of cuts: 16
+             reduction factor: 5.000000E-01
+        maximum growth factor: 2.000000E+00
+                 acceleration: on
+       acceleration threshold: 5
+       number of ramp entries: 5
+                ramp entry #1: 2.0000
+                ramp entry #2: 2.0000
+                ramp entry #3: 2.0000
+                ramp entry #4: 2.0000
+                ramp entry #5: 2.0000
+                ramp entry #6: 1.8000
+                ramp entry #7: 1.6000
+                ramp entry #8: 1.4000
+                ramp entry #9: 1.2000
+               ramp entry #10: 1.0000
+               ramp entry #11: 1.0000
+               ramp entry #12: 1.0000
+               ramp entry #13: 1.0000
+
+TRAN Newton Solver
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-08
+                         stol: 1.000000E-08
+                         dtol: 1.000000E+04
+                      maxnorm: 1.000000E+20
+                    inftolres: -9.990000E+02
+                    inftolupd: -9.990000E+02
+                 inftolrelupd: -9.990000E+02
+                 inftolsclres: -9.990000E+02
+                     max iter: 50
+                     min iter: 1
+                         maxf: 10000
+                  matrix type: baij
+         precond. matrix type: baij
+               inexact newton: off
+            print convergence: on
+   print detailed convergence: off
+          check infinity norm: on
+
+TRAN Linear Solver
+                       solver: bcgs
+               preconditioner: ilu
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-05
+                         dtol: 1.000000E+04
+            maximum iteration: 10000
+
+ Finished Initialization
+
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.35E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 5.35E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 6.88E-15 2x: 5.65E+05 2u: 8.02E-01 ir: 3.55E-15 iu: 4.05E-01 rsn:   0
+  2 2r: 0.00E+00 2x: 5.65E+05 2u: 1.24E-08 ir: 0.00E+00 iu: 6.70E-09 rsn: atol
+
+ Step      1 Time=  4.16667E-05 Dt=  4.16667E-05 [d] conv_reason: 2
+  newton =   2 [       2] linear =     2 [         2] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.000000E+00 0.000000E+00 0.000000E+00
+  --> max change: dpmx=   4.0491E-01
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.10E-01 2x: 0.00E+00 2u: 0.00E+00 ir: 1.10E-01 iu: 0.00E+00 rsn:   0
+  1 2r: 3.31E-24 2x: 7.92E-04 2u: 7.92E-04 ir: 3.31E-24 iu: 7.92E-04 rsn: rtol
+
+ Step      1 Time=  4.16667E-05 Dt=  4.16667E-05 [d] conv_reason: 3
+  newton =   1 [       1] linear =     1 [         1] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.330872E-23 0.330872E-23 0.330872E-23
+  --> max change:  dcmx=   7.9209E-04  dc/dt=   2.2002E-04 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.78E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.40E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 3.55E-15 2x: 5.65E+05 2u: 9.31E-02 ir: 1.33E-15 iu: 2.97E-02 rsn:   0
+  2 2r: 6.28E-16 2x: 5.65E+05 2u: 4.15E-08 ir: 4.44E-16 iu: 1.67E-08 rsn: stol
+
+ Step      2 Time=  1.25000E-04 Dt=  8.33333E-05 [d] conv_reason: 4
+  newton =   2 [       4] linear =     2 [         4] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.628037E-15 0.314018E-16 0.444089E-15
+  --> max change: dpmx=   2.9731E-02
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.10E-01 2x: 0.00E+00 2u: 0.00E+00 ir: 1.10E-01 iu: 0.00E+00 rsn:   0
+  1 2r: 5.42E-20 2x: 2.37E-03 2u: 1.58E-03 ir: 5.42E-20 iu: 1.58E-03 rsn: rtol
+
+ Step      2 Time=  1.25000E-04 Dt=  8.33333E-05 [d] conv_reason: 3
+  newton =   1 [       2] linear =     1 [         2] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.542101E-19 0.542101E-19 0.542101E-19
+  --> max change:  dcmx=   1.5807E-03  dc/dt=   2.1954E-04 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.61E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 5.15E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.18E-15 2x: 5.65E+05 2u: 9.65E-03 ir: 8.88E-16 iu: 3.04E-03 rsn:   0
+  2 2r: 4.44E-16 2x: 5.65E+05 2u: 2.09E-08 ir: 4.44E-16 iu: 8.83E-09 rsn: stol
+
+ Step      3 Time=  2.91667E-04 Dt=  1.66667E-04 [d] conv_reason: 4
+  newton =   2 [       6] linear =     2 [         6] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.444089E-15 0.222045E-16 0.444089E-15
+  --> max change: dpmx=   3.0410E-03
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.09E-01 2x: 0.00E+00 2u: 0.00E+00 ir: 1.09E-01 iu: 0.00E+00 rsn:   0
+  1 2r: 5.42E-20 2x: 5.52E-03 2u: 3.15E-03 ir: 5.42E-20 iu: 3.15E-03 rsn: rtol
+
+ Step      3 Time=  2.91667E-04 Dt=  1.66667E-04 [d] conv_reason: 3
+  newton =   1 [       3] linear =     1 [         3] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.542101E-19 0.542101E-19 0.542101E-19
+  --> max change:  dcmx=   3.1474E-03  dc/dt=   2.1857E-04 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.36E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 2.63E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.75E-16 2x: 5.65E+05 2u: 5.30E-04 ir: 2.22E-16 iu: 1.67E-04 rsn: stol
+
+ Step      4 Time=  6.25000E-04 Dt=  3.33333E-04 [d] conv_reason: 4
+  newton =   1 [       7] linear =     1 [         7] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.675322E-15 0.337661E-16 0.222045E-15
+  --> max change: dpmx=   1.6743E-04
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.09E-01 2x: 0.00E+00 2u: 0.00E+00 ir: 1.09E-01 iu: 0.00E+00 rsn:   0
+  1 2r: 2.78E-17 2x: 1.18E-02 2u: 6.24E-03 ir: 2.78E-17 iu: 6.24E-03 rsn: rtol
+
+ Step      4 Time=  6.25000E-04 Dt=  3.33333E-04 [d] conv_reason: 3
+  newton =   1 [       4] linear =     1 [         4] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.277564E-16 0.277564E-16 0.277556E-16
+  --> max change:  dcmx=   6.2397E-03  dc/dt=   2.1666E-04 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.30E-13 2x: 0.00E+00 2u: 0.00E+00 ir: 7.26E-14 iu: 0.00E+00 rsn:   0
+  1 2r: 2.78E-16 2x: 5.65E+05 2u: 1.48E-05 ir: 1.11E-16 iu: 4.67E-06 rsn: stol
+
+ Step      5 Time=  1.29167E-03 Dt=  6.66667E-04 [d] conv_reason: 4
+  newton =   1 [       8] linear =     1 [         8] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.277556E-15 0.138778E-16 0.111022E-15
+  --> max change: dpmx=   4.6678E-06
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.08E-01 2x: 0.00E+00 2u: 0.00E+00 ir: 1.08E-01 iu: 0.00E+00 rsn:   0
+  1 2r: 2.78E-17 2x: 2.40E-02 2u: 1.23E-02 ir: 2.78E-17 iu: 1.23E-02 rsn: rtol
+
+ Step      5 Time=  1.29167E-03 Dt=  6.66667E-04 [d] conv_reason: 3
+  newton =   1 [       5] linear =     1 [         5] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.277691E-16 0.277691E-16 0.277556E-16
+  --> max change:  dcmx=   1.2263E-02  dc/dt=   2.1290E-04 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.22E-15 2x: 0.00E+00 2u: 0.00E+00 ir: 1.03E-15 iu: 0.00E+00 rsn:   0
+  1 2r: 1.27E-16 2x: 5.65E+05 2u: 2.09E-07 ir: 8.33E-17 iu: 6.58E-08 rsn: stol
+
+ Step      6 Time=  2.62500E-03 Dt=  1.33333E-03 [d] conv_reason: 4
+  newton =   1 [       9] linear =     1 [         9] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.127192E-15 0.635960E-17 0.832667E-16
+  --> max change: dpmx=   6.5818E-08
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.06E-01 2x: 0.00E+00 2u: 0.00E+00 ir: 1.06E-01 iu: 0.00E+00 rsn:   0
+  1 2r: 8.67E-19 2x: 4.77E-02 2u: 2.37E-02 ir: 8.67E-19 iu: 2.37E-02 rsn: rtol
+
+ Step      6 Time=  2.62500E-03 Dt=  1.33333E-03 [d] conv_reason: 3
+  newton =   1 [       6] linear =     1 [         6] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.867362E-18 0.867362E-18 0.867362E-18
+  --> max change:  dcmx=   2.3694E-02  dc/dt=   2.0568E-04 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.33E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 4.16E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.39E-17 2x: 5.65E+05 2u: 2.56E-09 ir: 2.78E-17 iu: 7.90E-10 rsn: stol
+
+ Step      7 Time=  5.29167E-03 Dt=  2.66667E-03 [d] conv_reason: 4
+  newton =   1 [      10] linear =     1 [        10] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.438854E-16 0.219427E-17 0.277556E-16
+  --> max change: dpmx=   7.8580E-10
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.03E-01 2x: 0.00E+00 2u: 0.00E+00 ir: 1.03E-01 iu: 0.00E+00 rsn:   0
+  1 2r: 8.67E-19 2x: 9.21E-02 2u: 4.44E-02 ir: 8.67E-19 iu: 4.43E-02 rsn: rtol
+
+ Step      7 Time=  5.29167E-03 Dt=  2.66667E-03 [d] conv_reason: 3
+  newton =   1 [       7] linear =     1 [         7] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.867363E-18 0.867363E-18 0.867362E-18
+  --> max change:  dcmx=   4.4302E-02  dc/dt=   1.9228E-04 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.86E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.08E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.65E-17 2x: 5.65E+05 2u: 9.03E-11 ir: 2.08E-17 iu: 4.67E-11 rsn: stol
+
+ Step      8 Time=  1.06250E-02 Dt=  5.33333E-03 [d] conv_reason: 4
+  newton =   1 [      11] linear =     1 [        11] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.465475E-16 0.232738E-17 0.208167E-16
+  --> max change: dpmx=   5.8208E-11
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 9.60E-02 2x: 0.00E+00 2u: 0.00E+00 ir: 9.59E-02 iu: 0.00E+00 rsn:   0
+  1 2r: 1.74E-18 2x: 1.70E-01 2u: 7.85E-02 ir: 1.73E-18 iu: 7.79E-02 rsn: rtol
+
+ Step      8 Time=  1.06250E-02 Dt=  5.33333E-03 [d] conv_reason: 3
+  newton =   1 [       8] linear =     1 [         8] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.173811E-17 0.173811E-17 0.173472E-17
+  --> max change:  dcmx=   7.7929E-02  dc/dt=   1.6912E-04 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.79E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.08E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.02E-17 2x: 5.65E+05 2u: 1.65E-10 ir: 2.08E-17 iu: 6.37E-11 rsn: stol
+
+ Step      9 Time=  2.12917E-02 Dt=  1.06667E-02 [d] conv_reason: 4
+  newton =   1 [      12] linear =     1 [        12] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.401618E-16 0.200809E-17 0.208167E-16
+  --> max change: dpmx=   5.8208E-11
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 8.49E-02 2x: 0.00E+00 2u: 0.00E+00 ir: 8.43E-02 iu: 0.00E+00 rsn:   0
+  1 2r: 2.97E-17 2x: 2.96E-01 2u: 1.26E-01 ir: 2.78E-17 iu: 1.23E-01 rsn: rtol
+
+ Step      9 Time=  2.12917E-02 Dt=  1.06667E-02 [d] conv_reason: 3
+  newton =   1 [       9] linear =     1 [         9] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.296557E-16 0.296557E-16 0.277556E-16
+  --> max change:  dcmx=   1.2320E-01  dc/dt=   1.3368E-04 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.93E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 1.91E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 2.66E-17 2x: 5.65E+05 2u: 8.58E-11 ir: 1.56E-17 iu: 3.47E-11 rsn: stol
+
+ Step     10 Time=  4.26250E-02 Dt=  2.13333E-02 [d] conv_reason: 4
+  newton =   1 [      13] linear =     1 [        13] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.266493E-16 0.133247E-17 0.156125E-16
+  --> max change: dpmx=   2.9104E-11
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 6.84E-02 2x: 0.00E+00 2u: 0.00E+00 ir: 6.66E-02 iu: 0.00E+00 rsn:   0
+  1 2r: 1.98E-17 2x: 4.71E-01 2u: 1.80E-01 ir: 1.39E-17 iu: 1.65E-01 rsn: rtol
+
+ Step     10 Time=  4.26250E-02 Dt=  2.13333E-02 [d] conv_reason: 3
+  newton =   1 [      10] linear =     1 [        10] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.197991E-16 0.197991E-16 0.138778E-16
+  --> max change:  dcmx=   1.6451E-01  dc/dt=   8.9252E-05 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.73E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 1.65E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 3.93E-17 2x: 5.65E+05 2u: 3.86E-11 ir: 1.91E-17 iu: 2.10E-11 rsn: stol
+
+ Step     11 Time=  8.52917E-02 Dt=  4.26667E-02 [d] conv_reason: 4
+  newton =   1 [      14] linear =     1 [        14] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.393098E-16 0.196549E-17 0.190820E-16
+  --> max change: dpmx=   2.9104E-11
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 4.86E-02 2x: 0.00E+00 2u: 0.00E+00 ir: 4.45E-02 iu: 0.00E+00 rsn:   0
+  1 2r: 1.48E-17 2x: 6.84E-01 2u: 2.30E-01 ir: 1.39E-17 iu: 1.75E-01 rsn: rtol
+
+ Step     11 Time=  8.52917E-02 Dt=  4.26667E-02 [d] conv_reason: 3
+  newton =   1 [      11] linear =     1 [        11] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.148298E-16 0.148298E-16 0.138778E-16
+  --> max change:  dcmx=   1.7474E-01  dc/dt=   4.7400E-05 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.96E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 1.95E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 3.96E-17 2x: 5.65E+05 2u: 2.66E-11 ir: 1.95E-17 iu: 1.40E-11 rsn: stol
+
+ Step     12 Time=  1.70625E-01 Dt=  8.53333E-02 [d] conv_reason: 4
+  newton =   1 [      15] linear =     1 [        15] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.395815E-16 0.197908E-17 0.195156E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 3.11E-02 2x: 0.00E+00 2u: 0.00E+00 ir: 2.36E-02 iu: 0.00E+00 rsn:   0
+  1 2r: 7.53E-18 2x: 9.25E-01 2u: 2.89E-01 ir: 6.94E-18 iu: 1.90E-01 rsn: rtol
+
+ Step     12 Time=  1.70625E-01 Dt=  8.53333E-02 [d] conv_reason: 3
+  newton =   1 [      12] linear =     1 [        12] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.753114E-17 0.753114E-17 0.693889E-17
+  --> max change:  dcmx=   1.9048E-01  dc/dt=   2.5836E-05 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.97E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 1.95E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.69E-11 ir: 2.97E-17 iu: 1.49E-11 rsn: stol
+
+ Step     13 Time=  3.41292E-01 Dt=  1.70667E-01 [d] conv_reason: 4
+  newton =   1 [      16] linear =     1 [        16] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   2.9104E-11
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.95E-02 2x: 0.00E+00 2u: 0.00E+00 ir: 1.29E-02 iu: 0.00E+00 rsn:   0
+  1 2r: 1.85E-17 2x: 1.21E+00 2u: 3.77E-01 ir: 1.04E-17 iu: 2.06E-01 rsn: rtol
+
+ Step     13 Time=  3.41292E-01 Dt=  1.70667E-01 [d] conv_reason: 3
+  newton =   1 [      13] linear =     1 [        13] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.184887E-16 0.184887E-16 0.104083E-16
+  --> max change:  dcmx=   2.0557E-01  dc/dt=   1.3941E-05 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   3.4133E-01 ->   2.6347E-01 [d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     14 Time=  6.82625E-01 Dt=  3.41333E-01 [d] conv_reason: 4
+  newton =   1 [      17] linear =     1 [        17] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.27E-02 2x: 0.00E+00 2u: 0.00E+00 ir: 6.95E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 1.71E-17 2x: 1.51E+00 2u: 4.21E-01 ir: 1.04E-17 iu: 1.96E-01 rsn: rtol
+
+ Step     14 Time=  6.04758E-01 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      14] linear =     1 [        14] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.171485E-16 0.171485E-16 0.104083E-16
+  --> max change:  dcmx=   1.9626E-01  dc/dt=   8.6217E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 9.21E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 4.30E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 1.49E-17 2x: 1.60E+00 2u: 1.16E-01 ir: 1.04E-17 iu: 5.20E-02 rsn: rtol
+
+ Step     15 Time=  6.82625E-01 Dt=  7.78667E-02 [d] conv_reason: 3
+  newton =   1 [      15] linear =     1 [        15] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.149362E-16 0.149362E-16 0.104083E-16
+  --> max change:  dcmx=   5.1983E-02  dc/dt=   7.7267E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     15 Time=  1.00000E+00 Dt=  3.17375E-01 [d] conv_reason: 4
+  newton =   1 [      18] linear =     1 [        18] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 8.58E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 3.85E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 1.89E-17 2x: 1.83E+00 2u: 3.32E-01 ir: 1.04E-17 iu: 1.34E-01 rsn: rtol
+
+ Step     16 Time=  9.46092E-01 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      16] linear =     1 [        16] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.189233E-16 0.189233E-16 0.104083E-16
+  --> max change:  dcmx=   1.3360E-01  dc/dt=   5.8690E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 7.27E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 2.93E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 4.25E-17 2x: 1.88E+00 2u: 6.61E-02 ir: 2.78E-17 iu: 2.62E-02 rsn: rtol
+
+ Step     17 Time=  1.00000E+00 Dt=  5.39084E-02 [d] conv_reason: 3
+  newton =   1 [      17] linear =     1 [        17] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.424595E-16 0.424595E-16 0.277556E-16
+  --> max change:  dcmx=   2.6195E-02  dc/dt=   5.6240E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+ --> creating hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.03 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-001.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     16 Time=  1.68267E+00 Dt=  6.82667E-01 [d] conv_reason: 4
+  newton =   1 [      19] linear =     1 [        19] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 7.07E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 2.80E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 1.88E-17 2x: 2.08E+00 2u: 2.90E-01 ir: 1.39E-17 iu: 1.07E-01 rsn: rtol
+
+ Step     18 Time=  1.26347E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      18] linear =     1 [        18] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.187953E-16 0.187953E-16 0.138778E-16
+  --> max change:  dcmx=   1.0680E-01  dc/dt=   4.6919E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 6.35E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 2.34E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 4.27E-17 2x: 2.26E+00 2u: 2.67E-01 ir: 2.43E-17 iu: 9.26E-02 rsn: rtol
+
+ Step     19 Time=  1.52693E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      19] linear =     1 [        19] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.427474E-16 0.427474E-16 0.242861E-16
+  --> max change:  dcmx=   9.2614E-02  dc/dt=   4.0685E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 5.84E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 2.03E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 3.35E-17 2x: 2.37E+00 2u: 1.51E-01 ir: 2.43E-17 iu: 5.09E-02 rsn: rtol
+
+ Step     20 Time=  1.68267E+00 Dt=  1.55733E-01 [d] conv_reason: 3
+  newton =   1 [      20] linear =     1 [        20] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.335094E-16 0.335094E-16 0.242861E-16
+  --> max change:  dcmx=   5.0940E-02  dc/dt=   3.7858E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   3.1147E-01 ->   2.6347E-01 [d]
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     17 Time=  2.00000E+00 Dt=  3.17333E-01 [d] conv_reason: 4
+  newton =   1 [      20] linear =     1 [        20] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 5.61E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.89E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 4.01E-17 2x: 2.53E+00 2u: 2.41E-01 ir: 2.78E-17 iu: 7.77E-02 rsn: rtol
+
+ Step     21 Time=  1.94613E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      21] linear =     1 [        21] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.401038E-16 0.401038E-16 0.277556E-16
+  --> max change:  dcmx=   7.7746E-02  dc/dt=   3.4154E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 5.28E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.70E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 5.81E-17 2x: 2.56E+00 2u: 4.88E-02 ir: 2.78E-17 iu: 1.56E-02 rsn: rtol
+
+ Step     22 Time=  2.00000E+00 Dt=  5.38667E-02 [d] conv_reason: 3
+  newton =   1 [      22] linear =     1 [        22] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.581068E-16 0.581068E-16 0.277556E-16
+  --> max change:  dcmx=   1.5631E-02  dc/dt=   3.3585E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+
+ --> appending to hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.01 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-002.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     18 Time=  3.00000E+00 Dt=  1.00000E+00 [d] conv_reason: 4
+  newton =   1 [      21] linear =     1 [        21] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 5.23E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.67E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 2.30E-17 2x: 2.71E+00 2u: 2.26E-01 ir: 1.04E-17 iu: 7.01E-02 rsn: rtol
+
+ Step     23 Time=  2.26347E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      23] linear =     1 [        23] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.229687E-16 0.229687E-16 0.104083E-16
+  --> max change:  dcmx=   7.0149E-02  dc/dt=   3.0816E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 4.96E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.54E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 2.68E-17 2x: 2.86E+00 2u: 2.15E-01 ir: 1.39E-17 iu: 6.51E-02 rsn: rtol
+
+ Step     24 Time=  2.52693E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      24] linear =     1 [        24] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.267796E-16 0.267796E-16 0.138778E-16
+  --> max change:  dcmx=   6.5114E-02  dc/dt=   2.8605E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 4.71E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.43E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 3.19E-17 2x: 2.99E+00 2u: 2.04E-01 ir: 2.08E-17 iu: 6.10E-02 rsn: rtol
+
+ Step     25 Time=  2.79040E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      25] linear =     1 [        25] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.318571E-16 0.318571E-16 0.208167E-16
+  --> max change:  dcmx=   6.1031E-02  dc/dt=   2.6811E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 4.47E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.34E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 5.03E-17 2x: 3.10E+00 2u: 1.55E-01 ir: 2.78E-17 iu: 4.65E-02 rsn: rtol
+
+ Step     26 Time=  3.00000E+00 Dt=  2.09600E-01 [d] conv_reason: 3
+  newton =   1 [      26] linear =     1 [        26] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.503145E-16 0.503145E-16 0.277556E-16
+  --> max change:  dcmx=   4.6517E-02  dc/dt=   2.5686E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   4.1920E-01 ->   2.6347E-01 [d]
+
+ --> appending to hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.01 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-003.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     19 Time=  4.00000E+00 Dt=  1.00000E+00 [d] conv_reason: 4
+  newton =   1 [      22] linear =     1 [        22] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 4.28E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.28E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 4.47E-17 2x: 3.22E+00 2u: 1.84E-01 ir: 2.26E-17 iu: 5.58E-02 rsn: rtol
+
+ Step     27 Time=  3.26347E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      27] linear =     1 [        27] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.446839E-16 0.446839E-16 0.225514E-16
+  --> max change:  dcmx=   5.5831E-02  dc/dt=   2.4527E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 4.03E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.22E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 3.70E-17 2x: 3.33E+00 2u: 1.72E-01 ir: 1.73E-17 iu: 5.40E-02 rsn: rtol
+
+ Step     28 Time=  3.52693E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      28] linear =     1 [        28] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.370131E-16 0.370131E-16 0.173472E-16
+  --> max change:  dcmx=   5.3953E-02  dc/dt=   2.3701E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 3.77E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.18E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 5.65E-17 2x: 3.44E+00 2u: 1.60E-01 ir: 2.08E-17 iu: 5.30E-02 rsn: rtol
+
+ Step     29 Time=  3.79040E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      29] linear =     1 [        29] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.564519E-16 0.564519E-16 0.208167E-16
+  --> max change:  dcmx=   5.3015E-02  dc/dt=   2.3290E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 3.51E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.16E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 3.16E-17 2x: 3.53E+00 2u: 1.20E-01 ir: 1.73E-17 iu: 4.14E-02 rsn: rtol
+
+ Step     30 Time=  4.00000E+00 Dt=  2.09600E-01 [d] conv_reason: 3
+  newton =   1 [      30] linear =     1 [        30] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.315605E-16 0.315605E-16 0.173472E-16
+  --> max change:  dcmx=   4.1409E-02  dc/dt=   2.2866E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   4.1920E-01 ->   2.6347E-01 [d]
+
+ --> appending to hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.01 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-004.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     20 Time=  5.00000E+00 Dt=  1.00000E+00 [d] conv_reason: 4
+  newton =   1 [      23] linear =     1 [        23] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 3.31E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.14E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 3.66E-17 2x: 3.62E+00 2u: 1.39E-01 ir: 2.43E-17 iu: 5.01E-02 rsn: rtol
+
+ Step     31 Time=  4.26347E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      31] linear =     1 [        31] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.365529E-16 0.365529E-16 0.242861E-16
+  --> max change:  dcmx=   5.0085E-02  dc/dt=   2.2002E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 3.05E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.10E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 4.56E-17 2x: 3.71E+00 2u: 1.28E-01 ir: 2.43E-17 iu: 4.76E-02 rsn: rtol
+
+ Step     32 Time=  4.52693E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      32] linear =     1 [        32] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.456334E-16 0.456334E-16 0.242861E-16
+  --> max change:  dcmx=   4.7571E-02  dc/dt=   2.0898E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.80E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 1.04E-03 iu: 0.00E+00 rsn:   0
+  1 2r: 5.69E-17 2x: 3.79E+00 2u: 1.16E-01 ir: 2.43E-17 iu: 4.47E-02 rsn: rtol
+
+ Step     33 Time=  4.79040E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      33] linear =     1 [        33] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.569032E-16 0.569032E-16 0.242861E-16
+  --> max change:  dcmx=   4.4693E-02  dc/dt=   1.9634E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.55E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 9.79E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 3.99E-17 2x: 3.85E+00 2u: 8.59E-02 ir: 2.08E-17 iu: 3.36E-02 rsn: rtol
+
+ Step     34 Time=  5.00000E+00 Dt=  2.09600E-01 [d] conv_reason: 3
+  newton =   1 [      34] linear =     1 [        34] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.398609E-16 0.398609E-16 0.208167E-16
+  --> max change:  dcmx=   3.3614E-02  dc/dt=   1.8561E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   4.1920E-01 ->   2.6347E-01 [d]
+
+ --> appending to hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.01 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-005.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     21 Time=  6.00000E+00 Dt=  1.00000E+00 [d] conv_reason: 4
+  newton =   1 [      24] linear =     1 [        24] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.36E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 9.25E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 5.74E-17 2x: 3.92E+00 2u: 9.77E-02 ir: 2.78E-17 iu: 3.91E-02 rsn: rtol
+
+ Step     35 Time=  5.26347E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      35] linear =     1 [        35] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.574296E-16 0.574296E-16 0.277556E-16
+  --> max change:  dcmx=   3.9074E-02  dc/dt=   1.7165E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.14E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 8.56E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 5.44E-17 2x: 3.98E+00 2u: 8.82E-02 ir: 2.43E-17 iu: 3.59E-02 rsn: rtol
+
+ Step     36 Time=  5.52693E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      36] linear =     1 [        36] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.544438E-16 0.544438E-16 0.242861E-16
+  --> max change:  dcmx=   3.5885E-02  dc/dt=   1.5764E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.93E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 7.86E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.05E-17 2x: 4.03E+00 2u: 7.93E-02 ir: 1.73E-17 iu: 3.28E-02 rsn: rtol
+
+ Step     37 Time=  5.79040E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      37] linear =     1 [        37] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.404604E-16 0.404604E-16 0.173472E-16
+  --> max change:  dcmx=   3.2762E-02  dc/dt=   1.4392E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.74E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 7.18E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.60E-17 2x: 4.08E+00 2u: 5.78E-02 ir: 2.08E-17 iu: 2.41E-02 rsn: rtol
+
+ Step     38 Time=  6.00000E+00 Dt=  2.09600E-01 [d] conv_reason: 3
+  newton =   1 [      38] linear =     1 [        38] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.460274E-16 0.460274E-16 0.208167E-16
+  --> max change:  dcmx=   2.4143E-02  dc/dt=   1.3332E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   4.1920E-01 ->   2.6347E-01 [d]
+
+ --> appending to hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.01 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-006.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     22 Time=  7.00000E+00 Dt=  1.00000E+00 [d] conv_reason: 4
+  newton =   1 [      25] linear =     1 [        25] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.59E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 6.65E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.92E-17 2x: 4.12E+00 2u: 6.51E-02 ir: 2.43E-17 iu: 2.75E-02 rsn: rtol
+
+ Step     39 Time=  6.26347E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      39] linear =     1 [        39] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.491879E-16 0.491879E-16 0.242861E-16
+  --> max change:  dcmx=   2.7464E-02  dc/dt=   1.2065E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.42E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 6.02E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.52E-17 2x: 4.16E+00 2u: 5.81E-02 ir: 2.08E-17 iu: 2.48E-02 rsn: rtol
+
+ Step     40 Time=  6.52693E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      40] linear =     1 [        40] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.452361E-16 0.452361E-16 0.208167E-16
+  --> max change:  dcmx=   2.4757E-02  dc/dt=   1.0876E-06 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.27E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 5.42E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.59E-17 2x: 4.20E+00 2u: 5.18E-02 ir: 2.78E-17 iu: 2.22E-02 rsn: rtol
+
+ Step     41 Time=  6.79040E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      41] linear =     1 [        41] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.458965E-16 0.458965E-16 0.277556E-16
+  --> max change:  dcmx=   2.2241E-02  dc/dt=   9.7705E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.13E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 4.87E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.08E-17 2x: 4.23E+00 2u: 3.75E-02 ir: 1.73E-17 iu: 1.62E-02 rsn: rtol
+
+ Step     42 Time=  7.00000E+00 Dt=  2.09600E-01 [d] conv_reason: 3
+  newton =   1 [      42] linear =     1 [        42] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.407568E-16 0.407568E-16 0.173472E-16
+  --> max change:  dcmx=   1.6201E-02  dc/dt=   8.9459E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   4.1920E-01 ->   2.6347E-01 [d]
+
+ --> appending to hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.01 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-007.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     23 Time=  8.00000E+00 Dt=  1.00000E+00 [d] conv_reason: 4
+  newton =   1 [      26] linear =     1 [        26] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.03E-03 2x: 0.00E+00 2u: 0.00E+00 ir: 4.46E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.44E-17 2x: 4.26E+00 2u: 4.18E-02 ir: 1.73E-17 iu: 1.82E-02 rsn: rtol
+
+ Step     43 Time=  7.26347E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      43] linear =     1 [        43] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.444306E-16 0.444306E-16 0.173472E-16
+  --> max change:  dcmx=   1.8201E-02  dc/dt=   7.9959E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 9.16E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 3.99E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.55E-17 2x: 4.28E+00 2u: 3.71E-02 ir: 2.08E-17 iu: 1.62E-02 rsn: rtol
+
+ Step     44 Time=  7.52693E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      44] linear =     1 [        44] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.455014E-16 0.455014E-16 0.208167E-16
+  --> max change:  dcmx=   1.6231E-02  dc/dt=   7.1302E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 8.12E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 3.55E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 5.54E-17 2x: 4.31E+00 2u: 3.29E-02 ir: 2.43E-17 iu: 1.44E-02 rsn: rtol
+
+ Step     45 Time=  7.79040E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      45] linear =     1 [        45] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.554026E-16 0.554026E-16 0.242861E-16
+  --> max change:  dcmx=   1.4444E-02  dc/dt=   6.3454E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 7.20E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 3.16E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 5.12E-17 2x: 4.33E+00 2u: 2.37E-02 ir: 2.43E-17 iu: 1.04E-02 rsn: rtol
+
+ Step     46 Time=  8.00000E+00 Dt=  2.09600E-01 [d] conv_reason: 3
+  newton =   1 [      46] linear =     1 [        46] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.512258E-16 0.512258E-16 0.242861E-16
+  --> max change:  dcmx=   1.0449E-02  dc/dt=   5.7700E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   4.1920E-01 ->   2.6347E-01 [d]
+
+ --> appending to hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.01 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-008.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     24 Time=  9.00000E+00 Dt=  1.00000E+00 [d] conv_reason: 4
+  newton =   1 [      27] linear =     1 [        27] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 6.52E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 2.88E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.43E-17 2x: 4.34E+00 2u: 2.63E-02 ir: 1.73E-17 iu: 1.17E-02 rsn: rtol
+
+ Step     47 Time=  8.26347E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      47] linear =     1 [        47] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.442949E-16 0.442949E-16 0.173472E-16
+  --> max change:  dcmx=   1.1653E-02  dc/dt=   5.1191E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 5.76E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 2.55E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 7.00E-17 2x: 4.36E+00 2u: 2.32E-02 ir: 3.12E-17 iu: 1.03E-02 rsn: rtol
+
+ Step     48 Time=  8.52693E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      48] linear =     1 [        48] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.699935E-16 0.699935E-16 0.312250E-16
+  --> max change:  dcmx=   1.0324E-02  dc/dt=   4.5352E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 5.09E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 2.26E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 4.87E-17 2x: 4.38E+00 2u: 2.05E-02 ir: 2.08E-17 iu: 9.13E-03 rsn: rtol
+
+ Step     49 Time=  8.79040E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      49] linear =     1 [        49] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.486960E-16 0.486960E-16 0.208167E-16
+  --> max change:  dcmx=   9.1349E-03  dc/dt=   4.0130E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 4.49E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 2.00E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 7.84E-17 2x: 4.39E+00 2u: 1.47E-02 ir: 4.86E-17 iu: 6.58E-03 rsn: rtol
+
+ Step     50 Time=  9.00000E+00 Dt=  2.09600E-01 [d] conv_reason: 3
+  newton =   1 [      50] linear =     1 [        50] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.784279E-16 0.784279E-16 0.485723E-16
+  --> max change:  dcmx=   6.5805E-03  dc/dt=   3.6337E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   4.1920E-01 ->   2.6347E-01 [d]
+
+ --> appending to hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.01 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-009.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.71E-17 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-17 iu: 0.00E+00 rsn:   0
+  1 2r: 4.71E-17 2x: 5.65E+05 2u: 2.64E-11 ir: 2.97E-17 iu: 1.40E-11 rsn: stol
+
+ Step     25 Time=  1.00000E+01 Dt=  1.00000E+00 [d] conv_reason: 4
+  newton =   1 [      28] linear =     1 [        28] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.471253E-16 0.235626E-17 0.297071E-16
+  --> max change: dpmx=   0.0000E+00
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 4.06E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 1.81E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 5.37E-17 2x: 4.40E+00 2u: 1.63E-02 ir: 2.78E-17 iu: 7.31E-03 rsn: rtol
+
+ Step     51 Time=  9.26347E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      51] linear =     1 [        51] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.537484E-16 0.537484E-16 0.277556E-16
+  --> max change:  dcmx=   7.3052E-03  dc/dt=   3.2092E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 3.57E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 1.60E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 7.51E-17 2x: 4.41E+00 2u: 1.44E-02 ir: 3.47E-17 iu: 6.45E-03 rsn: rtol
+
+ Step     52 Time=  9.52693E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      52] linear =     1 [        52] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.750556E-16 0.750556E-16 0.346945E-16
+  --> max change:  dcmx=   6.4460E-03  dc/dt=   2.8317E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 3.15E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 1.41E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 7.09E-17 2x: 4.42E+00 2u: 1.26E-02 ir: 3.47E-17 iu: 5.68E-03 rsn: rtol
+
+ Step     53 Time=  9.79040E+00 Dt=  2.63467E-01 [d] conv_reason: 3
+  newton =   1 [      53] linear =     1 [        53] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.709330E-16 0.709330E-16 0.346945E-16
+  --> max change:  dcmx=   5.6835E-03  dc/dt=   2.4967E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   5.2693E-01 ->   2.6347E-01 [d]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.77E-04 2x: 0.00E+00 2u: 0.00E+00 ir: 1.24E-04 iu: 0.00E+00 rsn:   0
+  1 2r: 6.98E-17 2x: 4.42E+00 2u: 9.07E-03 ir: 3.47E-17 iu: 4.08E-03 rsn: rtol
+
+ Step     54 Time=  1.00000E+01 Dt=  2.09600E-01 [d] conv_reason: 3
+  newton =   1 [      54] linear =     1 [        54] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 1 / 1
+  --> SNES Residual: 0.698213E-16 0.698213E-16 0.346945E-16
+  --> max change:  dcmx=   4.0835E-03  dc/dt=   2.2549E-07 [mol/s]
+ Maximum Pore Velocity:   7.5911E+00 [m/d]
+ CFL Limiting ( 1.0):   4.1920E-01 ->   2.6347E-01 [d]
+
+ --> appending to hdf5 output file: 2c-1-hw7-1D_solute.h5
+      0.01 Seconds to write HDF5 file.
+ --> write tecplot output file: 2c-1-hw7-1D_solute-010.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+PMCSubsurfaceFlow
+ Total Time: 1.9995E-02 seconds
+
+ FLOW TS SNES steps = 25  newton = 28  linear = 28  cuts = 0
+ FLOW TS SNES Wasted Linear Iterations = 0
+ FLOW TS SNES Wasted Newton Iterations = 0
+ FLOW TS SNES time = 0.0 seconds
+
+PMCSubsurfaceTransport
+ Total Time: 2.3128E-02 seconds
+
+ TRAN TS SNES steps = 54  newton = 54  linear = 54  cuts = 0
+ TRAN TS SNES Wasted Linear Iterations = 0
+ TRAN TS SNES Wasted Newton Iterations = 0
+ TRAN TS SNES time = 0.0 seconds
+
+ Wall Clock Time:  3.2101E-01 [sec]   5.3501E-03 [min]   8.9169E-05 [hr]

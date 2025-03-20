@@ -1,0 +1,2960 @@
+
+=================
+  PFLOTRAN v6.0
+=================
+
+"grid_structured_type" set to default value.
+pflotran card:: NUMERICAL_METHODS
+pflotran card:: GRID
+pflotran card:: MATERIAL_PROPERTY
+  Name :: soil1
+pflotran card:: CHARACTERISTIC_CURVES
+  Name :: cc1
+ WARNING: Mualem-van Genuchten relative permeability function is being used without SMOOTH option.
+pflotran card:: OUTPUT
+pflotran card:: TIME
+pflotran card:: REGION
+all
+pflotran card:: REGION
+top
+pflotran card:: REGION
+bottom
+pflotran card:: FLOW_CONDITION
+initial_pressure
+pflotran card:: FLOW_CONDITION
+recharge
+pflotran card:: INITIAL_CONDITION
+"Initial Condition name" set to default value.
+pflotran card:: BOUNDARY_CONDITION
+pflotran card:: BOUNDARY_CONDITION
+pflotran card:: STRATA
+pflotran card:: END_SUBSURFACE
+
+Extent of Gridded Domain
+ X: 0.000000E+00 - 1.000000E+00
+ Y: 0.000000E+00 - 1.000000E+00
+ Z: 0.000000E+00 - 1.000000E+01
+
+Size of Gridded Domain
+ Number of grid cells: 100
+
+Number of active grid cells: 100
+Number of inactive grid cells: 0
+
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Initial Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   initial_pressure
+                  Region:   all
+--------------------------------------------------------------------------------
+
+  Flow Condition: initial_pressure
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  3
+
+    Sub Condition: pressure
+      Type: hydrostatic
+      Gradient:
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Boundary Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   initial_pressure
+                  Region:   bottom
+--------------------------------------------------------------------------------
+
+  Flow Condition: initial_pressure
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  3
+
+    Sub Condition: pressure
+      Type: hydrostatic
+      Gradient:
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Transient: no
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Boundary Condition
+
+--------------------------------------------------------------------------------
+          Flow Condition:   recharge
+                  Region:   top
+--------------------------------------------------------------------------------
+
+  Flow Condition: recharge
+    Synchronize time with update: no
+    Time units: yr
+    Length units: m
+      Datum:
+
+    Sub Condition: pressure
+      Type: neumann
+      Gradient:
+      Data:
+        Dataset: Unnamed Ascii Dataset
+          Type: dataset_ascii_type
+          Is transient?: yes
+          Number of times:      2
+          Is cyclic?: no
+          Buffer:
+            Rank:  2
+            Dims:    1   2
+            Buffer Slice Size:   0
+          Array Rank:  1
+
+--------------------------------------------------------------------------------
+Default HDF5 method is used in Initialization
+  Beginning setup of FLOW SNES
+ number of dofs =   1, number of phases =   1
+ mode = Richards: p
+  Finished setting up FLOW SNES
+
+ Requested processors and decomposition =     1, npx,y,z=   -1  -1  -1
+ Actual decomposition: npx,y,z=    1   1   1
+
+
+FLOW Time Stepper SNES
+      maximum number of steps: 999999
+constant time steps threshold: 5
+       maximum number of cuts: 16
+             reduction factor: 5.000000E-01
+        maximum growth factor: 2.000000E+00
+                 acceleration: on
+       acceleration threshold: 5
+       number of ramp entries: 5
+                ramp entry #1: 2.0000
+                ramp entry #2: 2.0000
+                ramp entry #3: 2.0000
+                ramp entry #4: 2.0000
+                ramp entry #5: 2.0000
+                ramp entry #6: 1.8000
+                ramp entry #7: 1.6000
+                ramp entry #8: 1.4000
+                ramp entry #9: 1.2000
+               ramp entry #10: 1.0000
+               ramp entry #11: 1.0000
+               ramp entry #12: 1.0000
+               ramp entry #13: 1.0000
+
+FLOW Newton Solver
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-08
+                         stol: 1.000000E-08
+                         dtol: 1.000000E+04
+                      maxnorm: 1.000000E+20
+                    inftolres: -9.990000E+02
+                    inftolupd: -9.990000E+02
+                 inftolrelupd: -9.990000E+02
+                 inftolsclres: -9.990000E+02
+                     max iter: 50
+                     min iter: 1
+                         maxf: 10000
+                  matrix type: baij
+         precond. matrix type: baij
+               inexact newton: off
+            print convergence: on
+   print detailed convergence: off
+          check infinity norm: on
+
+FLOW Linear Solver
+                       solver: preonly
+               preconditioner: lu
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-05
+                         dtol: 1.000000E+04
+            maximum iteration: 10000
+
+ --> write tecplot output file: 1D_vsat_flow_pulse-000.tec
+      0.01 Seconds to write to Tecplot file(s)
+
+ Finished Initialization
+
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.76E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 1.76E-06 iu: 0.00E+00 rsn:   0
+  1 2r: 8.62E-08 2x: 6.83E+05 2u: 3.89E+03 ir: 8.59E-08 iu: 3.89E+03 rsn:   0
+  2 2r: 1.89E-10 2x: 6.83E+05 2u: 1.73E+02 ir: 1.88E-10 iu: 1.73E+02 rsn:   0
+  3 2r: 9.16E-16 2x: 6.83E+05 2u: 3.81E-01 ir: 9.11E-16 iu: 3.80E-01 rsn: rtol
+
+ Step      1 Time=  1.14155E-04 Dt=  1.14155E-04 [y] conv_reason: 3
+  newton =   3 [       3] linear =     3 [         3] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.915691E-15 0.915691E-17 0.910811E-15
+  --> max change: dpmx=   3.7143E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.72E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 1.72E-06 iu: 0.00E+00 rsn:   0
+  1 2r: 1.78E-07 2x: 6.83E+05 2u: 6.80E+03 ir: 1.75E-07 iu: 6.79E+03 rsn:   0
+  2 2r: 1.59E-09 2x: 6.83E+05 2u: 5.68E+02 ir: 1.54E-09 iu: 5.62E+02 rsn:   0
+  3 2r: 1.26E-13 2x: 6.83E+05 2u: 5.15E+00 ir: 1.23E-13 iu: 5.03E+00 rsn:   0
+  4 2r: 2.60E-17 2x: 6.83E+05 2u: 4.09E-04 ir: 1.66E-17 iu: 4.01E-04 rsn: rtol
+
+ Step      2 Time=  3.42466E-04 Dt=  2.28311E-04 [y] conv_reason: 3
+  newton =   4 [       7] linear =     4 [         7] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.259531E-16 0.259531E-18 0.165612E-16
+  --> max change: dpmx=   6.2178E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.62E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 1.62E-06 iu: 0.00E+00 rsn:   0
+  1 2r: 3.66E-07 2x: 6.84E+05 2u: 1.05E+04 ir: 3.44E-07 iu: 1.02E+04 rsn:   0
+  2 2r: 1.28E-08 2x: 6.84E+05 2u: 1.41E+03 ir: 1.12E-08 iu: 1.39E+03 rsn:   0
+  3 2r: 1.44E-11 2x: 6.84E+05 2u: 5.23E+01 ir: 1.29E-11 iu: 4.68E+01 rsn:   0
+  4 2r: 2.54E-17 2x: 6.84E+05 2u: 5.93E-02 ir: 1.71E-17 iu: 5.45E-02 rsn: rtol
+
+ Step      3 Time=  7.99087E-04 Dt=  4.56621E-04 [y] conv_reason: 3
+  newton =   4 [      11] linear =     4 [        11] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.254110E-16 0.254110E-18 0.171135E-16
+  --> max change: dpmx=   8.7202E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.42E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 1.37E-06 iu: 0.00E+00 rsn:   0
+  1 2r: 4.90E-07 2x: 6.85E+05 2u: 1.52E+04 ir: 4.69E-07 iu: 1.17E+04 rsn:   0
+  2 2r: 3.69E-08 2x: 6.85E+05 2u: 2.17E+03 ir: 3.05E-08 iu: 1.98E+03 rsn:   0
+  3 2r: 1.88E-10 2x: 6.85E+05 2u: 1.36E+02 ir: 1.49E-10 iu: 1.24E+02 rsn:   0
+  4 2r: 4.41E-15 2x: 6.85E+05 2u: 6.95E-01 ir: 3.54E-15 iu: 5.84E-01 rsn: rtol
+
+ Step      4 Time=  1.71233E-03 Dt=  9.13242E-04 [y] conv_reason: 3
+  newton =   4 [      15] linear =     4 [        15] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.440655E-14 0.440655E-16 0.353725E-14
+  --> max change: dpmx=   9.5670E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.16E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 9.77E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 6.72E-07 2x: 6.87E+05 2u: 2.31E+04 ir: 5.60E-07 iu: 1.69E+04 rsn:   0
+  2 2r: 1.05E-07 2x: 6.87E+05 2u: 4.03E+03 ir: 8.35E-08 iu: 3.36E+03 rsn:   0
+  3 2r: 1.93E-09 2x: 6.87E+05 2u: 5.30E+02 ir: 1.57E-09 iu: 4.11E+02 rsn:   0
+  4 2r: 5.99E-13 2x: 6.87E+05 2u: 9.53E+00 ir: 4.89E-13 iu: 7.33E+00 rsn:   0
+  5 2r: 2.26E-17 2x: 6.87E+05 2u: 2.94E-03 ir: 9.90E-18 iu: 2.27E-03 rsn: rtol
+
+ Step      5 Time=  3.53881E-03 Dt=  1.82648E-03 [y] conv_reason: 3
+  newton =   5 [      20] linear =     5 [        20] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 5 / 5
+  --> SNES Residual: 0.225942E-16 0.225942E-18 0.989673E-17
+  --> max change: dpmx=   1.3174E+04
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.44E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 6.09E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 5.88E-08 2x: 6.87E+05 2u: 5.61E+03 ir: 5.23E-08 iu: 3.46E+03 rsn:   0
+  2 2r: 3.13E-10 2x: 6.87E+05 2u: 2.63E+02 ir: 3.06E-10 iu: 1.96E+02 rsn:   0
+  3 2r: 8.92E-15 2x: 6.87E+05 2u: 9.66E-01 ir: 7.88E-15 iu: 8.75E-01 rsn: rtol
+
+ Step      6 Time=  4.14155E-03 Dt=  6.02740E-04 [y] conv_reason: 3
+  newton =   3 [      23] linear =     3 [        23] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.891954E-14 0.891954E-16 0.787740E-14
+  --> max change: dpmx=   3.3162E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.95E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 5.66E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.23E-07 2x: 6.88E+05 2u: 1.07E+04 ir: 9.48E-08 iu: 6.79E+03 rsn:   0
+  2 2r: 2.60E-09 2x: 6.88E+05 2u: 8.82E+02 ir: 1.72E-09 iu: 6.65E+02 rsn:   0
+  3 2r: 9.77E-13 2x: 6.88E+05 2u: 1.38E+01 ir: 7.97E-13 iu: 1.07E+01 rsn:   0
+  4 2r: 2.14E-17 2x: 6.88E+05 2u: 4.87E-03 ir: 9.76E-18 iu: 3.85E-03 rsn: rtol
+
+ Step      7 Time=  5.34703E-03 Dt=  1.20548E-03 [y] conv_reason: 3
+  newton =   4 [      27] linear =     4 [        27] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.214202E-16 0.214202E-18 0.976460E-17
+  --> max change: dpmx=   6.1156E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.27E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 4.80E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 2.69E-07 2x: 6.91E+05 2u: 1.96E+04 ir: 2.08E-07 iu: 1.18E+04 rsn:   0
+  2 2r: 1.82E-08 2x: 6.90E+05 2u: 2.60E+03 ir: 1.39E-08 iu: 1.70E+03 rsn:   0
+  3 2r: 5.06E-11 2x: 6.90E+05 2u: 1.33E+02 ir: 3.85E-11 iu: 7.89E+01 rsn:   0
+  4 2r: 3.47E-16 2x: 6.90E+05 2u: 3.68E-01 ir: 2.22E-16 iu: 2.02E-01 rsn: rtol
+
+ Step      8 Time=  7.75799E-03 Dt=  2.41096E-03 [y] conv_reason: 3
+  newton =   4 [      31] linear =     4 [        31] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.346707E-15 0.346707E-17 0.222285E-15
+  --> max change: dpmx=   9.9989E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.41E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 3.92E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 6.06E-07 2x: 6.96E+05 2u: 3.38E+04 ir: 4.33E-07 iu: 1.88E+04 rsn:   0
+  2 2r: 1.09E-07 2x: 6.95E+05 2u: 6.22E+03 ir: 7.22E-08 iu: 3.83E+03 rsn:   0
+  3 2r: 3.13E-09 2x: 6.95E+05 2u: 9.11E+02 ir: 2.20E-09 iu: 5.22E+02 rsn:   0
+  4 2r: 1.83E-12 2x: 6.95E+05 2u: 2.02E+01 ir: 1.34E-12 iu: 1.20E+01 rsn:   0
+  5 2r: 1.45E-17 2x: 6.95E+05 2u: 1.34E-02 ir: 9.24E-18 iu: 8.53E-03 rsn: rtol
+
+ Step      9 Time=  1.25799E-02 Dt=  4.82192E-03 [y] conv_reason: 3
+  newton =   5 [      36] linear =     5 [        36] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 5 / 5
+  --> SNES Residual: 0.145088E-16 0.145088E-18 0.924113E-17
+  --> max change: dpmx=   1.4458E+04
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.41E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 3.00E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 4.74E-08 2x: 6.96E+05 2u: 8.21E+03 ir: 2.91E-08 iu: 4.10E+03 rsn:   0
+  2 2r: 3.54E-10 2x: 6.96E+05 2u: 4.37E+02 ir: 2.80E-10 iu: 2.59E+02 rsn:   0
+  3 2r: 2.21E-14 2x: 6.96E+05 2u: 2.36E+00 ir: 2.05E-14 iu: 1.67E+00 rsn:   0
+  4 2r: 1.77E-17 2x: 6.96E+05 2u: 9.94E-05 ir: 7.70E-18 iu: 8.21E-05 rsn: rtol
+
+ Step     10 Time=  1.41711E-02 Dt=  1.59123E-03 [y] conv_reason: 3
+  newton =   4 [      40] linear =     4 [        40] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.176783E-16 0.176783E-18 0.769784E-17
+  --> max change: dpmx=   3.8564E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.16E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 2.72E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.11E-07 2x: 6.99E+05 2u: 1.62E+04 ir: 6.49E-08 iu: 7.97E+03 rsn:   0
+  2 2r: 3.80E-09 2x: 6.99E+05 2u: 1.59E+03 ir: 2.79E-09 iu: 9.20E+02 rsn:   0
+  3 2r: 4.14E-12 2x: 6.99E+05 2u: 3.61E+01 ir: 3.68E-12 iu: 2.41E+01 rsn:   0
+  4 2r: 2.71E-17 2x: 6.99E+05 2u: 2.45E-02 ir: 1.34E-17 iu: 1.93E-02 rsn: rtol
+
+ Step     11 Time=  1.73536E-02 Dt=  3.18247E-03 [y] conv_reason: 3
+  newton =   4 [      44] linear =     4 [        44] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.270857E-16 0.270857E-18 0.134187E-16
+  --> max change: dpmx=   7.1176E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.78E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 2.43E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 2.93E-07 2x: 7.05E+05 2u: 3.09E+04 ir: 1.84E-07 iu: 1.47E+04 rsn:   0
+  2 2r: 3.78E-08 2x: 7.04E+05 2u: 4.94E+03 ir: 2.55E-08 iu: 2.68E+03 rsn:   0
+  3 2r: 5.65E-10 2x: 7.04E+05 2u: 4.39E+02 ir: 3.86E-10 iu: 2.41E+02 rsn:   0
+  4 2r: 6.45E-14 2x: 7.04E+05 2u: 3.83E+00 ir: 4.32E-14 iu: 2.25E+00 rsn:   0
+  5 2r: 2.34E-17 2x: 7.04E+05 2u: 4.64E-04 ir: 1.23E-17 iu: 2.44E-04 rsn: rtol
+
+ Step     12 Time=  2.37185E-02 Dt=  6.36493E-03 [y] conv_reason: 3
+  newton =   5 [      49] linear =     5 [        49] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 5 / 5
+  --> SNES Residual: 0.234035E-16 0.234035E-18 0.122930E-16
+  --> max change: dpmx=   1.1818E+04
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.24E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 2.06E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 3.17E-08 2x: 7.06E+05 2u: 7.98E+03 ir: 1.68E-08 iu: 3.52E+03 rsn:   0
+  2 2r: 1.73E-10 2x: 7.06E+05 2u: 3.74E+02 ir: 1.20E-10 iu: 1.96E+02 rsn:   0
+  3 2r: 6.60E-15 2x: 7.06E+05 2u: 1.51E+00 ir: 5.44E-15 iu: 9.61E-01 rsn:   0
+  4 2r: 2.35E-17 2x: 7.06E+05 2u: 3.74E-05 ir: 1.30E-17 iu: 2.75E-05 rsn: rtol
+
+ Step     13 Time=  2.58190E-02 Dt=  2.10043E-03 [y] conv_reason: 3
+  newton =   4 [      53] linear =     4 [        53] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.234683E-16 0.234683E-18 0.130409E-16
+  --> max change: dpmx=   3.3254E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.10E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.95E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 7.71E-08 2x: 7.09E+05 2u: 1.61E+04 ir: 4.12E-08 iu: 7.06E+03 rsn:   0
+  2 2r: 2.18E-09 2x: 7.09E+05 2u: 1.44E+03 ir: 1.45E-09 iu: 7.36E+02 rsn:   0
+  3 2r: 1.73E-12 2x: 7.09E+05 2u: 2.63E+01 ir: 1.31E-12 iu: 1.57E+01 rsn:   0
+  4 2r: 3.09E-17 2x: 7.09E+05 2u: 1.21E-02 ir: 1.40E-17 iu: 8.36E-03 rsn: rtol
+
+ Step     14 Time=  3.00198E-02 Dt=  4.20085E-03 [y] conv_reason: 3
+  newton =   4 [      57] linear =     4 [        57] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.309109E-16 0.309109E-18 0.140269E-16
+  --> max change: dpmx=   6.3188E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.87E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.79E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 2.21E-07 2x: 7.17E+05 2u: 3.14E+04 ir: 1.23E-07 iu: 1.33E+04 rsn:   0
+  2 2r: 2.66E-08 2x: 7.16E+05 2u: 4.83E+03 ir: 1.51E-08 iu: 2.40E+03 rsn:   0
+  3 2r: 3.35E-10 2x: 7.16E+05 2u: 3.78E+02 ir: 2.34E-10 iu: 2.08E+02 rsn:   0
+  4 2r: 4.05E-14 2x: 7.16E+05 2u: 2.58E+00 ir: 3.07E-14 iu: 1.71E+00 rsn:   0
+  5 2r: 1.49E-17 2x: 7.16E+05 2u: 1.96E-04 ir: 6.70E-18 iu: 1.39E-04 rsn: rtol
+
+ Step     15 Time=  3.84215E-02 Dt=  8.40171E-03 [y] conv_reason: 3
+  newton =   5 [      62] linear =     5 [        62] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 5 / 5
+  --> SNES Residual: 0.149315E-16 0.149315E-18 0.670172E-17
+  --> max change: dpmx=   1.1022E+04
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.51E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.58E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 2.58E-08 2x: 7.18E+05 2u: 8.24E+03 ir: 1.28E-08 iu: 3.27E+03 rsn:   0
+  2 2r: 1.32E-10 2x: 7.18E+05 2u: 3.74E+02 ir: 8.19E-11 iu: 1.83E+02 rsn:   0
+  3 2r: 4.64E-15 2x: 7.18E+05 2u: 1.40E+00 ir: 2.91E-15 iu: 8.17E-01 rsn:   0
+  4 2r: 3.27E-17 2x: 7.18E+05 2u: 3.01E-05 ir: 1.37E-17 iu: 2.02E-05 rsn: rtol
+
+ Step     16 Time=  4.11941E-02 Dt=  2.77256E-03 [y] conv_reason: 3
+  newton =   4 [      66] linear =     4 [        66] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.326678E-16 0.326678E-18 0.137389E-16
+  --> max change: dpmx=   3.1088E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.42E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.51E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 6.46E-08 2x: 7.22E+05 2u: 1.67E+04 ir: 3.27E-08 iu: 6.65E+03 rsn:   0
+  2 2r: 1.80E-09 2x: 7.22E+05 2u: 1.47E+03 ir: 1.02E-09 iu: 7.01E+02 rsn:   0
+  3 2r: 1.39E-12 2x: 7.22E+05 2u: 2.58E+01 ir: 9.62E-13 iu: 1.44E+01 rsn:   0
+  4 2r: 2.33E-17 2x: 7.22E+05 2u: 1.09E-02 ir: 1.36E-17 iu: 7.28E-03 rsn: rtol
+
+ Step     17 Time=  4.67392E-02 Dt=  5.54513E-03 [y] conv_reason: 3
+  newton =   4 [      70] linear =     4 [        70] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.233425E-16 0.233425E-18 0.135576E-16
+  --> max change: dpmx=   5.9729E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.25E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.42E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.95E-07 2x: 7.31E+05 2u: 3.30E+04 ir: 1.01E-07 iu: 1.28E+04 rsn:   0
+  2 2r: 2.41E-08 2x: 7.30E+05 2u: 5.07E+03 ir: 1.29E-08 iu: 2.29E+03 rsn:   0
+  3 2r: 3.18E-10 2x: 7.30E+05 2u: 3.95E+02 ir: 2.03E-10 iu: 2.00E+02 rsn:   0
+  4 2r: 3.58E-14 2x: 7.30E+05 2u: 2.66E+00 ir: 2.80E-14 iu: 1.65E+00 rsn:   0
+  5 2r: 2.74E-17 2x: 7.30E+05 2u: 1.95E-04 ir: 1.41E-17 iu: 1.32E-04 rsn: rtol
+
+ Step     18 Time=  5.78295E-02 Dt=  1.10903E-02 [y] conv_reason: 3
+  newton =   5 [      75] linear =     5 [        75] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 5 / 5
+  --> SNES Residual: 0.273766E-16 0.273766E-18 0.141455E-16
+  --> max change: dpmx=   1.0456E+04
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.97E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.26E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 2.29E-08 2x: 7.33E+05 2u: 8.65E+03 ir: 1.04E-08 iu: 3.12E+03 rsn:   0
+  2 2r: 1.21E-10 2x: 7.33E+05 2u: 3.93E+02 ir: 6.74E-11 iu: 1.73E+02 rsn:   0
+  3 2r: 4.47E-15 2x: 7.33E+05 2u: 1.49E+00 ir: 2.93E-15 iu: 8.03E-01 rsn:   0
+  4 2r: 1.66E-17 2x: 7.33E+05 2u: 3.24E-05 ir: 7.85E-18 iu: 2.09E-05 rsn: rtol
+
+ Step     19 Time=  6.14893E-02 Dt=  3.65978E-03 [y] conv_reason: 3
+  newton =   4 [      79] linear =     4 [        79] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.166260E-16 0.166260E-18 0.785200E-17
+  --> max change: dpmx=   2.9484E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.90E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.22E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 5.86E-08 2x: 7.38E+05 2u: 1.76E+04 ir: 2.67E-08 iu: 6.30E+03 rsn:   0
+  2 2r: 1.72E-09 2x: 7.38E+05 2u: 1.56E+03 ir: 9.52E-10 iu: 6.77E+02 rsn:   0
+  3 2r: 1.44E-12 2x: 7.38E+05 2u: 2.79E+01 ir: 9.04E-13 iu: 1.39E+01 rsn:   0
+  4 2r: 2.07E-17 2x: 7.38E+05 2u: 1.22E-02 ir: 9.22E-18 iu: 7.30E-03 rsn: rtol
+
+ Step     20 Time=  6.88088E-02 Dt=  7.31957E-03 [y] conv_reason: 3
+  newton =   4 [      83] linear =     4 [        83] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.206933E-16 0.206933E-18 0.922165E-17
+  --> max change: dpmx=   5.6815E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.77E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.14E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 1.84E-07 2x: 7.49E+05 2u: 3.45E+04 ir: 8.73E-08 iu: 1.21E+04 rsn:   0
+  2 2r: 2.39E-08 2x: 7.48E+05 2u: 5.38E+03 ir: 1.22E-08 iu: 2.20E+03 rsn:   0
+  3 2r: 3.45E-10 2x: 7.48E+05 2u: 4.32E+02 ir: 1.94E-10 iu: 2.00E+02 rsn:   0
+  4 2r: 4.50E-14 2x: 7.48E+05 2u: 3.06E+00 ir: 3.12E-14 iu: 1.74E+00 rsn:   0
+  5 2r: 2.23E-17 2x: 7.48E+05 2u: 2.47E-04 ir: 8.60E-18 iu: 1.53E-04 rsn: rtol
+
+ Step     21 Time=  8.34480E-02 Dt=  1.46391E-02 [y] conv_reason: 3
+  newton =   5 [      88] linear =     5 [        88] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 5 / 5
+  --> SNES Residual: 0.222842E-16 0.222842E-18 0.859738E-17
+  --> max change: dpmx=   9.8202E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.54E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 1.03E-07 iu: 0.00E+00 rsn:   0
+  1 2r: 2.09E-08 2x: 7.51E+05 2u: 9.00E+03 ir: 8.71E-09 iu: 2.92E+03 rsn:   0
+  2 2r: 1.16E-10 2x: 7.51E+05 2u: 4.13E+02 ir: 5.94E-11 iu: 1.65E+02 rsn:   0
+  3 2r: 4.65E-15 2x: 7.51E+05 2u: 1.60E+00 ir: 2.89E-15 iu: 7.83E-01 rsn:   0
+  4 2r: 2.35E-17 2x: 7.51E+05 2u: 3.62E-05 ir: 1.47E-17 iu: 2.15E-05 rsn: rtol
+
+ Step     22 Time=  8.82789E-02 Dt=  4.83092E-03 [y] conv_reason: 3
+  newton =   4 [      92] linear =     4 [        92] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.234730E-16 0.234730E-18 0.147468E-16
+  --> max change: dpmx=   2.7695E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.48E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 9.94E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 5.46E-08 2x: 7.57E+05 2u: 1.81E+04 ir: 2.31E-08 iu: 5.85E+03 rsn:   0
+  2 2r: 1.69E-09 2x: 7.57E+05 2u: 1.63E+03 ir: 8.16E-10 iu: 6.36E+02 rsn:   0
+  3 2r: 1.53E-12 2x: 7.57E+05 2u: 2.99E+01 ir: 8.74E-13 iu: 1.39E+01 rsn:   0
+  4 2r: 2.36E-17 2x: 7.57E+05 2u: 1.36E-02 ir: 1.13E-17 iu: 7.69E-03 rsn: rtol
+
+ Step     23 Time=  9.79407E-02 Dt=  9.66183E-03 [y] conv_reason: 3
+  newton =   4 [      96] linear =     4 [        96] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.235735E-16 0.235735E-18 0.112571E-16
+  --> max change: dpmx=   5.2656E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.37E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 9.38E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 6.18E-09 2x: 7.58E+05 2u: 3.36E+03 ir: 2.32E-09 iu: 1.05E+03 rsn:   0
+  2 2r: 3.08E-12 2x: 7.58E+05 2u: 5.83E+01 ir: 1.53E-12 iu: 2.20E+01 rsn:   0
+  3 2r: 2.03E-17 2x: 7.58E+05 2u: 2.56E-02 ir: 8.86E-18 iu: 1.22E-02 rsn: rtol
+
+ Step     24 Time=  1.00000E-01 Dt=  2.05928E-03 [y] conv_reason: 3
+  newton =   3 [      99] linear =     3 [        99] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.202961E-16 0.202961E-18 0.885658E-17
+  --> max change: dpmx=   1.0237E+03
+
+ --> write tecplot output file: 1D_vsat_flow_pulse-001.tec
+      0.01 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.35E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 9.28E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.70E-07 2x: 7.72E+05 2u: 3.45E+04 ir: 7.18E-08 iu: 1.08E+04 rsn:   0
+  2 2r: 2.23E-08 2x: 7.70E+05 2u: 5.40E+03 ir: 1.05E-08 iu: 1.99E+03 rsn:   0
+  3 2r: 3.21E-10 2x: 7.70E+05 2u: 4.26E+02 ir: 1.72E-10 iu: 1.79E+02 rsn:   0
+  4 2r: 4.12E-14 2x: 7.70E+05 2u: 2.94E+00 ir: 2.44E-14 iu: 1.54E+00 rsn:   0
+  5 2r: 2.77E-17 2x: 7.70E+05 2u: 2.19E-04 ir: 1.33E-17 iu: 1.27E-04 rsn: rtol
+
+ Step     25 Time=  1.19324E-01 Dt=  1.93237E-02 [y] conv_reason: 3
+  newton =   5 [     104] linear =     5 [       104] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 5 / 5
+  --> SNES Residual: 0.277275E-16 0.277275E-18 0.133374E-16
+  --> max change: dpmx=   8.7632E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.13E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 8.30E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.85E-08 2x: 7.74E+05 2u: 8.91E+03 ir: 7.02E-09 iu: 2.58E+03 rsn:   0
+  2 2r: 1.03E-10 2x: 7.74E+05 2u: 4.03E+02 ir: 4.78E-11 iu: 1.44E+02 rsn:   0
+  3 2r: 3.98E-15 2x: 7.74E+05 2u: 1.51E+00 ir: 2.21E-15 iu: 6.65E-01 rsn:   0
+  4 2r: 2.56E-17 2x: 7.74E+05 2u: 3.19E-05 ir: 1.10E-17 iu: 1.71E-05 rsn: rtol
+
+ Step     26 Time=  1.25700E-01 Dt=  6.37681E-03 [y] conv_reason: 3
+  newton =   4 [     108] linear =     4 [       108] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.256469E-16 0.256469E-18 0.110131E-16
+  --> max change: dpmx=   2.4385E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.08E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 8.00E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 4.87E-08 2x: 7.81E+05 2u: 1.75E+04 ir: 1.84E-08 iu: 5.01E+03 rsn:   0
+  2 2r: 1.47E-09 2x: 7.81E+05 2u: 1.55E+03 ir: 6.49E-10 iu: 5.42E+02 rsn:   0
+  3 2r: 1.21E-12 2x: 7.81E+05 2u: 2.69E+01 ir: 6.21E-13 iu: 1.11E+01 rsn:   0
+  4 2r: 1.80E-17 2x: 7.81E+05 2u: 1.08E-02 ir: 1.11E-17 iu: 5.50E-03 rsn: rtol
+
+ Step     27 Time=  1.38454E-01 Dt=  1.27536E-02 [y] conv_reason: 3
+  newton =   4 [     112] linear =     4 [       112] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.179682E-16 0.179682E-18 0.110966E-16
+  --> max change: dpmx=   4.4889E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.97E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 7.49E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.46E-07 2x: 7.96E+05 2u: 3.17E+04 ir: 5.45E-08 iu: 8.73E+03 rsn:   0
+  2 2r: 1.74E-08 2x: 7.94E+05 2u: 4.88E+03 ir: 7.09E-09 iu: 1.59E+03 rsn:   0
+  3 2r: 2.02E-10 2x: 7.94E+05 2u: 3.40E+02 ir: 9.80E-11 iu: 1.31E+02 rsn:   0
+  4 2r: 1.69E-14 2x: 7.94E+05 2u: 1.89E+00 ir: 9.93E-15 iu: 9.06E-01 rsn:   0
+  5 2r: 2.63E-17 2x: 7.94E+05 2u: 8.73E-05 ir: 1.30E-17 iu: 4.83E-05 rsn: rtol
+
+ Step     28 Time=  1.63961E-01 Dt=  2.55072E-02 [y] conv_reason: 3
+  newton =   5 [     117] linear =     5 [       117] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 5 / 5
+  --> SNES Residual: 0.262967E-16 0.262967E-18 0.129782E-16
+  --> max change: dpmx=   7.0754E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.72E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 6.46E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.52E-08 2x: 7.98E+05 2u: 8.04E+03 ir: 5.13E-09 iu: 2.03E+03 rsn:   0
+  2 2r: 7.49E-11 2x: 7.98E+05 2u: 3.43E+02 ir: 3.08E-11 iu: 1.08E+02 rsn:   0
+  3 2r: 2.15E-15 2x: 7.98E+05 2u: 1.11E+00 ir: 1.05E-15 iu: 4.28E-01 rsn: rtol
+
+ Step     29 Time=  1.72379E-01 Dt=  8.41739E-03 [y] conv_reason: 3
+  newton =   3 [     120] linear =     3 [       120] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.214825E-14 0.214825E-16 0.105047E-14
+  --> max change: dpmx=   1.9280E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.66E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 6.16E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 3.87E-08 2x: 8.06E+05 2u: 1.48E+04 ir: 1.28E-08 iu: 3.68E+03 rsn:   0
+  2 2r: 9.54E-10 2x: 8.05E+05 2u: 1.23E+03 ir: 3.60E-10 iu: 3.74E+02 rsn:   0
+  3 2r: 4.99E-13 2x: 8.05E+05 2u: 1.70E+01 ir: 2.25E-13 iu: 6.25E+00 rsn:   0
+  4 2r: 2.30E-17 2x: 8.05E+05 2u: 4.42E-03 ir: 1.13E-17 iu: 2.00E-03 rsn: rtol
+
+ Step     30 Time=  1.89213E-01 Dt=  1.68348E-02 [y] conv_reason: 3
+  newton =   4 [     124] linear =     4 [       124] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.230444E-16 0.230444E-18 0.112503E-16
+  --> max change: dpmx=   3.3151E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.49E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 5.58E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.55E-08 2x: 8.10E+05 2u: 8.03E+03 ir: 4.86E-09 iu: 1.92E+03 rsn:   0
+  2 2r: 9.08E-11 2x: 8.10E+05 2u: 3.71E+02 ir: 3.43E-11 iu: 1.10E+02 rsn:   0
+  3 2r: 3.36E-15 2x: 8.10E+05 2u: 1.36E+00 ir: 1.48E-15 iu: 4.92E-01 rsn:   0
+  4 2r: 1.78E-17 2x: 8.10E+05 2u: 2.66E-05 ir: 8.75E-18 iu: 1.17E-05 rsn: rtol
+
+ Step     31 Time=  2.00000E-01 Dt=  1.07865E-02 [y] conv_reason: 3
+  newton =   4 [     128] linear =     4 [       128] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.178388E-16 0.178388E-18 0.874646E-17
+  --> max change: dpmx=   1.8151E+03
+
+ --> write tecplot output file: 1D_vsat_flow_pulse-002.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.77E-06 2x: 0.00E+00 2u: 0.00E+00 ir: 1.75E-06 iu: 0.00E+00 rsn:   0
+  1 2r: 6.42E-07 2x: 8.09E+05 2u: 2.04E+04 ir: 6.32E-07 iu: 4.87E+03 rsn:   0
+  2 2r: 1.67E-07 2x: 8.07E+05 2u: 5.68E+03 ir: 1.59E-07 iu: 2.85E+03 rsn:   0
+  3 2r: 1.39E-08 2x: 8.07E+05 2u: 9.63E+02 ir: 1.23E-08 iu: 7.04E+02 rsn:   0
+  4 2r: 6.87E-11 2x: 8.07E+05 2u: 4.10E+01 ir: 5.40E-11 iu: 3.70E+01 rsn:   0
+  5 2r: 1.02E-15 2x: 8.07E+05 2u: 1.14E-01 ir: 7.33E-16 iu: 1.12E-01 rsn: rtol
+
+ Step     32 Time=  2.33670E-01 Dt=  3.36696E-02 [y] conv_reason: 3
+  newton =   5 [     133] linear =     5 [       133] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 5 / 5
+  --> SNES Residual: 0.101815E-14 0.101815E-16 0.733140E-15
+  --> max change: dpmx=   8.4616E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.88E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 9.62E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.77E-08 2x: 8.06E+05 2u: 7.06E+03 ir: 9.84E-09 iu: 1.94E+03 rsn:   0
+  2 2r: 1.64E-10 2x: 8.05E+05 2u: 4.28E+02 ir: 1.24E-10 iu: 1.84E+02 rsn:   0
+  3 2r: 1.97E-14 2x: 8.05E+05 2u: 2.65E+00 ir: 1.64E-14 iu: 1.55E+00 rsn:   0
+  4 2r: 2.65E-17 2x: 8.05E+05 2u: 1.68E-04 ir: 1.34E-17 iu: 1.23E-04 rsn: rtol
+
+ Step     33 Time=  2.44781E-01 Dt=  1.11110E-02 [y] conv_reason: 3
+  newton =   4 [     137] linear =     4 [       137] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.265334E-16 0.265334E-18 0.133907E-16
+  --> max change: dpmx=   2.1251E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.34E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 5.55E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.93E-08 2x: 8.02E+05 2u: 1.07E+04 ir: 6.35E-09 iu: 2.53E+03 rsn:   0
+  2 2r: 2.37E-10 2x: 8.01E+05 2u: 9.83E+02 ir: 1.07E-10 iu: 3.23E+02 rsn:   0
+  3 2r: 5.75E-14 2x: 8.01E+05 2u: 1.05E+01 ir: 3.04E-14 iu: 4.48E+00 rsn:   0
+  4 2r: 1.60E-17 2x: 8.01E+05 2u: 1.69E-03 ir: 9.40E-18 iu: 9.03E-04 rsn: rtol
+
+ Step     34 Time=  2.67002E-01 Dt=  2.22219E-02 [y] conv_reason: 3
+  newton =   4 [     141] linear =     4 [       141] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.159773E-16 0.159773E-18 0.940164E-17
+  --> max change: dpmx=   2.8586E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.72E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 3.52E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.51E-08 2x: 7.95E+05 2u: 1.28E+04 ir: 3.80E-09 iu: 2.72E+03 rsn:   0
+  2 2r: 1.74E-10 2x: 7.94E+05 2u: 1.29E+03 ir: 5.80E-11 iu: 3.51E+02 rsn:   0
+  3 2r: 3.50E-14 2x: 7.94E+05 2u: 1.41E+01 ir: 1.43E-14 iu: 4.86E+00 rsn:   0
+  4 2r: 1.92E-17 2x: 7.94E+05 2u: 2.24E-03 ir: 1.10E-17 iu: 9.50E-04 rsn: rtol
+
+ Step     35 Time=  3.00000E-01 Dt=  3.29976E-02 [y] conv_reason: 3
+  newton =   4 [     145] linear =     4 [       145] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.192111E-16 0.192111E-18 0.109680E-16
+  --> max change: dpmx=   3.0748E+03
+
+ --> write tecplot output file: 1D_vsat_flow_pulse-003.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.28E-07 2x: 0.00E+00 2u: 0.00E+00 ir: 2.37E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 1.11E-08 2x: 7.86E+05 2u: 1.45E+04 ir: 2.36E-09 iu: 2.79E+03 rsn:   0
+  2 2r: 1.13E-10 2x: 7.85E+05 2u: 1.43E+03 ir: 3.04E-11 iu: 3.41E+02 rsn:   0
+  3 2r: 1.63E-14 2x: 7.85E+05 2u: 1.44E+01 ir: 5.47E-15 iu: 4.18E+00 rsn:   0
+  4 2r: 2.80E-17 2x: 7.85E+05 2u: 1.82E-03 ir: 1.26E-17 iu: 6.36E-04 rsn: rtol
+
+ Step     36 Time=  3.44444E-01 Dt=  4.44438E-02 [y] conv_reason: 3
+  newton =   4 [     149] linear =     4 [       149] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.280084E-16 0.280084E-18 0.126157E-16
+  --> max change: dpmx=   3.1353E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.99E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 1.66E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 7.22E-09 2x: 7.76E+05 2u: 1.43E+04 ir: 1.36E-09 iu: 2.58E+03 rsn:   0
+  2 2r: 4.90E-11 2x: 7.76E+05 2u: 1.18E+03 ir: 1.15E-11 iu: 2.54E+02 rsn:   0
+  3 2r: 3.10E-15 2x: 7.76E+05 2u: 8.24E+00 ir: 9.05E-16 iu: 2.09E+00 rsn:   0
+  4 2r: 2.32E-17 2x: 7.76E+05 2u: 4.80E-04 ir: 1.36E-17 iu: 1.42E-04 rsn: rtol
+
+ Step     37 Time=  3.94444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   4 [     153] linear =     4 [       153] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 4 / 4
+  --> SNES Residual: 0.231660E-16 0.231660E-18 0.135587E-16
+  --> max change: dpmx=   2.8337E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.05E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 1.23E-08 iu: 0.00E+00 rsn:   0
+  1 2r: 4.56E-09 2x: 7.68E+05 2u: 1.27E+04 ir: 7.83E-10 iu: 2.23E+03 rsn:   0
+  2 2r: 1.81E-11 2x: 7.67E+05 2u: 8.23E+02 ir: 3.85E-12 iu: 1.65E+02 rsn:   0
+  3 2r: 3.87E-16 2x: 7.67E+05 2u: 3.45E+00 ir: 1.03E-16 iu: 7.87E-01 rsn: rtol
+
+ Step     38 Time=  4.44444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     156] linear =     3 [       156] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.387442E-15 0.387442E-17 0.102798E-15
+  --> max change: dpmx=   2.3945E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.58E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 9.73E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 3.08E-09 2x: 7.60E+05 2u: 1.14E+04 ir: 5.01E-10 iu: 1.97E+03 rsn:   0
+  2 2r: 8.06E-12 2x: 7.60E+05 2u: 6.01E+02 ir: 1.59E-12 iu: 1.15E+02 rsn:   0
+  3 2r: 7.55E-17 2x: 7.60E+05 2u: 1.66E+00 ir: 1.76E-17 iu: 3.53E-01 rsn: rtol
+
+ Step     39 Time=  4.94444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     159] linear =     3 [       159] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.754759E-16 0.754759E-18 0.176326E-16
+  --> max change: dpmx=   2.0812E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.42E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 7.95E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 2.15E-09 2x: 7.54E+05 2u: 1.02E+04 ir: 3.44E-10 iu: 1.76E+03 rsn:   0
+  2 2r: 3.99E-12 2x: 7.54E+05 2u: 4.53E+02 ir: 7.55E-13 iu: 8.45E+01 rsn:   0
+  3 2r: 2.56E-17 2x: 7.54E+05 2u: 8.80E-01 ir: 8.24E-18 iu: 1.80E-01 rsn: rtol
+
+ Step     40 Time=  5.44444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     162] linear =     3 [       162] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.255633E-16 0.255633E-18 0.824332E-17
+  --> max change: dpmx=   1.8452E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.52E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 6.64E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 1.54E-09 2x: 7.48E+05 2u: 9.25E+03 ir: 2.47E-10 iu: 1.60E+03 rsn:   0
+  2 2r: 2.12E-12 2x: 7.48E+05 2u: 3.50E+02 ir: 3.97E-13 iu: 6.46E+01 rsn:   0
+  3 2r: 2.05E-17 2x: 7.48E+05 2u: 5.00E-01 ir: 9.78E-18 iu: 1.00E-01 rsn: rtol
+
+ Step     41 Time=  5.94444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     165] linear =     3 [       165] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.205152E-16 0.205152E-18 0.978334E-17
+  --> max change: dpmx=   1.6602E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.82E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 5.63E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 1.13E-09 2x: 7.43E+05 2u: 8.42E+03 ir: 1.84E-10 iu: 1.46E+03 rsn:   0
+  2 2r: 1.19E-12 2x: 7.43E+05 2u: 2.77E+02 ir: 2.24E-13 iu: 5.10E+01 rsn:   0
+  3 2r: 3.42E-17 2x: 7.43E+05 2u: 3.01E-01 ir: 1.77E-17 iu: 5.97E-02 rsn: rtol
+
+ Step     42 Time=  6.44444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     168] linear =     3 [       168] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.341578E-16 0.341578E-18 0.177460E-16
+  --> max change: dpmx=   1.5106E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.26E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 4.84E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 8.50E-10 2x: 7.39E+05 2u: 7.70E+03 ir: 1.40E-10 iu: 1.35E+03 rsn:   0
+  2 2r: 7.03E-13 2x: 7.39E+05 2u: 2.23E+02 ir: 1.33E-13 iu: 4.12E+01 rsn:   0
+  3 2r: 1.98E-17 2x: 7.39E+05 2u: 1.89E-01 ir: 1.10E-17 iu: 3.76E-02 rsn: rtol
+
+ Step     43 Time=  6.94444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     171] linear =     3 [       171] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.198108E-16 0.198108E-18 0.109917E-16
+  --> max change: dpmx=   1.3868E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.81E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 4.21E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 6.52E-10 2x: 7.35E+05 2u: 7.07E+03 ir: 1.09E-10 iu: 1.25E+03 rsn:   0
+  2 2r: 4.31E-13 2x: 7.35E+05 2u: 1.82E+02 ir: 8.29E-14 iu: 3.39E+01 rsn:   0
+  3 2r: 1.80E-17 2x: 7.35E+05 2u: 1.23E-01 ir: 7.61E-18 iu: 2.46E-02 rsn: rtol
+
+ Step     44 Time=  7.44444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     174] linear =     3 [       174] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.179572E-16 0.179572E-18 0.760964E-17
+  --> max change: dpmx=   1.2822E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.45E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 3.69E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 5.10E-10 2x: 7.31E+05 2u: 6.53E+03 ir: 8.67E-11 iu: 1.16E+03 rsn:   0
+  2 2r: 2.73E-13 2x: 7.31E+05 2u: 1.51E+02 ir: 5.34E-14 iu: 2.84E+01 rsn:   0
+  3 2r: 2.34E-17 2x: 7.31E+05 2u: 8.26E-02 ir: 1.18E-17 iu: 1.67E-02 rsn: rtol
+
+ Step     45 Time=  7.94444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     177] linear =     3 [       177] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.234213E-16 0.234213E-18 0.117867E-16
+  --> max change: dpmx=   1.1924E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.15E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 3.27E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 4.05E-10 2x: 7.28E+05 2u: 6.05E+03 ir: 6.98E-11 iu: 1.09E+03 rsn:   0
+  2 2r: 1.79E-13 2x: 7.28E+05 2u: 1.26E+02 ir: 3.55E-14 iu: 2.41E+01 rsn:   0
+  3 2r: 1.85E-17 2x: 7.28E+05 2u: 5.70E-02 ir: 9.58E-18 iu: 1.17E-02 rsn: rtol
+
+ Step     46 Time=  8.44444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     180] linear =     3 [       180] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.185461E-16 0.185461E-18 0.958068E-17
+  --> max change: dpmx=   1.1142E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.91E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 2.91E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 3.27E-10 2x: 7.25E+05 2u: 5.63E+03 ir: 5.70E-11 iu: 1.02E+03 rsn:   0
+  2 2r: 1.20E-13 2x: 7.25E+05 2u: 1.07E+02 ir: 2.42E-14 iu: 2.06E+01 rsn:   0
+  3 2r: 2.22E-17 2x: 7.25E+05 2u: 4.02E-02 ir: 1.21E-17 iu: 8.34E-03 rsn: rtol
+
+ Step     47 Time=  8.94444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     183] linear =     3 [       183] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.222089E-16 0.222089E-18 0.120645E-16
+  --> max change: dpmx=   1.0453E+03
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.70E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 2.62E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 2.67E-10 2x: 7.23E+05 2u: 5.25E+03 ir: 4.71E-11 iu: 9.66E+02 rsn:   0
+  2 2r: 8.23E-14 2x: 7.23E+05 2u: 9.15E+01 ir: 1.68E-14 iu: 1.78E+01 rsn:   0
+  3 2r: 2.25E-17 2x: 7.23E+05 2u: 2.90E-02 ir: 1.31E-17 iu: 6.08E-03 rsn: rtol
+
+ Step     48 Time=  9.44444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     186] linear =     3 [       186] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.225003E-16 0.225003E-18 0.131429E-16
+  --> max change: dpmx=   9.8396E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.53E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 2.36E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 2.20E-10 2x: 7.20E+05 2u: 4.91E+03 ir: 3.93E-11 iu: 9.13E+02 rsn:   0
+  2 2r: 5.77E-14 2x: 7.20E+05 2u: 7.87E+01 ir: 1.20E-14 iu: 1.56E+01 rsn:   0
+  3 2r: 1.90E-17 2x: 7.20E+05 2u: 2.12E-02 ir: 7.84E-18 iu: 4.51E-03 rsn: rtol
+
+ Step     49 Time=  9.94444E-01 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     189] linear =     3 [       189] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.189742E-16 0.189742E-18 0.783569E-17
+  --> max change: dpmx=   9.2894E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.38E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 2.15E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 1.96E-11 2x: 7.20E+05 2u: 5.56E+02 ir: 3.48E-12 iu: 1.04E+02 rsn:   0
+  2 2r: 4.98E-17 2x: 7.20E+05 2u: 8.57E-01 ir: 9.51E-18 iu: 1.67E-01 rsn: rtol
+
+ Step     50 Time=  1.00000E+00 Dt=  5.55619E-03 [y] conv_reason: 3
+  newton =   2 [     191] linear =     2 [       191] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.498031E-16 0.498031E-18 0.951218E-17
+  --> max change: dpmx=   1.0383E+02
+
+ --> write tecplot output file: 1D_vsat_flow_pulse-004.tec
+      0.00 Seconds to write to Tecplot file(s)
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.36E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 2.12E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 1.80E-10 2x: 7.18E+05 2u: 4.58E+03 ir: 3.25E-11 iu: 8.60E+02 rsn:   0
+  2 2r: 3.96E-14 2x: 7.18E+05 2u: 6.72E+01 ir: 8.35E-15 iu: 1.35E+01 rsn:   0
+  3 2r: 1.55E-17 2x: 7.18E+05 2u: 1.53E-02 ir: 8.29E-18 iu: 3.30E-03 rsn: rtol
+
+ Step     51 Time=  1.05000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     194] linear =     3 [       194] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.155427E-16 0.155427E-18 0.829086E-17
+  --> max change: dpmx=   8.7378E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.24E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 1.94E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 1.51E-10 2x: 7.16E+05 2u: 4.30E+03 ir: 2.76E-11 iu: 8.17E+02 rsn:   0
+  2 2r: 2.88E-14 2x: 7.16E+05 2u: 5.86E+01 ir: 6.15E-15 iu: 1.19E+01 rsn:   0
+  3 2r: 2.23E-17 2x: 7.16E+05 2u: 1.15E-02 ir: 1.11E-17 iu: 2.52E-03 rsn: rtol
+
+ Step     52 Time=  1.10000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     197] linear =     3 [       197] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.222857E-16 0.222857E-18 0.110612E-16
+  --> max change: dpmx=   8.2892E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.13E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 1.78E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 1.28E-10 2x: 7.14E+05 2u: 4.05E+03 ir: 2.37E-11 iu: 7.77E+02 rsn:   0
+  2 2r: 2.12E-14 2x: 7.14E+05 2u: 5.14E+01 ir: 4.59E-15 iu: 1.06E+01 rsn:   0
+  3 2r: 2.60E-17 2x: 7.14E+05 2u: 8.79E-03 ir: 1.35E-17 iu: 1.95E-03 rsn: rtol
+
+ Step     53 Time=  1.15000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     200] linear =     3 [       200] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.260499E-16 0.260499E-18 0.134929E-16
+  --> max change: dpmx=   7.8781E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.03E-08 2x: 0.00E+00 2u: 0.00E+00 ir: 1.64E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 1.09E-10 2x: 7.12E+05 2u: 3.83E+03 ir: 2.04E-11 iu: 7.41E+02 rsn:   0
+  2 2r: 1.58E-14 2x: 7.12E+05 2u: 4.53E+01 ir: 3.47E-15 iu: 9.42E+00 rsn:   0
+  3 2r: 2.30E-17 2x: 7.12E+05 2u: 6.78E-03 ir: 9.95E-18 iu: 1.53E-03 rsn: rtol
+
+ Step     54 Time=  1.20000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     203] linear =     3 [       203] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.230152E-16 0.230152E-18 0.995338E-17
+  --> max change: dpmx=   7.4994E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.46E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.51E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 9.40E-11 2x: 7.11E+05 2u: 3.62E+03 ir: 1.77E-11 iu: 7.06E+02 rsn:   0
+  2 2r: 1.20E-14 2x: 7.11E+05 2u: 4.01E+01 ir: 2.65E-15 iu: 8.44E+00 rsn:   0
+  3 2r: 3.14E-17 2x: 7.11E+05 2u: 5.28E-03 ir: 1.48E-17 iu: 1.20E-03 rsn: rtol
+
+ Step     55 Time=  1.25000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     206] linear =     3 [       206] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.314225E-16 0.314225E-18 0.147502E-16
+  --> max change: dpmx=   7.1490E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.71E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.40E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 8.12E-11 2x: 7.09E+05 2u: 3.42E+03 ir: 1.54E-11 iu: 6.75E+02 rsn:   0
+  2 2r: 9.12E-15 2x: 7.09E+05 2u: 3.56E+01 ir: 2.05E-15 iu: 7.58E+00 rsn:   0
+  3 2r: 1.68E-17 2x: 7.09E+05 2u: 4.15E-03 ir: 1.01E-17 iu: 9.58E-04 rsn: rtol
+
+ Step     56 Time=  1.30000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     209] linear =     3 [       209] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.167586E-16 0.167586E-18 0.101406E-16
+  --> max change: dpmx=   6.8234E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.05E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.30E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 7.06E-11 2x: 7.08E+05 2u: 3.24E+03 ir: 1.35E-11 iu: 6.45E+02 rsn:   0
+  2 2r: 7.02E-15 2x: 7.08E+05 2u: 3.17E+01 ir: 1.59E-15 iu: 6.84E+00 rsn:   0
+  3 2r: 1.72E-17 2x: 7.08E+05 2u: 3.28E-03 ir: 8.52E-18 iu: 7.68E-04 rsn: rtol
+
+ Step     57 Time=  1.35000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     212] linear =     3 [       212] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.172297E-16 0.172297E-18 0.852253E-17
+  --> max change: dpmx=   6.5198E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.45E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.21E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 6.15E-11 2x: 7.06E+05 2u: 3.08E+03 ir: 1.19E-11 iu: 6.17E+02 rsn:   0
+  2 2r: 5.45E-15 2x: 7.06E+05 2u: 2.84E+01 ir: 1.25E-15 iu: 6.18E+00 rsn:   0
+  3 2r: 1.58E-17 2x: 7.06E+05 2u: 2.61E-03 ir: 9.30E-18 iu: 6.19E-04 rsn: rtol
+
+ Step     58 Time=  1.40000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     215] linear =     3 [       215] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.157721E-16 0.157721E-18 0.930148E-17
+  --> max change: dpmx=   6.2358E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.92E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.13E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 5.39E-11 2x: 7.05E+05 2u: 2.92E+03 ir: 1.05E-11 iu: 5.91E+02 rsn:   0
+  2 2r: 4.26E-15 2x: 7.05E+05 2u: 2.55E+01 ir: 9.88E-16 iu: 5.60E+00 rsn:   0
+  3 2r: 2.49E-17 2x: 7.05E+05 2u: 2.09E-03 ir: 1.26E-17 iu: 5.02E-04 rsn: rtol
+
+ Step     59 Time=  1.45000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     218] linear =     3 [       218] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.249184E-16 0.249184E-18 0.126193E-16
+  --> max change: dpmx=   5.9692E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.43E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.06E-09 iu: 0.00E+00 rsn:   0
+  1 2r: 4.74E-11 2x: 7.04E+05 2u: 2.78E+03 ir: 9.31E-12 iu: 5.67E+02 rsn:   0
+  2 2r: 3.36E-15 2x: 7.04E+05 2u: 2.29E+01 ir: 7.86E-16 iu: 5.09E+00 rsn:   0
+  3 2r: 2.77E-17 2x: 7.04E+05 2u: 1.69E-03 ir: 1.24E-17 iu: 4.09E-04 rsn: rtol
+
+ Step     60 Time=  1.50000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     221] linear =     3 [       221] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.276873E-16 0.276873E-18 0.124435E-16
+  --> max change: dpmx=   5.7185E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.00E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 9.90E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 4.18E-11 2x: 7.03E+05 2u: 2.65E+03 ir: 8.28E-12 iu: 5.44E+02 rsn:   0
+  2 2r: 2.66E-15 2x: 7.03E+05 2u: 2.06E+01 ir: 6.30E-16 iu: 4.63E+00 rsn:   0
+  3 2r: 2.04E-17 2x: 7.03E+05 2u: 1.37E-03 ir: 1.07E-17 iu: 3.36E-04 rsn: rtol
+
+ Step     61 Time=  1.55000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     224] linear =     3 [       224] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.203799E-16 0.203799E-18 0.107242E-16
+  --> max change: dpmx=   5.4821E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.60E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 9.30E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 3.70E-11 2x: 7.02E+05 2u: 2.52E+03 ir: 7.39E-12 iu: 5.22E+02 rsn:   0
+  2 2r: 2.12E-15 2x: 7.02E+05 2u: 1.86E+01 ir: 5.07E-16 iu: 4.22E+00 rsn:   0
+  3 2r: 1.79E-17 2x: 7.02E+05 2u: 1.11E-03 ir: 9.83E-18 iu: 2.76E-04 rsn: rtol
+
+ Step     62 Time=  1.60000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     227] linear =     3 [       227] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.178881E-16 0.178881E-18 0.982632E-17
+  --> max change: dpmx=   5.2586E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.24E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 8.75E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 3.29E-11 2x: 7.01E+05 2u: 2.40E+03 ir: 6.61E-12 iu: 5.01E+02 rsn:   0
+  2 2r: 1.70E-15 2x: 7.01E+05 2u: 1.68E+01 ir: 4.10E-16 iu: 3.86E+00 rsn:   0
+  3 2r: 2.32E-17 2x: 7.01E+05 2u: 9.08E-04 ir: 1.19E-17 iu: 2.28E-04 rsn: rtol
+
+ Step     63 Time=  1.65000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     230] linear =     3 [       230] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.231730E-16 0.231730E-18 0.119484E-16
+  --> max change: dpmx=   5.0471E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.91E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 8.24E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.93E-11 2x: 7.00E+05 2u: 2.29E+03 ir: 5.93E-12 iu: 4.81E+02 rsn:   0
+  2 2r: 1.37E-15 2x: 7.00E+05 2u: 1.53E+01 ir: 3.33E-16 iu: 3.53E+00 rsn:   0
+  3 2r: 2.54E-17 2x: 7.00E+05 2u: 7.45E-04 ir: 1.31E-17 iu: 1.89E-04 rsn: rtol
+
+ Step     64 Time=  1.70000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     233] linear =     3 [       233] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.253631E-16 0.253631E-18 0.131250E-16
+  --> max change: dpmx=   4.8464E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.61E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 7.77E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.61E-11 2x: 6.99E+05 2u: 2.19E+03 ir: 5.33E-12 iu: 4.62E+02 rsn:   0
+  2 2r: 1.11E-15 2x: 6.99E+05 2u: 1.39E+01 ir: 2.72E-16 iu: 3.23E+00 rsn:   0
+  3 2r: 2.14E-17 2x: 6.99E+05 2u: 6.13E-04 ir: 8.43E-18 iu: 1.57E-04 rsn: rtol
+
+ Step     65 Time=  1.75000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     236] linear =     3 [       236] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.214371E-16 0.214371E-18 0.842957E-17
+  --> max change: dpmx=   4.6558E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.33E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 7.34E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.34E-11 2x: 6.99E+05 2u: 2.09E+03 ir: 4.81E-12 iu: 4.44E+02 rsn:   0
+  2 2r: 9.00E-16 2x: 6.99E+05 2u: 1.26E+01 ir: 2.23E-16 iu: 2.96E+00 rsn:   0
+  3 2r: 3.42E-17 2x: 6.99E+05 2u: 5.06E-04 ir: 1.66E-17 iu: 1.31E-04 rsn: rtol
+
+ Step     66 Time=  1.80000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     239] linear =     3 [       239] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.342399E-16 0.342399E-18 0.166356E-16
+  --> max change: dpmx=   4.4744E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.08E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 6.94E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.10E-11 2x: 6.98E+05 2u: 2.00E+03 ir: 4.34E-12 iu: 4.27E+02 rsn:   0
+  2 2r: 7.34E-16 2x: 6.98E+05 2u: 1.15E+01 ir: 1.83E-16 iu: 2.72E+00 rsn:   0
+  3 2r: 1.95E-17 2x: 6.98E+05 2u: 4.19E-04 ir: 9.72E-18 iu: 1.10E-04 rsn: rtol
+
+ Step     67 Time=  1.85000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     242] linear =     3 [       242] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.195485E-16 0.195485E-18 0.972129E-17
+  --> max change: dpmx=   4.3017E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.84E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 6.57E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.88E-11 2x: 6.97E+05 2u: 1.91E+03 ir: 3.92E-12 iu: 4.11E+02 rsn:   0
+  2 2r: 6.00E-16 2x: 6.97E+05 2u: 1.05E+01 ir: 1.51E-16 iu: 2.50E+00 rsn:   0
+  3 2r: 1.91E-17 2x: 6.97E+05 2u: 3.48E-04 ir: 8.10E-18 iu: 9.19E-05 rsn: rtol
+
+ Step     68 Time=  1.90000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     245] linear =     3 [       245] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.190986E-16 0.190986E-18 0.809679E-17
+  --> max change: dpmx=   4.1370E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.63E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 6.23E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.69E-11 2x: 6.97E+05 2u: 1.83E+03 ir: 3.55E-12 iu: 3.96E+02 rsn:   0
+  2 2r: 4.93E-16 2x: 6.96E+05 2u: 9.55E+00 ir: 1.25E-16 iu: 2.30E+00 rsn:   0
+  3 2r: 2.65E-17 2x: 6.96E+05 2u: 2.90E-04 ir: 1.29E-17 iu: 7.73E-05 rsn: rtol
+
+ Step     69 Time=  1.95000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     248] linear =     3 [       248] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.265347E-16 0.265347E-18 0.129020E-16
+  --> max change: dpmx=   3.9797E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.42E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 5.91E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.53E-11 2x: 6.96E+05 2u: 1.75E+03 ir: 3.23E-12 iu: 3.81E+02 rsn:   0
+  2 2r: 4.06E-16 2x: 6.96E+05 2u: 8.72E+00 ir: 1.04E-16 iu: 2.11E+00 rsn:   0
+  3 2r: 1.66E-17 2x: 6.96E+05 2u: 2.42E-04 ir: 9.74E-18 iu: 6.51E-05 rsn: rtol
+
+ Step     70 Time=  2.00000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     251] linear =     3 [       251] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.166249E-16 0.166249E-18 0.973633E-17
+  --> max change: dpmx=   3.8294E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.24E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 5.61E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.38E-11 2x: 6.95E+05 2u: 1.68E+03 ir: 2.93E-12 iu: 3.67E+02 rsn:   0
+  2 2r: 3.35E-16 2x: 6.95E+05 2u: 7.98E+00 ir: 8.65E-17 iu: 1.95E+00 rsn:   0
+  3 2r: 2.70E-17 2x: 6.95E+05 2u: 2.02E-04 ir: 1.46E-17 iu: 5.49E-05 rsn: rtol
+
+ Step     71 Time=  2.05000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     254] linear =     3 [       254] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.270215E-16 0.270215E-18 0.146141E-16
+  --> max change: dpmx=   3.6856E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.06E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 5.33E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.25E-11 2x: 6.95E+05 2u: 1.61E+03 ir: 2.67E-12 iu: 3.53E+02 rsn:   0
+  2 2r: 2.78E-16 2x: 6.95E+05 2u: 7.30E+00 ir: 7.22E-17 iu: 1.79E+00 rsn:   0
+  3 2r: 2.97E-17 2x: 6.95E+05 2u: 1.69E-04 ir: 1.29E-17 iu: 4.64E-05 rsn: rtol
+
+ Step     72 Time=  2.10000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     257] linear =     3 [       257] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.296852E-16 0.296852E-18 0.129305E-16
+  --> max change: dpmx=   3.5480E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.90E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 5.07E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.13E-11 2x: 6.94E+05 2u: 1.54E+03 ir: 2.43E-12 iu: 3.40E+02 rsn:   0
+  2 2r: 2.31E-16 2x: 6.94E+05 2u: 6.69E+00 ir: 6.03E-17 iu: 1.65E+00 rsn:   0
+  3 2r: 2.02E-17 2x: 6.94E+05 2u: 1.42E-04 ir: 1.04E-17 iu: 3.93E-05 rsn: rtol
+
+ Step     73 Time=  2.15000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     260] linear =     3 [       260] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.202091E-16 0.202091E-18 0.103778E-16
+  --> max change: dpmx=   3.4162E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.75E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 4.82E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.02E-11 2x: 6.94E+05 2u: 1.47E+03 ir: 2.22E-12 iu: 3.27E+02 rsn:   0
+  2 2r: 1.93E-16 2x: 6.94E+05 2u: 6.14E+00 ir: 5.05E-17 iu: 1.53E+00 rsn:   0
+  3 2r: 2.23E-17 2x: 6.94E+05 2u: 1.20E-04 ir: 9.90E-18 iu: 3.33E-05 rsn: rtol
+
+ Step     74 Time=  2.20000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     263] linear =     3 [       263] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.223273E-16 0.223273E-18 0.990171E-17
+  --> max change: dpmx=   3.2898E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.61E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 4.59E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 9.30E-12 2x: 6.93E+05 2u: 1.41E+03 ir: 2.03E-12 iu: 3.15E+02 rsn:   0
+  2 2r: 1.61E-16 2x: 6.93E+05 2u: 5.63E+00 ir: 4.24E-17 iu: 1.41E+00 rsn:   0
+  3 2r: 2.32E-17 2x: 6.93E+05 2u: 1.01E-04 ir: 1.19E-17 iu: 2.82E-05 rsn: rtol
+
+ Step     75 Time=  2.25000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     266] linear =     3 [       266] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.231802E-16 0.231802E-18 0.118707E-16
+  --> max change: dpmx=   3.1686E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.48E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 4.38E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 8.46E-12 2x: 6.93E+05 2u: 1.36E+03 ir: 1.85E-12 iu: 3.04E+02 rsn:   0
+  2 2r: 1.35E-16 2x: 6.93E+05 2u: 5.17E+00 ir: 3.56E-17 iu: 1.30E+00 rsn:   0
+  3 2r: 2.45E-17 2x: 6.93E+05 2u: 8.50E-05 ir: 1.26E-17 iu: 2.40E-05 rsn: rtol
+
+ Step     76 Time=  2.30000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     269] linear =     3 [       269] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.244930E-16 0.244930E-18 0.125503E-16
+  --> max change: dpmx=   3.0523E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.35E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 4.17E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 7.70E-12 2x: 6.92E+05 2u: 1.30E+03 ir: 1.69E-12 iu: 2.93E+02 rsn:   0
+  2 2r: 1.16E-16 2x: 6.92E+05 2u: 4.75E+00 ir: 3.00E-17 iu: 1.20E+00 rsn:   0
+  3 2r: 3.00E-17 2x: 6.92E+05 2u: 7.18E-05 ir: 1.32E-17 iu: 2.04E-05 rsn: stol
+
+ Step     77 Time=  2.35000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     272] linear =     3 [       272] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.299948E-16 0.299948E-18 0.131936E-16
+  --> max change: dpmx=   2.9406E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.24E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 3.98E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 7.01E-12 2x: 6.92E+05 2u: 1.25E+03 ir: 1.55E-12 iu: 2.82E+02 rsn:   0
+  2 2r: 9.85E-17 2x: 6.92E+05 2u: 4.37E+00 ir: 2.53E-17 iu: 1.11E+00 rsn:   0
+  3 2r: 1.86E-17 2x: 6.92E+05 2u: 6.07E-05 ir: 7.74E-18 iu: 1.74E-05 rsn: rtol
+
+ Step     78 Time=  2.40000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     275] linear =     3 [       275] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.185593E-16 0.185593E-18 0.773976E-17
+  --> max change: dpmx=   2.8333E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.13E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 3.80E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 6.39E-12 2x: 6.92E+05 2u: 1.20E+03 ir: 1.42E-12 iu: 2.72E+02 rsn:   0
+  2 2r: 8.32E-17 2x: 6.92E+05 2u: 4.02E+00 ir: 2.14E-17 iu: 1.03E+00 rsn:   0
+  3 2r: 2.33E-17 2x: 6.92E+05 2u: 5.14E-05 ir: 1.17E-17 iu: 1.48E-05 rsn: stol
+
+ Step     79 Time=  2.45000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     278] linear =     3 [       278] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.233002E-16 0.233002E-18 0.117429E-16
+  --> max change: dpmx=   2.7302E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.02E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 3.63E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 5.84E-12 2x: 6.91E+05 2u: 1.15E+03 ir: 1.30E-12 iu: 2.62E+02 rsn:   0
+  2 2r: 7.18E-17 2x: 6.91E+05 2u: 3.70E+00 ir: 1.81E-17 iu: 9.52E-01 rsn:   0
+  3 2r: 1.98E-17 2x: 6.91E+05 2u: 4.36E-05 ir: 7.31E-18 iu: 1.26E-05 rsn: rtol
+
+ Step     80 Time=  2.50000E+00 Dt=  5.00000E-02 [y] conv_reason: 3
+  newton =   3 [     281] linear =     3 [       281] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.198423E-16 0.198423E-18 0.731127E-17
+  --> max change: dpmx=   2.6311E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.93E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 3.47E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 5.33E-12 2x: 6.91E+05 2u: 1.10E+03 ir: 1.20E-12 iu: 2.53E+02 rsn:   0
+  2 2r: 6.05E-17 2x: 6.91E+05 2u: 3.41E+00 ir: 1.53E-17 iu: 8.81E-01 rsn:   0
+  3 2r: 2.70E-17 2x: 6.91E+05 2u: 3.70E-05 ir: 1.31E-17 iu: 1.08E-05 rsn: stol
+
+ Step     81 Time=  2.55000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     284] linear =     3 [       284] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.270119E-16 0.270119E-18 0.130896E-16
+  --> max change: dpmx=   2.5358E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.84E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 3.32E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 4.87E-12 2x: 6.91E+05 2u: 1.06E+03 ir: 1.10E-12 iu: 2.44E+02 rsn:   0
+  2 2r: 5.59E-17 2x: 6.91E+05 2u: 3.14E+00 ir: 1.53E-17 iu: 8.15E-01 rsn:   0
+  3 2r: 2.41E-17 2x: 6.91E+05 2u: 3.14E-05 ir: 1.53E-17 iu: 9.22E-06 rsn: stol
+
+ Step     82 Time=  2.60000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     287] linear =     3 [       287] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.241458E-16 0.241458E-18 0.153486E-16
+  --> max change: dpmx=   2.4441E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.75E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 3.17E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 4.46E-12 2x: 6.90E+05 2u: 1.02E+03 ir: 1.01E-12 iu: 2.35E+02 rsn:   0
+  2 2r: 4.94E-17 2x: 6.90E+05 2u: 2.90E+00 ir: 1.22E-17 iu: 7.55E-01 rsn:   0
+  3 2r: 2.14E-17 2x: 6.90E+05 2u: 2.67E-05 ir: 9.15E-18 iu: 7.88E-06 rsn: stol
+
+ Step     83 Time=  2.65000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     290] linear =     3 [       290] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.214243E-16 0.214243E-18 0.915283E-17
+  --> max change: dpmx=   2.3559E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.67E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 3.03E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 4.08E-12 2x: 6.90E+05 2u: 9.80E+02 ir: 9.29E-13 iu: 2.26E+02 rsn:   0
+  2 2r: 3.82E-17 2x: 6.90E+05 2u: 2.67E+00 ir: 9.82E-18 iu: 6.99E-01 rsn:   0
+  3 2r: 2.32E-17 2x: 6.90E+05 2u: 2.27E-05 ir: 1.10E-17 iu: 6.75E-06 rsn: stol
+
+ Step     84 Time=  2.70000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     293] linear =     3 [       293] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.232018E-16 0.232018E-18 0.110065E-16
+  --> max change: dpmx=   2.2710E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.59E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.90E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 3.74E-12 2x: 6.90E+05 2u: 9.41E+02 ir: 8.55E-13 iu: 2.18E+02 rsn:   0
+  2 2r: 3.12E-17 2x: 6.90E+05 2u: 2.47E+00 ir: 7.96E-18 iu: 6.48E-01 rsn:   0
+  3 2r: 1.78E-17 2x: 6.90E+05 2u: 1.93E-05 ir: 1.23E-17 iu: 5.78E-06 rsn: stol
+
+ Step     85 Time=  2.75000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     296] linear =     3 [       296] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.178400E-16 0.178400E-18 0.122955E-16
+  --> max change: dpmx=   2.1893E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.52E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.78E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 3.43E-12 2x: 6.89E+05 2u: 9.05E+02 ir: 7.87E-13 iu: 2.10E+02 rsn:   0
+  2 2r: 3.00E-17 2x: 6.89E+05 2u: 2.28E+00 ir: 7.69E-18 iu: 6.00E-01 rsn:   0
+  3 2r: 2.36E-17 2x: 6.89E+05 2u: 1.65E-05 ir: 1.15E-17 iu: 4.95E-06 rsn: stol
+
+ Step     86 Time=  2.80000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     299] linear =     3 [       299] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.235799E-16 0.235799E-18 0.114798E-16
+  --> max change: dpmx=   2.1105E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.45E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.66E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 3.14E-12 2x: 6.89E+05 2u: 8.70E+02 ir: 7.24E-13 iu: 2.03E+02 rsn:   0
+  2 2r: 3.18E-17 2x: 6.89E+05 2u: 2.10E+00 ir: 1.08E-17 iu: 5.57E-01 rsn:   0
+  3 2r: 3.03E-17 2x: 6.89E+05 2u: 1.41E-05 ir: 1.22E-17 iu: 4.24E-06 rsn: stol
+
+ Step     87 Time=  2.85000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     302] linear =     3 [       302] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.303296E-16 0.303296E-18 0.122309E-16
+  --> max change: dpmx=   2.0347E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.39E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.55E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.89E-12 2x: 6.89E+05 2u: 8.36E+02 ir: 6.67E-13 iu: 1.96E+02 rsn:   0
+  2 2r: 3.36E-17 2x: 6.89E+05 2u: 1.94E+00 ir: 1.20E-17 iu: 5.16E-01 rsn:   0
+  3 2r: 2.47E-17 2x: 6.89E+05 2u: 1.20E-05 ir: 1.20E-17 iu: 3.64E-06 rsn: stol
+
+ Step     88 Time=  2.90000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     305] linear =     3 [       305] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.247449E-16 0.247449E-18 0.119914E-16
+  --> max change: dpmx=   1.9617E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.33E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.44E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.65E-12 2x: 6.89E+05 2u: 8.04E+02 ir: 6.15E-13 iu: 1.89E+02 rsn:   0
+  2 2r: 2.24E-17 2x: 6.89E+05 2u: 1.79E+00 ir: 9.35E-18 iu: 4.78E-01 rsn:   0
+  3 2r: 1.66E-17 2x: 6.89E+05 2u: 1.02E-05 ir: 9.35E-18 iu: 3.12E-06 rsn: stol
+
+ Step     89 Time=  2.95000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     308] linear =     3 [       308] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.166058E-16 0.166058E-18 0.934987E-17
+  --> max change: dpmx=   1.8914E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.27E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.34E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.44E-12 2x: 6.88E+05 2u: 7.73E+02 ir: 5.67E-13 iu: 1.82E+02 rsn:   0
+  2 2r: 2.68E-17 2x: 6.88E+05 2u: 1.66E+00 ir: 1.30E-17 iu: 4.44E-01 rsn:   0
+  3 2r: 2.39E-17 2x: 6.88E+05 2u: 8.75E-06 ir: 1.30E-17 iu: 2.68E-06 rsn: stol
+
+ Step     90 Time=  3.00000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     311] linear =     3 [       311] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.238520E-16 0.238520E-18 0.129623E-16
+  --> max change: dpmx=   1.8236E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.21E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.25E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.24E-12 2x: 6.88E+05 2u: 7.43E+02 ir: 5.23E-13 iu: 1.75E+02 rsn:   0
+  2 2r: 2.43E-17 2x: 6.88E+05 2u: 1.53E+00 ir: 1.02E-17 iu: 4.11E-01 rsn:   0
+  3 2r: 2.01E-17 2x: 6.88E+05 2u: 7.48E-06 ir: 1.02E-17 iu: 2.30E-06 rsn: stol
+
+ Step     91 Time=  3.05000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     314] linear =     3 [       314] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.200751E-16 0.200751E-18 0.101523E-16
+  --> max change: dpmx=   1.7583E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.16E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.15E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 2.06E-12 2x: 6.88E+05 2u: 7.15E+02 ir: 4.83E-13 iu: 1.69E+02 rsn:   0
+  2 2r: 2.03E-17 2x: 6.88E+05 2u: 1.42E+00 ir: 1.13E-17 iu: 3.82E-01 rsn:   0
+  3 2r: 1.79E-17 2x: 6.88E+05 2u: 6.40E-06 ir: 1.13E-17 iu: 1.97E-06 rsn: stol
+
+ Step     92 Time=  3.10000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     317] linear =     3 [       317] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.178898E-16 0.178898E-18 0.112750E-16
+  --> max change: dpmx=   1.6954E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.11E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 2.07E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.89E-12 2x: 6.88E+05 2u: 6.88E+02 ir: 4.46E-13 iu: 1.63E+02 rsn:   0
+  2 2r: 1.85E-17 2x: 6.88E+05 2u: 1.31E+00 ir: 8.54E-18 iu: 3.54E-01 rsn:   0
+  3 2r: 1.67E-17 2x: 6.88E+05 2u: 5.47E-06 ir: 8.54E-18 iu: 1.70E-06 rsn: stol
+
+ Step     93 Time=  3.15000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     320] linear =     3 [       320] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.166641E-16 0.166641E-18 0.853989E-17
+  --> max change: dpmx=   1.6347E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.06E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.98E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.74E-12 2x: 6.88E+05 2u: 6.62E+02 ir: 4.12E-13 iu: 1.57E+02 rsn:   0
+  2 2r: 2.53E-17 2x: 6.88E+05 2u: 1.21E+00 ir: 1.40E-17 iu: 3.28E-01 rsn:   0
+  3 2r: 2.45E-17 2x: 6.88E+05 2u: 4.68E-06 ir: 1.40E-17 iu: 1.46E-06 rsn: stol
+
+ Step     94 Time=  3.20000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     323] linear =     3 [       323] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.244636E-16 0.244636E-18 0.140322E-16
+  --> max change: dpmx=   1.5762E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.02E-09 2x: 0.00E+00 2u: 0.00E+00 ir: 1.90E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.61E-12 2x: 6.87E+05 2u: 6.37E+02 ir: 3.80E-13 iu: 1.52E+02 rsn:   0
+  2 2r: 1.81E-17 2x: 6.87E+05 2u: 1.12E+00 ir: 8.54E-18 iu: 3.05E-01 rsn:   0
+  3 2r: 1.77E-17 2x: 6.87E+05 2u: 4.01E-06 ir: 8.54E-18 iu: 1.25E-06 rsn: stol
+
+ Step     95 Time=  3.25000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     326] linear =     3 [       326] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.176879E-16 0.176879E-18 0.854042E-17
+  --> max change: dpmx=   1.5199E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.75E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.83E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.48E-12 2x: 6.87E+05 2u: 6.12E+02 ir: 3.51E-13 iu: 1.46E+02 rsn:   0
+  2 2r: 3.13E-17 2x: 6.87E+05 2u: 1.04E+00 ir: 1.61E-17 iu: 2.83E-01 rsn:   0
+  3 2r: 2.81E-17 2x: 6.87E+05 2u: 3.44E-06 ir: 1.61E-17 iu: 1.08E-06 rsn: stol
+
+ Step     96 Time=  3.30000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     329] linear =     3 [       329] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.281419E-16 0.281419E-18 0.161245E-16
+  --> max change: dpmx=   1.4655E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.34E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.75E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.36E-12 2x: 6.87E+05 2u: 5.89E+02 ir: 3.25E-13 iu: 1.41E+02 rsn:   0
+  2 2r: 2.24E-17 2x: 6.87E+05 2u: 9.60E-01 ir: 1.48E-17 iu: 2.62E-01 rsn:   0
+  3 2r: 2.21E-17 2x: 6.87E+05 2u: 2.94E-06 ir: 1.48E-17 iu: 9.26E-07 rsn: stol
+
+ Step     97 Time=  3.35000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     332] linear =     3 [       332] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.220834E-16 0.220834E-18 0.148123E-16
+  --> max change: dpmx=   1.4131E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.95E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.68E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.26E-12 2x: 6.87E+05 2u: 5.67E+02 ir: 3.00E-13 iu: 1.36E+02 rsn:   0
+  2 2r: 1.39E-17 2x: 6.87E+05 2u: 8.88E-01 ir: 8.42E-18 iu: 2.44E-01 rsn:   0
+  3 2r: 1.35E-17 2x: 6.87E+05 2u: 2.52E-06 ir: 8.42E-18 iu: 7.96E-07 rsn: stol
+
+ Step     98 Time=  3.40000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     335] linear =     3 [       335] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.134617E-16 0.134617E-18 0.842110E-17
+  --> max change: dpmx=   1.3626E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.57E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.62E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.16E-12 2x: 6.87E+05 2u: 5.46E+02 ir: 2.77E-13 iu: 1.31E+02 rsn:   0
+  2 2r: 2.00E-17 2x: 6.87E+05 2u: 8.22E-01 ir: 8.06E-18 iu: 2.26E-01 rsn:   0
+  3 2r: 1.98E-17 2x: 6.87E+05 2u: 2.17E-06 ir: 8.06E-18 iu: 6.85E-07 rsn: stol
+
+ Step     99 Time=  3.45000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     338] linear =     3 [       338] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.197739E-16 0.197739E-18 0.806386E-17
+  --> max change: dpmx=   1.3139E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.22E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.55E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 1.07E-12 2x: 6.87E+05 2u: 5.25E+02 ir: 2.57E-13 iu: 1.26E+02 rsn:   0
+  2 2r: 1.62E-17 2x: 6.87E+05 2u: 7.62E-01 ir: 8.27E-18 iu: 2.10E-01 rsn:   0
+  3 2r: 1.60E-17 2x: 6.87E+05 2u: 1.86E-06 ir: 8.27E-18 iu: 5.90E-07 rsn: stol
+
+ Step    100 Time=  3.50000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     341] linear =     3 [       341] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.160235E-16 0.160235E-18 0.827032E-17
+  --> max change: dpmx=   1.2669E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.88E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.49E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 9.87E-13 2x: 6.87E+05 2u: 5.06E+02 ir: 2.37E-13 iu: 1.22E+02 rsn:   0
+  2 2r: 1.96E-17 2x: 6.87E+05 2u: 7.05E-01 ir: 9.42E-18 iu: 1.95E-01 rsn:   0
+  3 2r: 1.95E-17 2x: 6.87E+05 2u: 1.59E-06 ir: 9.42E-18 iu: 5.07E-07 rsn: stol
+
+ Step    101 Time=  3.55000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     344] linear =     3 [       344] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.194949E-16 0.194949E-18 0.942335E-17
+  --> max change: dpmx=   1.2216E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.56E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.43E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 9.11E-13 2x: 6.86E+05 2u: 4.87E+02 ir: 2.20E-13 iu: 1.18E+02 rsn:   0
+  2 2r: 2.29E-17 2x: 6.86E+05 2u: 6.53E-01 ir: 1.19E-17 iu: 1.81E-01 rsn:   0
+  3 2r: 2.28E-17 2x: 6.86E+05 2u: 1.37E-06 ir: 1.19E-17 iu: 4.37E-07 rsn: stol
+
+ Step    102 Time=  3.60000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     347] linear =     3 [       347] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.227783E-16 0.227783E-18 0.119071E-16
+  --> max change: dpmx=   1.1780E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.25E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.38E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 8.41E-13 2x: 6.86E+05 2u: 4.69E+02 ir: 2.03E-13 iu: 1.13E+02 rsn:   0
+  2 2r: 2.85E-17 2x: 6.86E+05 2u: 6.05E-01 ir: 1.19E-17 iu: 1.68E-01 rsn:   0
+  3 2r: 2.84E-17 2x: 6.86E+05 2u: 1.17E-06 ir: 1.19E-17 iu: 3.76E-07 rsn: stol
+
+ Step    103 Time=  3.65000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     350] linear =     3 [       350] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.284413E-16 0.284413E-18 0.118945E-16
+  --> max change: dpmx=   1.1359E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.96E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.32E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 7.76E-13 2x: 6.86E+05 2u: 4.51E+02 ir: 1.88E-13 iu: 1.09E+02 rsn:   0
+  2 2r: 2.30E-17 2x: 6.86E+05 2u: 5.61E-01 ir: 9.52E-18 iu: 1.56E-01 rsn:   0
+  3 2r: 2.29E-17 2x: 6.86E+05 2u: 1.01E-06 ir: 9.52E-18 iu: 3.24E-07 rsn: stol
+
+ Step    104 Time=  3.70000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     353] linear =     3 [       353] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.229412E-16 0.229412E-18 0.951811E-17
+  --> max change: dpmx=   1.0952E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.68E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.27E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 7.17E-13 2x: 6.86E+05 2u: 4.34E+02 ir: 1.74E-13 iu: 1.05E+02 rsn:   0
+  2 2r: 2.58E-17 2x: 6.86E+05 2u: 5.20E-01 ir: 1.29E-17 iu: 1.45E-01 rsn:   0
+  3 2r: 2.58E-17 2x: 6.86E+05 2u: 8.66E-07 ir: 1.29E-17 iu: 2.79E-07 rsn: stol
+
+ Step    105 Time=  3.75000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     356] linear =     3 [       356] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.257908E-16 0.257908E-18 0.128888E-16
+  --> max change: dpmx=   1.0561E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.41E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.22E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 6.62E-13 2x: 6.86E+05 2u: 4.18E+02 ir: 1.61E-13 iu: 1.02E+02 rsn:   0
+  2 2r: 1.95E-17 2x: 6.86E+05 2u: 4.82E-01 ir: 8.98E-18 iu: 1.34E-01 rsn:   0
+  3 2r: 1.94E-17 2x: 6.86E+05 2u: 7.44E-07 ir: 8.98E-18 iu: 2.40E-07 rsn: stol
+
+ Step    106 Time=  3.80000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     359] linear =     3 [       359] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.194326E-16 0.194326E-18 0.898067E-17
+  --> max change: dpmx=   1.0183E+02
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.15E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.17E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 6.12E-13 2x: 6.86E+05 2u: 4.03E+02 ir: 1.49E-13 iu: 9.81E+01 rsn:   0
+  2 2r: 1.86E-17 2x: 6.86E+05 2u: 4.46E-01 ir: 9.06E-18 iu: 1.25E-01 rsn:   0
+  3 2r: 1.84E-17 2x: 6.86E+05 2u: 6.40E-07 ir: 9.06E-18 iu: 2.07E-07 rsn: stol
+
+ Step    107 Time=  3.85000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     362] linear =     3 [       362] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.184117E-16 0.184117E-18 0.906293E-17
+  --> max change: dpmx=   9.8188E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.90E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.13E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 5.66E-13 2x: 6.86E+05 2u: 3.88E+02 ir: 1.38E-13 iu: 9.46E+01 rsn:   0
+  2 2r: 2.48E-17 2x: 6.86E+05 2u: 4.14E-01 ir: 1.26E-17 iu: 1.16E-01 rsn:   0
+  3 2r: 2.48E-17 2x: 6.86E+05 2u: 5.50E-07 ir: 1.26E-17 iu: 1.78E-07 rsn: stol
+
+ Step    108 Time=  3.90000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     365] linear =     3 [       365] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.248036E-16 0.248036E-18 0.126085E-16
+  --> max change: dpmx=   9.4675E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.67E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.09E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 5.23E-13 2x: 6.86E+05 2u: 3.73E+02 ir: 1.28E-13 iu: 9.12E+01 rsn:   0
+  2 2r: 2.34E-17 2x: 6.86E+05 2u: 3.84E-01 ir: 1.24E-17 iu: 1.08E-01 rsn:   0
+  3 2r: 2.88E-17 2x: 6.86E+05 2u: 4.73E-07 ir: 1.24E-17 iu: 1.54E-07 rsn: stol
+
+ Step    109 Time=  3.95000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     368] linear =     3 [       368] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.287778E-16 0.287778E-18 0.123530E-16
+  --> max change: dpmx=   9.1287E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.45E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.04E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 4.84E-13 2x: 6.86E+05 2u: 3.59E+02 ir: 1.19E-13 iu: 8.79E+01 rsn:   0
+  2 2r: 2.48E-17 2x: 6.86E+05 2u: 3.56E-01 ir: 1.28E-17 iu: 1.00E-01 rsn:   0
+  3 2r: 2.48E-17 2x: 6.86E+05 2u: 4.06E-07 ir: 1.28E-17 iu: 1.32E-07 rsn: stol
+
+ Step    110 Time=  4.00000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     371] linear =     3 [       371] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.247638E-16 0.247638E-18 0.128229E-16
+  --> max change: dpmx=   8.8019E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.23E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 1.00E-10 iu: 0.00E+00 rsn:   0
+  1 2r: 4.47E-13 2x: 6.85E+05 2u: 3.46E+02 ir: 1.10E-13 iu: 8.48E+01 rsn:   0
+  2 2r: 1.53E-17 2x: 6.85E+05 2u: 3.30E-01 ir: 7.38E-18 iu: 9.28E-02 rsn:   0
+  3 2r: 1.55E-17 2x: 6.85E+05 2u: 3.49E-07 ir: 7.38E-18 iu: 1.14E-07 rsn: stol
+
+ Step    111 Time=  4.05000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     374] linear =     3 [       374] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.154710E-16 0.154710E-18 0.737565E-17
+  --> max change: dpmx=   8.4868E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.02E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 9.66E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 4.14E-13 2x: 6.85E+05 2u: 3.33E+02 ir: 1.02E-13 iu: 8.17E+01 rsn:   0
+  2 2r: 1.95E-17 2x: 6.85E+05 2u: 3.06E-01 ir: 1.01E-17 iu: 8.62E-02 rsn:   0
+  3 2r: 1.95E-17 2x: 6.85E+05 2u: 3.01E-07 ir: 1.01E-17 iu: 9.83E-08 rsn: stol
+
+ Step    112 Time=  4.10000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     377] linear =     3 [       377] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.194874E-16 0.194874E-18 0.101173E-16
+  --> max change: dpmx=   8.1829E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.83E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 9.29E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 3.83E-13 2x: 6.85E+05 2u: 3.21E+02 ir: 9.43E-14 iu: 7.88E+01 rsn:   0
+  2 2r: 1.94E-17 2x: 6.85E+05 2u: 2.83E-01 ir: 9.94E-18 iu: 8.01E-02 rsn:   0
+  3 2r: 1.94E-17 2x: 6.85E+05 2u: 2.59E-07 ir: 9.94E-18 iu: 8.47E-08 rsn: stol
+
+ Step    113 Time=  4.15000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     380] linear =     3 [       380] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.193961E-16 0.193961E-18 0.994268E-17
+  --> max change: dpmx=   7.8898E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.64E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 8.94E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 3.54E-13 2x: 6.85E+05 2u: 3.09E+02 ir: 8.74E-14 iu: 7.60E+01 rsn:   0
+  2 2r: 2.73E-17 2x: 6.85E+05 2u: 2.63E-01 ir: 1.40E-17 iu: 7.44E-02 rsn:   0
+  3 2r: 2.05E-17 2x: 6.85E+05 2u: 2.22E-07 ir: 1.14E-17 iu: 7.30E-08 rsn: stol
+
+ Step    114 Time=  4.20000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     383] linear =     3 [       383] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.205193E-16 0.205193E-18 0.113875E-16
+  --> max change: dpmx=   7.6071E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.46E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 8.60E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 3.28E-13 2x: 6.85E+05 2u: 2.98E+02 ir: 8.10E-14 iu: 7.33E+01 rsn:   0
+  2 2r: 2.00E-17 2x: 6.85E+05 2u: 2.44E-01 ir: 8.68E-18 iu: 6.91E-02 rsn:   0
+  3 2r: 2.00E-17 2x: 6.85E+05 2u: 1.91E-07 ir: 8.68E-18 iu: 6.29E-08 rsn: stol
+
+ Step    115 Time=  4.25000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     386] linear =     3 [       386] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.200395E-16 0.200395E-18 0.867785E-17
+  --> max change: dpmx=   7.3345E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.28E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 8.27E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 3.03E-13 2x: 6.85E+05 2u: 2.87E+02 ir: 7.51E-14 iu: 7.07E+01 rsn:   0
+  2 2r: 2.55E-17 2x: 6.85E+05 2u: 2.26E-01 ir: 1.41E-17 iu: 6.42E-02 rsn:   0
+  3 2r: 2.55E-17 2x: 6.85E+05 2u: 1.65E-07 ir: 1.41E-17 iu: 5.42E-08 rsn: stol
+
+ Step    116 Time=  4.30000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     389] linear =     3 [       389] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.254617E-16 0.254617E-18 0.140694E-16
+  --> max change: dpmx=   7.0716E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.12E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 7.96E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.81E-13 2x: 6.85E+05 2u: 2.76E+02 ir: 6.96E-14 iu: 6.81E+01 rsn:   0
+  2 2r: 1.83E-17 2x: 6.85E+05 2u: 2.10E-01 ir: 8.57E-18 iu: 5.96E-02 rsn:   0
+  3 2r: 1.84E-17 2x: 6.85E+05 2u: 1.42E-07 ir: 8.57E-18 iu: 4.68E-08 rsn: stol
+
+ Step    117 Time=  4.35000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     392] linear =     3 [       392] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.183690E-16 0.183690E-18 0.856859E-17
+  --> max change: dpmx=   6.8181E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.96E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 7.66E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.60E-13 2x: 6.85E+05 2u: 2.66E+02 ir: 6.46E-14 iu: 6.57E+01 rsn:   0
+  2 2r: 2.52E-17 2x: 6.85E+05 2u: 1.95E-01 ir: 1.27E-17 iu: 5.53E-02 rsn:   0
+  3 2r: 2.51E-17 2x: 6.85E+05 2u: 1.22E-07 ir: 1.27E-17 iu: 4.03E-08 rsn: stol
+
+ Step    118 Time=  4.40000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     395] linear =     3 [       395] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.250935E-16 0.250935E-18 0.126531E-16
+  --> max change: dpmx=   6.5736E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.80E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 7.37E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.41E-13 2x: 6.85E+05 2u: 2.56E+02 ir: 5.99E-14 iu: 6.33E+01 rsn:   0
+  2 2r: 1.62E-17 2x: 6.85E+05 2u: 1.81E-01 ir: 7.45E-18 iu: 5.14E-02 rsn:   0
+  3 2r: 1.62E-17 2x: 6.85E+05 2u: 1.05E-07 ir: 7.45E-18 iu: 3.47E-08 rsn: stol
+
+ Step    119 Time=  4.45000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     398] linear =     3 [       398] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.161701E-16 0.161701E-18 0.744605E-17
+  --> max change: dpmx=   6.3378E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.66E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 7.09E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.23E-13 2x: 6.85E+05 2u: 2.47E+02 ir: 5.55E-14 iu: 6.11E+01 rsn:   0
+  2 2r: 2.54E-17 2x: 6.85E+05 2u: 1.67E-01 ir: 1.25E-17 iu: 4.77E-02 rsn:   0
+  3 2r: 2.54E-17 2x: 6.85E+05 2u: 9.04E-08 ir: 1.25E-17 iu: 3.00E-08 rsn: stol
+
+ Step    120 Time=  4.50000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     401] linear =     3 [       401] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.253651E-16 0.253651E-18 0.124595E-16
+  --> max change: dpmx=   6.1104E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.52E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 6.83E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.07E-13 2x: 6.85E+05 2u: 2.38E+02 ir: 5.15E-14 iu: 5.89E+01 rsn:   0
+  2 2r: 1.86E-17 2x: 6.85E+05 2u: 1.55E-01 ir: 9.39E-18 iu: 4.43E-02 rsn:   0
+  3 2r: 1.85E-17 2x: 6.85E+05 2u: 7.79E-08 ir: 9.39E-18 iu: 2.58E-08 rsn: stol
+
+ Step    121 Time=  4.55000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     404] linear =     3 [       404] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.185451E-16 0.185451E-18 0.939412E-17
+  --> max change: dpmx=   5.8911E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.38E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 6.57E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.91E-13 2x: 6.85E+05 2u: 2.29E+02 ir: 4.77E-14 iu: 5.68E+01 rsn:   0
+  2 2r: 2.13E-17 2x: 6.85E+05 2u: 1.44E-01 ir: 1.38E-17 iu: 4.12E-02 rsn:   0
+  3 2r: 2.13E-17 2x: 6.85E+05 2u: 6.71E-08 ir: 1.38E-17 iu: 2.23E-08 rsn: stol
+
+ Step    122 Time=  4.60000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     407] linear =     3 [       407] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.213495E-16 0.213495E-18 0.137850E-16
+  --> max change: dpmx=   5.6796E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.25E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 6.32E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.77E-13 2x: 6.85E+05 2u: 2.21E+02 ir: 4.43E-14 iu: 5.47E+01 rsn:   0
+  2 2r: 2.40E-17 2x: 6.85E+05 2u: 1.34E-01 ir: 8.76E-18 iu: 3.83E-02 rsn:   0
+  3 2r: 2.40E-17 2x: 6.85E+05 2u: 5.77E-08 ir: 8.76E-18 iu: 1.92E-08 rsn: stol
+
+ Step    123 Time=  4.65000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     410] linear =     3 [       410] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.239983E-16 0.239983E-18 0.876319E-17
+  --> max change: dpmx=   5.4757E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.13E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 6.09E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.64E-13 2x: 6.85E+05 2u: 2.13E+02 ir: 4.11E-14 iu: 5.28E+01 rsn:   0
+  2 2r: 2.86E-17 2x: 6.85E+05 2u: 1.24E-01 ir: 1.23E-17 iu: 3.55E-02 rsn:   0
+  3 2r: 2.86E-17 2x: 6.85E+05 2u: 4.97E-08 ir: 1.23E-17 iu: 1.66E-08 rsn: stol
+
+ Step    124 Time=  4.70000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     413] linear =     3 [       413] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.286332E-16 0.286332E-18 0.122502E-16
+  --> max change: dpmx=   5.2790E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.01E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 5.86E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.52E-13 2x: 6.84E+05 2u: 2.05E+02 ir: 3.81E-14 iu: 5.09E+01 rsn:   0
+  2 2r: 1.77E-17 2x: 6.84E+05 2u: 1.15E-01 ir: 8.29E-18 iu: 3.30E-02 rsn:   0
+  3 2r: 1.77E-17 2x: 6.84E+05 2u: 4.28E-08 ir: 8.29E-18 iu: 1.43E-08 rsn: stol
+
+ Step    125 Time=  4.75000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     416] linear =     3 [       416] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.177419E-16 0.177419E-18 0.829171E-17
+  --> max change: dpmx=   5.0894E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.89E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 5.64E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.41E-13 2x: 6.84E+05 2u: 1.97E+02 ir: 3.53E-14 iu: 4.90E+01 rsn:   0
+  2 2r: 1.59E-17 2x: 6.84E+05 2u: 1.07E-01 ir: 7.96E-18 iu: 3.07E-02 rsn:   0
+  3 2r: 1.59E-17 2x: 6.84E+05 2u: 3.68E-08 ir: 7.96E-18 iu: 1.23E-08 rsn: stol
+
+ Step    126 Time=  4.80000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     419] linear =     3 [       419] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.158513E-16 0.158513E-18 0.796052E-17
+  --> max change: dpmx=   4.9065E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.78E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 5.43E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.31E-13 2x: 6.84E+05 2u: 1.90E+02 ir: 3.28E-14 iu: 4.73E+01 rsn:   0
+  2 2r: 2.41E-17 2x: 6.84E+05 2u: 9.92E-02 ir: 1.21E-17 iu: 2.85E-02 rsn:   0
+  3 2r: 2.42E-17 2x: 6.84E+05 2u: 3.18E-08 ir: 1.21E-17 iu: 1.06E-08 rsn: stol
+
+ Step    127 Time=  4.85000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     422] linear =     3 [       422] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.241947E-16 0.241947E-18 0.121316E-16
+  --> max change: dpmx=   4.7302E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.68E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 5.23E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.21E-13 2x: 6.84E+05 2u: 1.83E+02 ir: 3.04E-14 iu: 4.56E+01 rsn:   0
+  2 2r: 1.96E-17 2x: 6.84E+05 2u: 9.21E-02 ir: 9.89E-18 iu: 2.65E-02 rsn:   0
+  3 2r: 1.96E-17 2x: 6.84E+05 2u: 2.73E-08 ir: 9.89E-18 iu: 9.15E-09 rsn: stol
+
+ Step    128 Time=  4.90000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     425] linear =     3 [       425] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.196417E-16 0.196417E-18 0.989176E-17
+  --> max change: dpmx=   4.5601E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.58E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 5.03E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.12E-13 2x: 6.84E+05 2u: 1.76E+02 ir: 2.82E-14 iu: 4.39E+01 rsn:   0
+  2 2r: 2.56E-17 2x: 6.84E+05 2u: 8.54E-02 ir: 1.44E-17 iu: 2.46E-02 rsn:   0
+  3 2r: 2.56E-17 2x: 6.84E+05 2u: 2.36E-08 ir: 1.44E-17 iu: 7.91E-09 rsn: stol
+
+ Step    129 Time=  4.95000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     428] linear =     3 [       428] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.255900E-16 0.255900E-18 0.143749E-16
+  --> max change: dpmx=   4.3962E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.48E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 4.85E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.04E-13 2x: 6.84E+05 2u: 1.70E+02 ir: 2.62E-14 iu: 4.24E+01 rsn:   0
+  2 2r: 9.96E-18 2x: 6.84E+05 2u: 7.93E-02 ir: 4.88E-18 iu: 2.28E-02 rsn:   0
+  3 2r: 9.96E-18 2x: 6.84E+05 2u: 2.03E-08 ir: 4.88E-18 iu: 6.81E-09 rsn: stol
+
+ Step    130 Time=  5.00000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     431] linear =     3 [       431] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.996069E-17 0.996069E-19 0.487573E-17
+  --> max change: dpmx=   4.2381E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.39E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 4.67E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 9.64E-14 2x: 6.84E+05 2u: 1.64E+02 ir: 2.43E-14 iu: 4.08E+01 rsn:   0
+  2 2r: 1.95E-17 2x: 6.84E+05 2u: 7.36E-02 ir: 8.97E-18 iu: 2.12E-02 rsn:   0
+  3 2r: 1.95E-17 2x: 6.84E+05 2u: 1.75E-08 ir: 8.97E-18 iu: 5.88E-09 rsn: stol
+
+ Step    131 Time=  5.05000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     434] linear =     3 [       434] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.194618E-16 0.194618E-18 0.896860E-17
+  --> max change: dpmx=   4.0856E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.30E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 4.49E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 8.94E-14 2x: 6.84E+05 2u: 1.58E+02 ir: 2.25E-14 iu: 3.94E+01 rsn:   0
+  2 2r: 1.44E-17 2x: 6.84E+05 2u: 6.83E-02 ir: 6.74E-18 iu: 1.97E-02 rsn:   0
+  3 2r: 1.44E-17 2x: 6.84E+05 2u: 1.51E-08 ir: 6.74E-18 iu: 5.07E-09 rsn: stol
+
+ Step    132 Time=  5.10000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     437] linear =     3 [       437] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.143582E-16 0.143582E-18 0.674376E-17
+  --> max change: dpmx=   3.9386E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.21E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 4.33E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 8.29E-14 2x: 6.84E+05 2u: 1.52E+02 ir: 2.09E-14 iu: 3.80E+01 rsn:   0
+  2 2r: 3.00E-17 2x: 6.84E+05 2u: 6.34E-02 ir: 1.25E-17 iu: 1.83E-02 rsn:   0
+  3 2r: 3.00E-17 2x: 6.84E+05 2u: 1.30E-08 ir: 1.25E-17 iu: 4.38E-09 rsn: stol
+
+ Step    133 Time=  5.15000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     440] linear =     3 [       440] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.300373E-16 0.300373E-18 0.124801E-16
+  --> max change: dpmx=   3.7969E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.13E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 4.17E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 7.69E-14 2x: 6.84E+05 2u: 1.46E+02 ir: 1.94E-14 iu: 3.66E+01 rsn:   0
+  2 2r: 2.48E-17 2x: 6.84E+05 2u: 5.89E-02 ir: 1.46E-17 iu: 1.70E-02 rsn:   0
+  3 2r: 2.48E-17 2x: 6.84E+05 2u: 1.12E-08 ir: 1.46E-17 iu: 3.77E-09 rsn: stol
+
+ Step    134 Time=  5.20000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     443] linear =     3 [       443] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.248130E-16 0.248130E-18 0.145680E-16
+  --> max change: dpmx=   3.6602E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.05E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 4.01E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 7.13E-14 2x: 6.84E+05 2u: 1.41E+02 ir: 1.80E-14 iu: 3.53E+01 rsn:   0
+  2 2r: 2.00E-17 2x: 6.84E+05 2u: 5.46E-02 ir: 1.10E-17 iu: 1.58E-02 rsn:   0
+  3 2r: 1.98E-17 2x: 6.84E+05 2u: 9.66E-09 ir: 1.10E-17 iu: 3.26E-09 rsn: stol
+
+ Step    135 Time=  5.25000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     446] linear =     3 [       446] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.197618E-16 0.197618E-18 0.110243E-16
+  --> max change: dpmx=   3.5284E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.97E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 3.86E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 6.61E-14 2x: 6.84E+05 2u: 1.36E+02 ir: 1.67E-14 iu: 3.40E+01 rsn:   0
+  2 2r: 2.79E-17 2x: 6.84E+05 2u: 5.07E-02 ir: 1.45E-17 iu: 1.47E-02 rsn:   0
+  3 2r: 2.48E-17 2x: 6.84E+05 2u: 8.30E-09 ir: 1.45E-17 iu: 2.79E-09 rsn: stol
+
+ Step    136 Time=  5.30000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     449] linear =     3 [       449] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.247592E-16 0.247592E-18 0.144754E-16
+  --> max change: dpmx=   3.4014E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.90E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 3.72E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 6.13E-14 2x: 6.84E+05 2u: 1.31E+02 ir: 1.55E-14 iu: 3.28E+01 rsn:   0
+  2 2r: 1.31E-17 2x: 6.84E+05 2u: 4.71E-02 ir: 8.86E-18 iu: 1.36E-02 rsn:   0
+  3 2r: 1.31E-17 2x: 6.84E+05 2u: 7.15E-09 ir: 8.86E-18 iu: 2.41E-09 rsn: stol
+
+ Step    137 Time=  5.35000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     452] linear =     3 [       452] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.130765E-16 0.130765E-18 0.885954E-17
+  --> max change: dpmx=   3.2789E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.83E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 3.58E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 5.69E-14 2x: 6.84E+05 2u: 1.26E+02 ir: 1.44E-14 iu: 3.16E+01 rsn:   0
+  2 2r: 2.77E-17 2x: 6.84E+05 2u: 4.37E-02 ir: 1.28E-17 iu: 1.27E-02 rsn:   0
+  3 2r: 2.77E-17 2x: 6.84E+05 2u: 6.20E-09 ir: 1.28E-17 iu: 2.10E-09 rsn: stol
+
+ Step    138 Time=  5.40000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     455] linear =     3 [       455] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.276807E-16 0.276807E-18 0.128471E-16
+  --> max change: dpmx=   3.1608E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.76E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 3.45E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 5.27E-14 2x: 6.84E+05 2u: 1.22E+02 ir: 1.34E-14 iu: 3.05E+01 rsn:   0
+  2 2r: 2.21E-17 2x: 6.84E+05 2u: 4.06E-02 ir: 1.25E-17 iu: 1.18E-02 rsn:   0
+  3 2r: 2.23E-17 2x: 6.84E+05 2u: 5.32E-09 ir: 1.25E-17 iu: 1.81E-09 rsn: stol
+
+ Step    139 Time=  5.45000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     458] linear =     3 [       458] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.222560E-16 0.222560E-18 0.124606E-16
+  --> max change: dpmx=   3.0469E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.69E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 3.33E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 4.89E-14 2x: 6.84E+05 2u: 1.17E+02 ir: 1.24E-14 iu: 2.94E+01 rsn:   0
+  2 2r: 2.30E-17 2x: 6.84E+05 2u: 3.77E-02 ir: 1.44E-17 iu: 1.09E-02 rsn:   0
+  3 2r: 2.30E-17 2x: 6.84E+05 2u: 4.58E-09 ir: 1.44E-17 iu: 1.54E-09 rsn: stol
+
+ Step    140 Time=  5.50000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     461] linear =     3 [       461] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.230163E-16 0.230163E-18 0.144068E-16
+  --> max change: dpmx=   2.9371E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.63E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 3.20E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 4.54E-14 2x: 6.84E+05 2u: 1.13E+02 ir: 1.15E-14 iu: 2.83E+01 rsn:   0
+  2 2r: 1.94E-17 2x: 6.84E+05 2u: 3.50E-02 ir: 1.22E-17 iu: 1.01E-02 rsn:   0
+  3 2r: 1.94E-17 2x: 6.84E+05 2u: 3.98E-09 ir: 1.22E-17 iu: 1.34E-09 rsn: stol
+
+ Step    141 Time=  5.55000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     464] linear =     3 [       464] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.194192E-16 0.194192E-18 0.121604E-16
+  --> max change: dpmx=   2.8312E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.57E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 3.09E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 4.21E-14 2x: 6.84E+05 2u: 1.09E+02 ir: 1.07E-14 iu: 2.73E+01 rsn:   0
+  2 2r: 2.45E-17 2x: 6.84E+05 2u: 3.25E-02 ir: 1.20E-17 iu: 9.42E-03 rsn:   0
+  3 2r: 2.87E-17 2x: 6.84E+05 2u: 3.42E-09 ir: 1.20E-17 iu: 1.16E-09 rsn: stol
+
+ Step    142 Time=  5.60000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     467] linear =     3 [       467] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.286710E-16 0.286710E-18 0.119853E-16
+  --> max change: dpmx=   2.7292E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.51E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 3.91E-14 2x: 6.84E+05 2u: 1.05E+02 ir: 9.92E-15 iu: 2.63E+01 rsn:   0
+  2 2r: 1.86E-17 2x: 6.84E+05 2u: 3.01E-02 ir: 9.48E-18 iu: 8.75E-03 rsn:   0
+  3 2r: 1.85E-17 2x: 6.84E+05 2u: 2.94E-09 ir: 8.61E-18 iu: 9.88E-10 rsn: stol
+
+ Step    143 Time=  5.65000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     470] linear =     3 [       470] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.184780E-16 0.184780E-18 0.860691E-17
+  --> max change: dpmx=   2.6308E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.45E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.86E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 3.62E-14 2x: 6.84E+05 2u: 1.01E+02 ir: 9.21E-15 iu: 2.54E+01 rsn:   0
+  2 2r: 2.36E-17 2x: 6.84E+05 2u: 2.80E-02 ir: 1.26E-17 iu: 8.13E-03 rsn:   0
+  3 2r: 2.36E-17 2x: 6.84E+05 2u: 2.55E-09 ir: 1.26E-17 iu: 8.66E-10 rsn: stol
+
+ Step    144 Time=  5.70000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     473] linear =     3 [       473] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.235770E-16 0.235770E-18 0.126103E-16
+  --> max change: dpmx=   2.5359E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.40E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.76E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 3.36E-14 2x: 6.84E+05 2u: 9.73E+01 ir: 8.55E-15 iu: 2.44E+01 rsn:   0
+  2 2r: 1.83E-17 2x: 6.84E+05 2u: 2.60E-02 ir: 9.29E-18 iu: 7.55E-03 rsn:   0
+  3 2r: 1.68E-17 2x: 6.84E+05 2u: 2.18E-09 ir: 9.00E-18 iu: 7.47E-10 rsn: stol
+
+ Step    145 Time=  5.75000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     476] linear =     3 [       476] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.168150E-16 0.168150E-18 0.900280E-17
+  --> max change: dpmx=   2.4445E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.35E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.66E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 3.12E-14 2x: 6.84E+05 2u: 9.38E+01 ir: 7.93E-15 iu: 2.36E+01 rsn:   0
+  2 2r: 2.10E-17 2x: 6.84E+05 2u: 2.41E-02 ir: 1.16E-17 iu: 7.01E-03 rsn:   0
+  3 2r: 2.10E-17 2x: 6.84E+05 2u: 1.89E-09 ir: 1.16E-17 iu: 6.35E-10 rsn: stol
+
+ Step    146 Time=  5.80000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     479] linear =     3 [       479] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.209751E-16 0.209751E-18 0.116365E-16
+  --> max change: dpmx=   2.3563E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.30E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.56E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.89E-14 2x: 6.84E+05 2u: 9.03E+01 ir: 7.36E-15 iu: 2.27E+01 rsn:   0
+  2 2r: 1.90E-17 2x: 6.84E+05 2u: 2.24E-02 ir: 9.33E-18 iu: 6.51E-03 rsn:   0
+  3 2r: 1.90E-17 2x: 6.84E+05 2u: 1.63E-09 ir: 9.33E-18 iu: 5.42E-10 rsn: stol
+
+ Step    147 Time=  5.85000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     482] linear =     3 [       482] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.190006E-16 0.190006E-18 0.932827E-17
+  --> max change: dpmx=   2.2713E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.25E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.46E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.69E-14 2x: 6.84E+05 2u: 8.71E+01 ir: 6.84E-15 iu: 2.19E+01 rsn:   0
+  2 2r: 1.47E-17 2x: 6.84E+05 2u: 2.08E-02 ir: 8.39E-18 iu: 6.05E-03 rsn:   0
+  3 2r: 1.47E-17 2x: 6.84E+05 2u: 1.40E-09 ir: 8.39E-18 iu: 4.74E-10 rsn: stol
+
+ Step    148 Time=  5.90000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     485] linear =     3 [       485] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.146746E-16 0.146746E-18 0.838986E-17
+  --> max change: dpmx=   2.1893E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.20E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.37E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.49E-14 2x: 6.84E+05 2u: 8.39E+01 ir: 6.35E-15 iu: 2.11E+01 rsn:   0
+  2 2r: 2.51E-17 2x: 6.84E+05 2u: 1.93E-02 ir: 1.35E-17 iu: 5.62E-03 rsn:   0
+  3 2r: 2.51E-17 2x: 6.84E+05 2u: 1.24E-09 ir: 1.35E-17 iu: 4.24E-10 rsn: stol
+
+ Step    149 Time=  5.95000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     488] linear =     3 [       488] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.251169E-16 0.251169E-18 0.135179E-16
+  --> max change: dpmx=   2.1103E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.16E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.29E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.31E-14 2x: 6.84E+05 2u: 8.08E+01 ir: 5.89E-15 iu: 2.03E+01 rsn:   0
+  2 2r: 3.51E-17 2x: 6.84E+05 2u: 1.79E-02 ir: 1.60E-17 iu: 5.22E-03 rsn:   0
+  3 2r: 3.51E-17 2x: 6.84E+05 2u: 1.04E-09 ir: 1.60E-17 iu: 3.59E-10 rsn: stol
+
+ Step    150 Time=  6.00000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     491] linear =     3 [       491] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.351234E-16 0.351234E-18 0.160318E-16
+  --> max change: dpmx=   2.0342E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.12E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.20E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 2.15E-14 2x: 6.84E+05 2u: 7.79E+01 ir: 5.47E-15 iu: 1.96E+01 rsn:   0
+  2 2r: 3.12E-17 2x: 6.84E+05 2u: 1.67E-02 ir: 1.77E-17 iu: 4.85E-03 rsn:   0
+  3 2r: 3.12E-17 2x: 6.84E+05 2u: 8.79E-10 ir: 1.77E-17 iu: 2.99E-10 rsn: stol
+
+ Step    151 Time=  6.05000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     494] linear =     3 [       494] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.311994E-16 0.311994E-18 0.177427E-16
+  --> max change: dpmx=   1.9607E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.08E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.12E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.99E-14 2x: 6.84E+05 2u: 7.51E+01 ir: 5.08E-15 iu: 1.89E+01 rsn:   0
+  2 2r: 2.04E-17 2x: 6.84E+05 2u: 1.55E-02 ir: 1.19E-17 iu: 4.51E-03 rsn:   0
+  3 2r: 2.04E-17 2x: 6.84E+05 2u: 7.81E-10 ir: 1.19E-17 iu: 2.64E-10 rsn: stol
+
+ Step    152 Time=  6.10000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     497] linear =     3 [       497] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.203819E-16 0.203819E-18 0.119150E-16
+  --> max change: dpmx=   1.8900E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.04E-10 2x: 0.00E+00 2u: 0.00E+00 ir: 2.05E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.85E-14 2x: 6.84E+05 2u: 7.23E+01 ir: 4.72E-15 iu: 1.82E+01 rsn:   0
+  2 2r: 2.09E-17 2x: 6.84E+05 2u: 1.44E-02 ir: 1.39E-17 iu: 4.18E-03 rsn:   0
+  3 2r: 2.09E-17 2x: 6.84E+05 2u: 6.54E-10 ir: 1.39E-17 iu: 2.26E-10 rsn: stol
+
+ Step    153 Time=  6.15000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     500] linear =     3 [       500] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.209022E-16 0.209022E-18 0.139080E-16
+  --> max change: dpmx=   1.8217E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.97E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.97E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.72E-14 2x: 6.84E+05 2u: 6.97E+01 ir: 4.38E-15 iu: 1.76E+01 rsn:   0
+  2 2r: 2.49E-17 2x: 6.84E+05 2u: 1.33E-02 ir: 1.22E-17 iu: 3.89E-03 rsn:   0
+  3 2r: 2.49E-17 2x: 6.84E+05 2u: 5.95E-10 ir: 1.22E-17 iu: 2.00E-10 rsn: stol
+
+ Step    154 Time=  6.20000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     503] linear =     3 [       503] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.249255E-16 0.249255E-18 0.122171E-16
+  --> max change: dpmx=   1.7559E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.61E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.90E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.59E-14 2x: 6.84E+05 2u: 6.72E+01 ir: 4.06E-15 iu: 1.69E+01 rsn:   0
+  2 2r: 3.01E-17 2x: 6.84E+05 2u: 1.24E-02 ir: 1.29E-17 iu: 3.61E-03 rsn:   0
+  3 2r: 3.01E-17 2x: 6.84E+05 2u: 4.93E-10 ir: 1.29E-17 iu: 1.71E-10 rsn: stol
+
+ Step    155 Time=  6.25000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     506] linear =     3 [       506] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.300592E-16 0.300592E-18 0.129350E-16
+  --> max change: dpmx=   1.6925E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.25E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.83E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.48E-14 2x: 6.84E+05 2u: 6.47E+01 ir: 3.77E-15 iu: 1.63E+01 rsn:   0
+  2 2r: 1.74E-17 2x: 6.84E+05 2u: 1.15E-02 ir: 8.85E-18 iu: 3.35E-03 rsn:   0
+  3 2r: 1.74E-17 2x: 6.84E+05 2u: 4.09E-10 ir: 8.85E-18 iu: 1.30E-10 rsn: stol
+
+ Step    156 Time=  6.30000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     509] linear =     3 [       509] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.173779E-16 0.173779E-18 0.884811E-17
+  --> max change: dpmx=   1.6314E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.91E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.76E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.37E-14 2x: 6.84E+05 2u: 6.24E+01 ir: 3.50E-15 iu: 1.57E+01 rsn:   0
+  2 2r: 2.81E-17 2x: 6.84E+05 2u: 1.07E-02 ir: 1.58E-17 iu: 3.12E-03 rsn:   0
+  3 2r: 2.81E-17 2x: 6.84E+05 2u: 3.88E-10 ir: 1.58E-17 iu: 1.24E-10 rsn: stol
+
+ Step    157 Time=  6.35000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     512] linear =     3 [       512] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.281140E-16 0.281140E-18 0.158208E-16
+  --> max change: dpmx=   1.5725E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.58E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.70E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.27E-14 2x: 6.84E+05 2u: 6.01E+01 ir: 3.25E-15 iu: 1.52E+01 rsn:   0
+  2 2r: 1.60E-17 2x: 6.84E+05 2u: 9.91E-03 ir: 7.25E-18 iu: 2.89E-03 rsn:   0
+  3 2r: 1.60E-17 2x: 6.84E+05 2u: 2.85E-10 ir: 7.25E-18 iu: 9.53E-11 rsn: stol
+
+ Step    158 Time=  6.40000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     515] linear =     3 [       515] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.159995E-16 0.159995E-18 0.725452E-17
+  --> max change: dpmx=   1.5157E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.27E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.64E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.18E-14 2x: 6.84E+05 2u: 5.79E+01 ir: 3.02E-15 iu: 1.46E+01 rsn:   0
+  2 2r: 1.80E-17 2x: 6.84E+05 2u: 9.21E-03 ir: 9.62E-18 iu: 2.69E-03 rsn:   0
+  3 2r: 1.80E-17 2x: 6.84E+05 2u: 2.81E-10 ir: 9.62E-18 iu: 9.39E-11 rsn: stol
+
+ Step    159 Time=  6.45000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     518] linear =     3 [       518] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.180162E-16 0.180162E-18 0.962261E-17
+  --> max change: dpmx=   1.4609E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.96E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.58E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.10E-14 2x: 6.83E+05 2u: 5.58E+01 ir: 2.81E-15 iu: 1.41E+01 rsn:   0
+  2 2r: 2.31E-17 2x: 6.83E+05 2u: 8.55E-03 ir: 1.35E-17 iu: 2.50E-03 rsn:   0
+  3 2r: 2.31E-17 2x: 6.83E+05 2u: 2.31E-10 ir: 1.35E-17 iu: 7.60E-11 rsn: stol
+
+ Step    160 Time=  6.50000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     521] linear =     3 [       521] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.230614E-16 0.230614E-18 0.135405E-16
+  --> max change: dpmx=   1.4081E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.67E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.52E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 1.02E-14 2x: 6.83E+05 2u: 5.38E+01 ir: 2.60E-15 iu: 1.36E+01 rsn:   0
+  2 2r: 2.01E-17 2x: 6.83E+05 2u: 7.94E-03 ir: 8.49E-18 iu: 2.32E-03 rsn:   0
+  3 2r: 2.01E-17 2x: 6.83E+05 2u: 1.89E-10 ir: 8.49E-18 iu: 7.63E-11 rsn: stol
+
+ Step    161 Time=  6.55000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     524] linear =     3 [       524] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.200931E-16 0.200931E-18 0.848971E-17
+  --> max change: dpmx=   1.3572E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.39E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.46E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 9.45E-15 2x: 6.83E+05 2u: 5.18E+01 ir: 2.42E-15 iu: 1.31E+01 rsn:   0
+  2 2r: 3.26E-17 2x: 6.83E+05 2u: 7.37E-03 ir: 1.23E-17 iu: 2.15E-03 rsn:   0
+  3 2r: 3.26E-17 2x: 6.83E+05 2u: 1.54E-10 ir: 1.23E-17 iu: 4.87E-11 rsn: stol
+
+ Step    162 Time=  6.60000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     527] linear =     3 [       527] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.326010E-16 0.326010E-18 0.123088E-16
+  --> max change: dpmx=   1.3082E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.12E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.41E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 8.78E-15 2x: 6.83E+05 2u: 5.00E+01 ir: 2.25E-15 iu: 1.26E+01 rsn:   0
+  2 2r: 3.71E-17 2x: 6.83E+05 2u: 6.85E-03 ir: 1.61E-17 iu: 2.00E-03 rsn:   0
+  3 2r: 3.71E-17 2x: 6.83E+05 2u: 1.60E-10 ir: 1.61E-17 iu: 5.87E-11 rsn: stol
+
+ Step    163 Time=  6.65000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   3 [     530] linear =     3 [       530] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 3 / 3
+  --> SNES Residual: 0.370712E-16 0.370712E-18 0.161084E-16
+  --> max change: dpmx=   1.2609E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.86E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.36E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 8.15E-15 2x: 6.83E+05 2u: 4.81E+01 ir: 2.09E-15 iu: 1.22E+01 rsn:   0
+  2 2r: 2.14E-17 2x: 6.83E+05 2u: 6.36E-03 ir: 1.10E-17 iu: 1.86E-03 rsn: stol
+
+ Step    164 Time=  6.70000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     532] linear =     2 [       532] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.213711E-16 0.213711E-18 0.109509E-16
+  --> max change: dpmx=   1.2153E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.61E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.31E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 7.56E-15 2x: 6.83E+05 2u: 4.64E+01 ir: 1.94E-15 iu: 1.17E+01 rsn:   0
+  2 2r: 2.21E-17 2x: 6.83E+05 2u: 5.91E-03 ir: 1.23E-17 iu: 1.73E-03 rsn: stol
+
+ Step    165 Time=  6.75000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     534] linear =     2 [       534] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.221051E-16 0.221051E-18 0.122810E-16
+  --> max change: dpmx=   1.1714E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.36E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.26E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 7.02E-15 2x: 6.83E+05 2u: 4.47E+01 ir: 1.80E-15 iu: 1.13E+01 rsn:   0
+  2 2r: 2.11E-17 2x: 6.83E+05 2u: 5.48E-03 ir: 1.47E-17 iu: 1.60E-03 rsn: stol
+
+ Step    166 Time=  6.80000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     536] linear =     2 [       536] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.211280E-16 0.211280E-18 0.146776E-16
+  --> max change: dpmx=   1.1291E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.13E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.21E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 6.52E-15 2x: 6.83E+05 2u: 4.31E+01 ir: 1.67E-15 iu: 1.09E+01 rsn:   0
+  2 2r: 2.10E-17 2x: 6.83E+05 2u: 5.09E-03 ir: 9.14E-18 iu: 1.49E-03 rsn: stol
+
+ Step    167 Time=  6.85000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     538] linear =     2 [       538] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.209555E-16 0.209555E-18 0.913864E-17
+  --> max change: dpmx=   1.0882E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.91E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.17E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 6.05E-15 2x: 6.83E+05 2u: 4.15E+01 ir: 1.55E-15 iu: 1.05E+01 rsn:   0
+  2 2r: 2.50E-17 2x: 6.83E+05 2u: 4.73E-03 ir: 1.25E-17 iu: 1.38E-03 rsn: stol
+
+ Step    168 Time=  6.90000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     540] linear =     2 [       540] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.250067E-16 0.250067E-18 0.124581E-16
+  --> max change: dpmx=   1.0489E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.69E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.13E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 5.62E-15 2x: 6.83E+05 2u: 4.00E+01 ir: 1.44E-15 iu: 1.01E+01 rsn:   0
+  2 2r: 2.43E-17 2x: 6.83E+05 2u: 4.39E-03 ir: 1.57E-17 iu: 1.29E-03 rsn: stol
+
+ Step    169 Time=  6.95000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     542] linear =     2 [       542] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.243179E-16 0.243179E-18 0.156837E-16
+  --> max change: dpmx=   1.0110E+01
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.48E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.09E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 5.22E-15 2x: 6.83E+05 2u: 3.86E+01 ir: 1.34E-15 iu: 9.74E+00 rsn:   0
+  2 2r: 1.91E-17 2x: 6.83E+05 2u: 4.08E-03 ir: 7.66E-18 iu: 1.19E-03 rsn: stol
+
+ Step    170 Time=  7.00000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     544] linear =     2 [       544] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.191149E-16 0.191149E-18 0.765792E-17
+  --> max change: dpmx=   9.7442E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.05E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 4.84E-15 2x: 6.83E+05 2u: 3.72E+01 ir: 1.24E-15 iu: 9.39E+00 rsn:   0
+  2 2r: 1.96E-17 2x: 6.83E+05 2u: 3.79E-03 ir: 8.49E-18 iu: 1.11E-03 rsn: stol
+
+ Step    171 Time=  7.05000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     546] linear =     2 [       546] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.195844E-16 0.195844E-18 0.849098E-17
+  --> max change: dpmx=   9.3918E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.09E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 1.01E-11 iu: 0.00E+00 rsn:   0
+  1 2r: 4.50E-15 2x: 6.83E+05 2u: 3.58E+01 ir: 1.15E-15 iu: 9.05E+00 rsn:   0
+  2 2r: 2.55E-17 2x: 6.83E+05 2u: 3.52E-03 ir: 1.32E-17 iu: 1.03E-03 rsn: stol
+
+ Step    172 Time=  7.10000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     548] linear =     2 [       548] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.254985E-16 0.254985E-18 0.132482E-16
+  --> max change: dpmx=   9.0521E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.90E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.72E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 4.18E-15 2x: 6.83E+05 2u: 3.45E+01 ir: 1.07E-15 iu: 8.72E+00 rsn:   0
+  2 2r: 1.96E-17 2x: 6.83E+05 2u: 3.27E-03 ir: 9.84E-18 iu: 9.57E-04 rsn: stol
+
+ Step    173 Time=  7.15000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     550] linear =     2 [       550] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.196303E-16 0.196303E-18 0.984157E-17
+  --> max change: dpmx=   8.7247E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.72E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.37E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.88E-15 2x: 6.83E+05 2u: 3.33E+01 ir: 9.94E-16 iu: 8.41E+00 rsn:   0
+  2 2r: 2.29E-17 2x: 6.83E+05 2u: 3.03E-03 ir: 1.19E-17 iu: 8.89E-04 rsn: stol
+
+ Step    174 Time=  7.20000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     552] linear =     2 [       552] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.229410E-16 0.229410E-18 0.119203E-16
+  --> max change: dpmx=   8.4092E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.55E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.03E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.60E-15 2x: 6.83E+05 2u: 3.20E+01 ir: 9.23E-16 iu: 8.10E+00 rsn:   0
+  2 2r: 2.93E-17 2x: 6.83E+05 2u: 2.82E-03 ir: 1.22E-17 iu: 8.26E-04 rsn: stol
+
+ Step    175 Time=  7.25000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     554] linear =     2 [       554] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.293471E-16 0.293471E-18 0.122404E-16
+  --> max change: dpmx=   8.1050E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.39E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.70E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.34E-15 2x: 6.83E+05 2u: 3.09E+01 ir: 8.58E-16 iu: 7.81E+00 rsn:   0
+  2 2r: 2.78E-17 2x: 6.83E+05 2u: 2.62E-03 ir: 1.34E-17 iu: 7.67E-04 rsn: stol
+
+ Step    176 Time=  7.30000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     556] linear =     2 [       556] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.278305E-16 0.278305E-18 0.134041E-16
+  --> max change: dpmx=   7.8118E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.23E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.38E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.10E-15 2x: 6.83E+05 2u: 2.98E+01 ir: 7.96E-16 iu: 7.53E+00 rsn:   0
+  2 2r: 2.12E-17 2x: 6.83E+05 2u: 2.43E-03 ir: 1.07E-17 iu: 7.12E-04 rsn: stol
+
+ Step    177 Time=  7.35000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     558] linear =     2 [       558] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.212107E-16 0.212107E-18 0.107372E-16
+  --> max change: dpmx=   7.5292E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 4.07E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.08E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.88E-15 2x: 6.83E+05 2u: 2.87E+01 ir: 7.40E-16 iu: 7.26E+00 rsn:   0
+  2 2r: 2.08E-17 2x: 6.83E+05 2u: 2.26E-03 ir: 1.31E-17 iu: 6.62E-04 rsn: stol
+
+ Step    178 Time=  7.40000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     560] linear =     2 [       560] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.208075E-16 0.208075E-18 0.131109E-16
+  --> max change: dpmx=   7.2568E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.92E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 7.78E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.68E-15 2x: 6.83E+05 2u: 2.76E+01 ir: 6.87E-16 iu: 6.99E+00 rsn:   0
+  2 2r: 2.08E-17 2x: 6.83E+05 2u: 2.10E-03 ir: 1.02E-17 iu: 6.15E-04 rsn: stol
+
+ Step    179 Time=  7.45000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     562] linear =     2 [       562] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.207971E-16 0.207971E-18 0.101970E-16
+  --> max change: dpmx=   6.9942E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.78E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 7.50E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.49E-15 2x: 6.83E+05 2u: 2.66E+01 ir: 6.38E-16 iu: 6.74E+00 rsn:   0
+  2 2r: 1.44E-17 2x: 6.83E+05 2u: 1.95E-03 ir: 7.33E-18 iu: 5.71E-04 rsn: stol
+
+ Step    180 Time=  7.50000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     564] linear =     2 [       564] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.143724E-16 0.143724E-18 0.732991E-17
+  --> max change: dpmx=   6.7412E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.64E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 7.23E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.31E-15 2x: 6.83E+05 2u: 2.57E+01 ir: 5.92E-16 iu: 6.50E+00 rsn:   0
+  2 2r: 2.30E-17 2x: 6.83E+05 2u: 1.81E-03 ir: 1.42E-17 iu: 5.30E-04 rsn: stol
+
+ Step    181 Time=  7.55000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     566] linear =     2 [       566] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.230477E-16 0.230477E-18 0.142173E-16
+  --> max change: dpmx=   6.4972E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.51E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 6.97E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.14E-15 2x: 6.83E+05 2u: 2.47E+01 ir: 5.50E-16 iu: 6.26E+00 rsn:   0
+  2 2r: 1.69E-17 2x: 6.83E+05 2u: 1.68E-03 ir: 1.05E-17 iu: 4.93E-04 rsn: stol
+
+ Step    182 Time=  7.60000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     568] linear =     2 [       568] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.169008E-16 0.169008E-18 0.105313E-16
+  --> max change: dpmx=   6.2621E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.38E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 6.71E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.99E-15 2x: 6.83E+05 2u: 2.38E+01 ir: 5.11E-16 iu: 6.04E+00 rsn:   0
+  2 2r: 1.79E-17 2x: 6.83E+05 2u: 1.56E-03 ir: 8.71E-18 iu: 4.58E-04 rsn: stol
+
+ Step    183 Time=  7.65000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     570] linear =     2 [       570] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.179372E-16 0.179372E-18 0.871290E-17
+  --> max change: dpmx=   6.0355E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.26E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 6.47E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.85E-15 2x: 6.83E+05 2u: 2.30E+01 ir: 4.75E-16 iu: 5.82E+00 rsn:   0
+  2 2r: 1.81E-17 2x: 6.83E+05 2u: 1.45E-03 ir: 8.66E-18 iu: 4.25E-04 rsn: stol
+
+ Step    184 Time=  7.70000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     572] linear =     2 [       572] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.180502E-16 0.180502E-18 0.865932E-17
+  --> max change: dpmx=   5.8171E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.14E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 6.23E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.72E-15 2x: 6.83E+05 2u: 2.21E+01 ir: 4.41E-16 iu: 5.61E+00 rsn:   0
+  2 2r: 2.75E-17 2x: 6.83E+05 2u: 1.35E-03 ir: 1.33E-17 iu: 3.95E-04 rsn: stol
+
+ Step    185 Time=  7.75000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     574] linear =     2 [       574] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.274664E-16 0.274664E-18 0.132793E-16
+  --> max change: dpmx=   5.6066E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 3.02E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 6.01E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.59E-15 2x: 6.83E+05 2u: 2.13E+01 ir: 4.09E-16 iu: 5.40E+00 rsn:   0
+  2 2r: 2.80E-17 2x: 6.83E+05 2u: 1.25E-03 ir: 1.30E-17 iu: 3.67E-04 rsn: stol
+
+ Step    186 Time=  7.80000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     576] linear =     2 [       576] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.280241E-16 0.280241E-18 0.129842E-16
+  --> max change: dpmx=   5.4037E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.91E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 5.79E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.48E-15 2x: 6.83E+05 2u: 2.06E+01 ir: 3.80E-16 iu: 5.21E+00 rsn:   0
+  2 2r: 2.49E-17 2x: 6.83E+05 2u: 1.16E-03 ir: 1.23E-17 iu: 3.41E-04 rsn: stol
+
+ Step    187 Time=  7.85000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     578] linear =     2 [       578] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.249395E-16 0.249395E-18 0.123249E-16
+  --> max change: dpmx=   5.2081E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.81E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 5.58E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.37E-15 2x: 6.83E+05 2u: 1.98E+01 ir: 3.53E-16 iu: 5.02E+00 rsn:   0
+  2 2r: 2.84E-17 2x: 6.83E+05 2u: 1.08E-03 ir: 1.64E-17 iu: 3.16E-04 rsn: stol
+
+ Step    188 Time=  7.90000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     580] linear =     2 [       580] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.283860E-16 0.283860E-18 0.164216E-16
+  --> max change: dpmx=   5.0196E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.71E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 5.38E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.28E-15 2x: 6.83E+05 2u: 1.91E+01 ir: 3.28E-16 iu: 4.84E+00 rsn:   0
+  2 2r: 2.45E-17 2x: 6.83E+05 2u: 1.00E-03 ir: 1.15E-17 iu: 2.94E-04 rsn: stol
+
+ Step    189 Time=  7.95000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     582] linear =     2 [       582] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.245168E-16 0.245168E-18 0.115393E-16
+  --> max change: dpmx=   4.8379E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.61E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 5.18E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.19E-15 2x: 6.83E+05 2u: 1.84E+01 ir: 3.05E-16 iu: 4.66E+00 rsn:   0
+  2 2r: 2.61E-17 2x: 6.83E+05 2u: 9.30E-04 ir: 1.23E-17 iu: 2.73E-04 rsn: stol
+
+ Step    190 Time=  8.00000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     584] linear =     2 [       584] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.261080E-16 0.261080E-18 0.123291E-16
+  --> max change: dpmx=   4.6628E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.51E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 4.99E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.10E-15 2x: 6.83E+05 2u: 1.77E+01 ir: 2.83E-16 iu: 4.49E+00 rsn:   0
+  2 2r: 2.30E-17 2x: 6.83E+05 2u: 8.64E-04 ir: 8.22E-18 iu: 2.54E-04 rsn: stol
+
+ Step    191 Time=  8.05000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     586] linear =     2 [       586] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.230180E-16 0.230180E-18 0.822458E-17
+  --> max change: dpmx=   4.4940E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.42E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 4.81E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.02E-15 2x: 6.83E+05 2u: 1.71E+01 ir: 2.63E-16 iu: 4.33E+00 rsn:   0
+  2 2r: 1.88E-17 2x: 6.83E+05 2u: 8.02E-04 ir: 9.37E-18 iu: 2.36E-04 rsn: stol
+
+ Step    192 Time=  8.10000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     588] linear =     2 [       588] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.188270E-16 0.188270E-18 0.937168E-17
+  --> max change: dpmx=   4.3313E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.33E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 4.64E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 9.49E-16 2x: 6.83E+05 2u: 1.65E+01 ir: 2.44E-16 iu: 4.17E+00 rsn:   0
+  2 2r: 2.62E-17 2x: 6.83E+05 2u: 7.45E-04 ir: 1.33E-17 iu: 2.19E-04 rsn: stol
+
+ Step    193 Time=  8.15000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     590] linear =     2 [       590] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.261587E-16 0.261587E-18 0.133416E-16
+  --> max change: dpmx=   4.1745E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.25E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 4.47E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 8.82E-16 2x: 6.83E+05 2u: 1.59E+01 ir: 2.27E-16 iu: 4.02E+00 rsn:   0
+  2 2r: 2.32E-17 2x: 6.83E+05 2u: 6.92E-04 ir: 1.33E-17 iu: 2.03E-04 rsn: stol
+
+ Step    194 Time=  8.20000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     592] linear =     2 [       592] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.232443E-16 0.232443E-18 0.132802E-16
+  --> max change: dpmx=   4.0234E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.17E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 4.31E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 8.19E-16 2x: 6.83E+05 2u: 1.53E+01 ir: 2.10E-16 iu: 3.88E+00 rsn:   0
+  2 2r: 2.32E-17 2x: 6.83E+05 2u: 6.43E-04 ir: 1.34E-17 iu: 1.89E-04 rsn: stol
+
+ Step    195 Time=  8.25000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     594] linear =     2 [       594] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.231615E-16 0.231615E-18 0.133924E-16
+  --> max change: dpmx=   3.8777E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.09E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 4.15E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 7.60E-16 2x: 6.83E+05 2u: 1.48E+01 ir: 1.95E-16 iu: 3.74E+00 rsn:   0
+  2 2r: 2.40E-17 2x: 6.83E+05 2u: 5.97E-04 ir: 1.37E-17 iu: 1.75E-04 rsn: stol
+
+ Step    196 Time=  8.30000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     596] linear =     2 [       596] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.240436E-16 0.240436E-18 0.136564E-16
+  --> max change: dpmx=   3.7373E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 2.01E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 4.00E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 7.07E-16 2x: 6.83E+05 2u: 1.42E+01 ir: 1.82E-16 iu: 3.60E+00 rsn:   0
+  2 2r: 2.01E-17 2x: 6.83E+05 2u: 5.55E-04 ir: 1.37E-17 iu: 1.63E-04 rsn: stol
+
+ Step    197 Time=  8.35000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     598] linear =     2 [       598] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.201138E-16 0.201138E-18 0.136794E-16
+  --> max change: dpmx=   3.6020E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.94E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 3.85E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.56E-16 2x: 6.83E+05 2u: 1.37E+01 ir: 1.69E-16 iu: 3.47E+00 rsn:   0
+  2 2r: 1.79E-17 2x: 6.83E+05 2u: 5.15E-04 ir: 9.32E-18 iu: 1.51E-04 rsn: stol
+
+ Step    198 Time=  8.40000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     600] linear =     2 [       600] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.179368E-16 0.179368E-18 0.932054E-17
+  --> max change: dpmx=   3.4716E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.87E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 3.71E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.09E-16 2x: 6.83E+05 2u: 1.32E+01 ir: 1.57E-16 iu: 3.35E+00 rsn:   0
+  2 2r: 1.48E-17 2x: 6.83E+05 2u: 4.78E-04 ir: 7.17E-18 iu: 1.40E-04 rsn: stol
+
+ Step    199 Time=  8.45000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     602] linear =     2 [       602] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.147896E-16 0.147896E-18 0.716664E-17
+  --> max change: dpmx=   3.3459E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.80E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 3.58E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 5.66E-16 2x: 6.83E+05 2u: 1.27E+01 ir: 1.45E-16 iu: 3.22E+00 rsn:   0
+  2 2r: 2.07E-17 2x: 6.83E+05 2u: 4.44E-04 ir: 1.19E-17 iu: 1.31E-04 rsn: stol
+
+ Step    200 Time=  8.50000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     604] linear =     2 [       604] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.207185E-16 0.207185E-18 0.119242E-16
+  --> max change: dpmx=   3.2248E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.73E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 3.45E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 5.26E-16 2x: 6.83E+05 2u: 1.23E+01 ir: 1.35E-16 iu: 3.11E+00 rsn:   0
+  2 2r: 1.87E-17 2x: 6.83E+05 2u: 4.13E-04 ir: 8.25E-18 iu: 1.21E-04 rsn: stol
+
+ Step    201 Time=  8.55000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     606] linear =     2 [       606] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.186883E-16 0.186883E-18 0.825148E-17
+  --> max change: dpmx=   3.1080E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.67E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 3.32E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 4.89E-16 2x: 6.83E+05 2u: 1.18E+01 ir: 1.25E-16 iu: 3.00E+00 rsn:   0
+  2 2r: 2.35E-17 2x: 6.83E+05 2u: 3.83E-04 ir: 1.13E-17 iu: 1.13E-04 rsn: stol
+
+ Step    202 Time=  8.60000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     608] linear =     2 [       608] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.234971E-16 0.234971E-18 0.113175E-16
+  --> max change: dpmx=   2.9955E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.61E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 3.20E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 4.53E-16 2x: 6.83E+05 2u: 1.14E+01 ir: 1.17E-16 iu: 2.89E+00 rsn:   0
+  2 2r: 2.59E-17 2x: 6.83E+05 2u: 3.56E-04 ir: 1.18E-17 iu: 1.05E-04 rsn: stol
+
+ Step    203 Time=  8.65000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     610] linear =     2 [       610] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.258606E-16 0.258606E-18 0.117868E-16
+  --> max change: dpmx=   2.8870E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.55E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 3.09E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 4.21E-16 2x: 6.83E+05 2u: 1.10E+01 ir: 1.08E-16 iu: 2.78E+00 rsn:   0
+  2 2r: 2.31E-17 2x: 6.83E+05 2u: 3.31E-04 ir: 1.20E-17 iu: 9.71E-05 rsn: stol
+
+ Step    204 Time=  8.70000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     612] linear =     2 [       612] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.230969E-16 0.230969E-18 0.120410E-16
+  --> max change: dpmx=   2.7825E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.50E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.97E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.92E-16 2x: 6.83E+05 2u: 1.06E+01 ir: 1.01E-16 iu: 2.68E+00 rsn:   0
+  2 2r: 2.23E-17 2x: 6.83E+05 2u: 3.07E-04 ir: 1.37E-17 iu: 9.02E-05 rsn: stol
+
+ Step    205 Time=  8.75000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     614] linear =     2 [       614] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.222941E-16 0.222941E-18 0.137040E-16
+  --> max change: dpmx=   2.6817E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.44E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.87E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.63E-16 2x: 6.83E+05 2u: 1.02E+01 ir: 9.34E-17 iu: 2.58E+00 rsn:   0
+  2 2r: 1.89E-17 2x: 6.83E+05 2u: 2.85E-04 ir: 1.01E-17 iu: 8.38E-05 rsn: stol
+
+ Step    206 Time=  8.80000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     616] linear =     2 [       616] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.188539E-16 0.188539E-18 0.100806E-16
+  --> max change: dpmx=   2.5846E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.39E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.76E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.38E-16 2x: 6.83E+05 2u: 9.83E+00 ir: 8.67E-17 iu: 2.49E+00 rsn:   0
+  2 2r: 1.80E-17 2x: 6.83E+05 2u: 2.65E-04 ir: 9.89E-18 iu: 7.79E-05 rsn: stol
+
+ Step    207 Time=  8.85000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     618] linear =     2 [       618] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.180404E-16 0.180404E-18 0.989027E-17
+  --> max change: dpmx=   2.4910E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.34E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.66E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.15E-16 2x: 6.83E+05 2u: 9.47E+00 ir: 8.05E-17 iu: 2.40E+00 rsn:   0
+  2 2r: 1.80E-17 2x: 6.83E+05 2u: 2.46E-04 ir: 1.08E-17 iu: 7.23E-05 rsn: stol
+
+ Step    208 Time=  8.90000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     620] linear =     2 [       620] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.179943E-16 0.179943E-18 0.107770E-16
+  --> max change: dpmx=   2.4008E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.29E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.57E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.91E-16 2x: 6.83E+05 2u: 9.13E+00 ir: 7.48E-17 iu: 2.31E+00 rsn:   0
+  2 2r: 2.85E-17 2x: 6.83E+05 2u: 2.29E-04 ir: 1.77E-17 iu: 6.72E-05 rsn: stol
+
+ Step    209 Time=  8.95000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     622] linear =     2 [       622] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.284973E-16 0.284973E-18 0.177223E-16
+  --> max change: dpmx=   2.3138E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.24E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.47E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.71E-16 2x: 6.83E+05 2u: 8.80E+00 ir: 6.95E-17 iu: 2.23E+00 rsn:   0
+  2 2r: 2.12E-17 2x: 6.83E+05 2u: 2.12E-04 ir: 1.33E-17 iu: 6.24E-05 rsn: stol
+
+ Step    210 Time=  9.00000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     624] linear =     2 [       624] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.212109E-16 0.212109E-18 0.132784E-16
+  --> max change: dpmx=   2.2300E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.20E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.38E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.52E-16 2x: 6.83E+05 2u: 8.48E+00 ir: 6.45E-17 iu: 2.15E+00 rsn:   0
+  2 2r: 2.52E-17 2x: 6.83E+05 2u: 1.97E-04 ir: 1.35E-17 iu: 5.80E-05 rsn: stol
+
+ Step    211 Time=  9.05000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     626] linear =     2 [       626] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.251721E-16 0.251721E-18 0.134723E-16
+  --> max change: dpmx=   2.1493E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.15E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.30E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.34E-16 2x: 6.83E+05 2u: 8.17E+00 ir: 5.99E-17 iu: 2.07E+00 rsn:   0
+  2 2r: 3.01E-17 2x: 6.83E+05 2u: 1.83E-04 ir: 1.39E-17 iu: 5.38E-05 rsn: stol
+
+ Step    212 Time=  9.10000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     628] linear =     2 [       628] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.300876E-16 0.300876E-18 0.139127E-16
+  --> max change: dpmx=   2.0714E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.11E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.21E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.17E-16 2x: 6.83E+05 2u: 7.88E+00 ir: 5.57E-17 iu: 2.00E+00 rsn:   0
+  2 2r: 1.94E-17 2x: 6.83E+05 2u: 1.70E-04 ir: 9.43E-18 iu: 5.00E-05 rsn: stol
+
+ Step    213 Time=  9.15000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     630] linear =     2 [       630] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.194396E-16 0.194396E-18 0.943055E-17
+  --> max change: dpmx=   1.9964E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.07E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.13E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.02E-16 2x: 6.83E+05 2u: 7.59E+00 ir: 5.17E-17 iu: 1.92E+00 rsn:   0
+  2 2r: 2.78E-17 2x: 6.83E+05 2u: 1.58E-04 ir: 1.74E-17 iu: 4.64E-05 rsn: stol
+
+ Step    214 Time=  9.20000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     632] linear =     2 [       632] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.277931E-16 0.277931E-18 0.173503E-16
+  --> max change: dpmx=   1.9241E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 1.03E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 2.06E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.88E-16 2x: 6.83E+05 2u: 7.31E+00 ir: 4.80E-17 iu: 1.85E+00 rsn:   0
+  2 2r: 2.83E-17 2x: 6.83E+05 2u: 1.47E-04 ir: 1.29E-17 iu: 4.31E-05 rsn: stol
+
+ Step    215 Time=  9.25000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     634] linear =     2 [       634] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.283410E-16 0.283410E-18 0.128711E-16
+  --> max change: dpmx=   1.8544E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.96E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.98E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.74E-16 2x: 6.83E+05 2u: 7.05E+00 ir: 4.46E-17 iu: 1.79E+00 rsn:   0
+  2 2r: 1.77E-17 2x: 6.83E+05 2u: 1.36E-04 ir: 1.13E-17 iu: 4.01E-05 rsn: stol
+
+ Step    216 Time=  9.30000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     636] linear =     2 [       636] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.177295E-16 0.177295E-18 0.112605E-16
+  --> max change: dpmx=   1.7873E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.60E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.91E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.62E-16 2x: 6.83E+05 2u: 6.79E+00 ir: 4.14E-17 iu: 1.72E+00 rsn:   0
+  2 2r: 2.28E-17 2x: 6.83E+05 2u: 1.27E-04 ir: 1.06E-17 iu: 3.72E-05 rsn: stol
+
+ Step    217 Time=  9.35000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     638] linear =     2 [       638] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.227750E-16 0.227750E-18 0.105918E-16
+  --> max change: dpmx=   1.7225E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 9.25E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.84E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.50E-16 2x: 6.83E+05 2u: 6.55E+00 ir: 3.85E-17 iu: 1.66E+00 rsn:   0
+  2 2r: 1.88E-17 2x: 6.83E+05 2u: 1.18E-04 ir: 7.70E-18 iu: 3.46E-05 rsn: stol
+
+ Step    218 Time=  9.40000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     640] linear =     2 [       640] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.188421E-16 0.188421E-18 0.770302E-17
+  --> max change: dpmx=   1.6601E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.92E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.77E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.40E-16 2x: 6.83E+05 2u: 6.31E+00 ir: 3.57E-17 iu: 1.60E+00 rsn:   0
+  2 2r: 2.03E-17 2x: 6.83E+05 2u: 1.09E-04 ir: 8.21E-18 iu: 3.21E-05 rsn: stol
+
+ Step    219 Time=  9.45000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     642] linear =     2 [       642] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.202825E-16 0.202825E-18 0.820711E-17
+  --> max change: dpmx=   1.6000E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.59E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.71E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.30E-16 2x: 6.83E+05 2u: 6.08E+00 ir: 3.32E-17 iu: 1.54E+00 rsn:   0
+  2 2r: 2.51E-17 2x: 6.83E+05 2u: 1.01E-04 ir: 1.33E-17 iu: 2.98E-05 rsn: stol
+
+ Step    220 Time=  9.50000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     644] linear =     2 [       644] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.250732E-16 0.250732E-18 0.133472E-16
+  --> max change: dpmx=   1.5421E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 8.28E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.65E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.21E-16 2x: 6.83E+05 2u: 5.86E+00 ir: 3.08E-17 iu: 1.49E+00 rsn:   0
+  2 2r: 3.02E-17 2x: 6.83E+05 2u: 9.42E-05 ir: 1.27E-17 iu: 2.77E-05 rsn: stol
+
+ Step    221 Time=  9.55000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     646] linear =     2 [       646] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.301518E-16 0.301518E-18 0.127108E-16
+  --> max change: dpmx=   1.4862E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.98E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.59E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.12E-16 2x: 6.83E+05 2u: 5.65E+00 ir: 2.86E-17 iu: 1.43E+00 rsn:   0
+  2 2r: 2.52E-17 2x: 6.83E+05 2u: 8.75E-05 ir: 1.18E-17 iu: 2.57E-05 rsn: stol
+
+ Step    222 Time=  9.60000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     648] linear =     2 [       648] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.252439E-16 0.252439E-18 0.118053E-16
+  --> max change: dpmx=   1.4324E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.69E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.53E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.08E-16 2x: 6.83E+05 2u: 5.44E+00 ir: 2.66E-17 iu: 1.38E+00 rsn:   0
+  2 2r: 2.17E-17 2x: 6.83E+05 2u: 8.13E-05 ir: 1.61E-17 iu: 2.39E-05 rsn: stol
+
+ Step    223 Time=  9.65000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     650] linear =     2 [       650] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.216509E-16 0.216509E-18 0.161421E-16
+  --> max change: dpmx=   1.3805E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.41E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.47E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 9.73E-17 2x: 6.83E+05 2u: 5.25E+00 ir: 2.47E-17 iu: 1.33E+00 rsn:   0
+  2 2r: 2.27E-17 2x: 6.83E+05 2u: 7.55E-05 ir: 1.12E-17 iu: 2.22E-05 rsn: stol
+
+ Step    224 Time=  9.70000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     652] linear =     2 [       652] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.226830E-16 0.226830E-18 0.112178E-16
+  --> max change: dpmx=   1.3305E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 7.14E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.42E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 9.11E-17 2x: 6.83E+05 2u: 5.06E+00 ir: 2.30E-17 iu: 1.28E+00 rsn:   0
+  2 2r: 1.59E-17 2x: 6.83E+05 2u: 7.01E-05 ir: 8.87E-18 iu: 2.06E-05 rsn: stol
+
+ Step    225 Time=  9.75000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     654] linear =     2 [       654] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.159334E-16 0.159334E-18 0.887151E-17
+  --> max change: dpmx=   1.2823E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.88E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.37E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 8.49E-17 2x: 6.83E+05 2u: 4.87E+00 ir: 2.13E-17 iu: 1.24E+00 rsn:   0
+  2 2r: 1.50E-17 2x: 6.83E+05 2u: 6.52E-05 ir: 8.64E-18 iu: 1.92E-05 rsn: stol
+
+ Step    226 Time=  9.80000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     656] linear =     2 [       656] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.150253E-16 0.150253E-18 0.864418E-17
+  --> max change: dpmx=   1.2358E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.63E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.32E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 8.11E-17 2x: 6.83E+05 2u: 4.70E+00 ir: 1.98E-17 iu: 1.19E+00 rsn:   0
+  2 2r: 3.93E-17 2x: 6.83E+05 2u: 6.05E-05 ir: 1.63E-17 iu: 1.78E-05 rsn: stol
+
+ Step    227 Time=  9.85000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     658] linear =     2 [       658] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.392661E-16 0.392661E-18 0.162952E-16
+  --> max change: dpmx=   1.1911E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.39E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.27E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 7.38E-17 2x: 6.83E+05 2u: 4.53E+00 ir: 1.84E-17 iu: 1.15E+00 rsn:   0
+  2 2r: 2.25E-17 2x: 6.83E+05 2u: 5.62E-05 ir: 1.16E-17 iu: 1.65E-05 rsn: stol
+
+ Step    228 Time=  9.90000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     660] linear =     2 [       660] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.224540E-16 0.224540E-18 0.115709E-16
+  --> max change: dpmx=   1.1479E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 6.16E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.23E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 7.20E-17 2x: 6.83E+05 2u: 4.36E+00 ir: 1.71E-17 iu: 1.11E+00 rsn:   0
+  2 2r: 2.54E-17 2x: 6.83E+05 2u: 5.22E-05 ir: 1.54E-17 iu: 1.54E-05 rsn: stol
+
+ Step    229 Time=  9.95000E+00 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     662] linear =     2 [       662] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.254378E-16 0.254378E-18 0.153594E-16
+  --> max change: dpmx=   1.1064E+00
+
+== RICHARDS FLOW ===============================================================
+  0 2r: 5.94E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.18E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.71E-17 2x: 6.83E+05 2u: 4.20E+00 ir: 1.59E-17 iu: 1.07E+00 rsn:   0
+  2 2r: 2.15E-17 2x: 6.83E+05 2u: 4.85E-05 ir: 1.19E-17 iu: 1.43E-05 rsn: stol
+
+ Step    230 Time=  1.00000E+01 Dt=  5.00000E-02 [y] conv_reason: 4
+  newton =   2 [     664] linear =     2 [       664] cuts =  0 [   0]
+  --> SNES Linear/Non-Linear Iterations = 2 / 2
+  --> SNES Residual: 0.214913E-16 0.214913E-18 0.118862E-16
+  --> max change: dpmx=   1.0663E+00
+
+ --> write tecplot output file: 1D_vsat_flow_pulse-005.tec
+      0.01 Seconds to write to Tecplot file(s)
+
+PMCSubsurfaceFlow
+ Total Time: 3.3249E-01 seconds
+
+ FLOW TS SNES steps = 230  newton = 664  linear = 664  cuts = 0
+ FLOW TS SNES Wasted Linear Iterations = 0
+ FLOW TS SNES Wasted Newton Iterations = 0
+ FLOW TS SNES time = 0.3 seconds
+
+ Wall Clock Time:  3.7334E-01 [sec]   6.2223E-03 [min]   1.0370E-04 [hr]

@@ -2,16 +2,12 @@
 This repository contains data and scripts necessary for reproducing a 1D Column Model for Hydrothermal Processes in the Tundra Active Layer using ATS.
 
 ## Summary
-Hydrologic processes influence carbon transport in the layer which seasonally freezes and thaws above permafrost (active layer) by controlling redox state and thus the transformation and mobilization of carbon (Cardenas et al., 2023). Building a model to accurately represent the hydrothermal processes in the active layer and provide a good foundation for future, more complex modeling is the
-motivation for this project.
-
-one sentence on the overall goal of this project, 2-3 sentences on the objectives, 1-2 sentences on the expected outcome.
+Hydrologic processes influence carbon transport in the layer which seasonally freezes and thaws above permafrost (active layer) by controlling redox state and thus the transformation and mobilization of carbon (Cardenas et al., 2023). The motivation for this project is to utlimately add understanding to cold region carboon budget by building a model to accurately represent the hydrothermal and chemical processes in this active layer. Given the complexity and difficulty of such a model, the overall goal for this class project is to build a working 1D model which can represent the hydrothermal processes in a column including an active layer and permafrost. This overall goal may be achieved by completing two objectives. The first objective is establishing an effective spinup which prepares the model for the second objective which is to run a transient simulation. Finally, if time allows, a third objective would be to compare the effect of variability in climate forcing. The expected outcome of this project is a working 1D model which captures hydrothermal process in the soil column (which includes both active layer and permafrost). Understanding the impact of variability in climate forcing would be a bonus if there is time to work on the third objective.
 
 ## Methods
 - Modeling tool: ATS
 
-- Study Area
-State what real or hypothetical study area you will be working on 
+- Study Area: Imnavait Creek, Alaska
 
 ## Repository Structure
 ```
@@ -34,4 +30,6 @@ processes across the hillslope-riparian zone river corridor continuum of cold, h
 
 E.T. Coon, M. Berndt, A. Jan, D. Svyatsky, A.L. Atchley, E. Kikinzon, D.R. Harp, G. Manzini, E. Shelef, K. Lipnikov, R. Garimella, C. Xu, J.D. Moulton, S. Karra, S.L. Painter, E. Jafarov, and S. Molins. 2020. Advanced Terrestrial Simulator. U.S. Department of Energy, USA. Version 1.0. [Github Repo](https://github.com/amanzi/ats).
 
-Provide any citation for the model or data (if it is stored somewhere else).
+Liston, G.E., A.K. Reinking, and N.T. Boleman. 2023. Daily SnowModel Outputs Covering the ABoVE Core Domain, 3-km Resolution, 1980-2020. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2105
+
+https://daymet.ornl.gov/single-pixel/api/data?lat=35.9621&lon=-84.2916&vars=dayl,prcp,srad,swe,tmax,tmin,vp&start=1990-01-01&end=2006-12-31

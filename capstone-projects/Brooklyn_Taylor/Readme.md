@@ -1,15 +1,15 @@
-# My amazing project title
+# Groundwater Model of Moab Using UGS data in PFLOTRAN
 This repository contains data and scripts necessary for reproducing the xx model.
 
 ## Summary
-Provide a summary of the proposed project with the following format: 1-2 sentences about the background, one sentence on knowledge gap or motivation, one sentence on the overall goal of this project, 2-3 sentences on the objectives, 1-2 sentences on the expected outcome.
+This project provides a preliminary analysis of groundwater conditions at the study site and projects potential flow changes based on three wells from the UGS (see Figure 1). By establishing a foundation for future groundwater modeling efforts in the region, this project will contribute to a better understanding of local groundwater dynamics. The model will be run as a forecasting tool to predict how groundwater conditions may evolve under current pumping rates. The insights gained will help identify data gaps and guide further research.
 
 ## Methods
 - Modeling tool
-State what modeling code you will be using
+PFLOTRAN
 
 - Study Area
-State what real or hypothetical study area you will be working on 
+Moab
 
 ## Repository Structure
 ```
@@ -27,4 +27,4 @@ State what real or hypothetical study area you will be working on
 - `results`: provides any results generated from the model analysis (e.g., figures associated with report)
 
 ## Citation
-Provide any citation for the model or data (if it is stored somewhere else).
+Masbruch, M. D., Gardner, P. M., Nelson, N. C., Heilweil, V. M., Solder, J. E., Hess, M. D., McKinney, T. S., Briggs, M. A., & Solomon, D. K. (2019). Evaluation of groundwater resources in the Spanish Valley watershed, Grand and San Juan counties, Utah. U.S. Geological Survey.

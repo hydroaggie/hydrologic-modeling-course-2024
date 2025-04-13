@@ -14,18 +14,16 @@ fi
 echo "ppestest started at $(date)" > end.txt
 I=0
 while [ $I -lt $PSLAVES ]; do
-  # Remove existing pslave directory if it exists
-  if [ -d pslave$I ]; then
-    rm -rf pslave$I
-  fi
  # copy makefile to each pslave subdirectory and run it to copy necessary files
  # into pslave subdirectories
-  mkdir pslave$I
-  cp trial.sh pslave$I
-  chmod 775 -R pslave$I
-  cp PFLOTRAN_pest.py pslave$I
-  cp observation.csv pslave$I
+ if [ ! -d pslave$I ]; then 
+   mkdir pslave$I
+   cp trial.sh pslave$I
+   chmod 775 -R pslave$I
+   cp PFLOTRAN_pest.py pslave$I
+   cp observation.csv pslave$I
    # cp RP_Col3_mZVI_XG.xlsx pslave$I
+ fi 
  cd pslave$I
  if [ $? -ne 0 ]; then
         exit 1

@@ -1,0 +1,7 @@
+prf
+ 4 0 1.5 0
+ 'pslave_0' ./pslave0 
+ 'pslave_1' ./pslave1 
+ 'pslave_2' ./pslave2 
+ 'pslave_3' ./pslave3 
+ 1000000 1000000 1000000 1000000 

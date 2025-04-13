@@ -1,7 +1,7 @@
 # PFLOTRAN Fitting Routine with PEST
-# Specific for Column 3- mZVI + XG
-# Katie Muller
-# 05/08/24
+# 1D column flow and transport model
+# Authors: Katie Muller, Pin Shuai
+# 04/13/25
 
 # Import
 import pandas as pd
@@ -11,10 +11,6 @@ import subprocess
 import os
 import matplotlib.pyplot as plt
 import math as math
-
-# dir_code = '~/projects/DVZ_Particle/src'
-# import sys
-# sys.path.append(dir_code)
 
 ##### Functions to read PFLOTRAN pft and tec files ######
 def read_pflotran_output(fname):
@@ -33,12 +29,9 @@ def tec_to_dataframe(file_path, no_skiprow, column_headers):
 ### 1.0 Import Experimental Data
 dir_data = Path('./')
 f_obs_BTC = os.path.join(dir_data, 'observation.csv')
-# f_obs_RP = os.path.join(dir_data, 'RP_Col3_mZVI_XG.xlsx')
 
 BTC_obs = pd.read_csv(f_obs_BTC)
 time_BTC_obs = BTC_obs['Time [d]']
-
-# RP_obs = pd.read_excel(f_obs_RP)
 
 ####### Path to folder locations
 dir_model = Path('./')
@@ -47,44 +40,15 @@ dir_model = Path('./')
 # Simulation Results, BTC -- Aqueous concentration at the end of the column
 f_out_btc = './pflotran-obs-0.pft'
 pf_out_btc = read_pflotran_output(f_out_btc)
-# print(pf_out_btc.head())
-# print(pf_out_btc.index)
-## Simulation Results, Ret. Profile -- Retention Profile at final time
-## FLAG - HARDCODED
-#f_out_rp = os.path.join(dir_model, "{}".format('pflotran-010.tec'))
-
-##### FLAG - Will need to make this flexible in the future #####
-#column_headers = ['X [m]', 'Y [m]', 'Z [m]', 'Total Particle_aq [M]', 'Total Br- [M]', 'Particle_im [mol/m^3]','Material ID']
-
-##Conversions
-## FLAG - pb is HARDCODED
-#pb = 1490 #kg/m^3
-#MW_Fe = 55.845 #g/mol
-
-# # Retention Profile
-# pf_out_rp = tec_to_dataframe(f_out_rp, no_skiprow = 3, column_headers = column_headers)
-# Vt_section = pf_out_rp['X [m]'].iloc[0]*2 * pf_out_rp['Y [m]'].iloc[0]*2 * pf_out_rp['Z [m]'].iloc[0]*2
-# g_sand_section = Vt_section*pb*1000
-
 
 # BTC data obsevations:
 observations = []
 observations.append(BTC_obs['Total Tracer [M]'].tolist())
-# # RF data observations:
-# observations.append(RP_obs['Solid Phase Iron Content [mg-Fe/g-sediment]'].tolist())
 observations = np.concatenate(observations)
 
-## 4.1 Computing weights
-### Weights have been set based on the fraction of mass associated with the BTC vs RP and the number of data points for each data type, see below:
-### 43% mass associated with BTC
-### 57% mass associated with RF
-
 weights = []
-# wt = np.ones(len(BTC_obs['mZVI [M]']))*(43/len(BTC_obs['mZVI [M]']))
 wt = np.ones(len(BTC_obs['Total Tracer [M]']))
 weights.append(wt.tolist())
-# wt = np.ones(len(RP_obs['Solid Phase Iron Content [mg-Fe/g-sediment]']))*(57/len(RP_obs['Solid Phase Iron Content [mg-Fe/g-sediment]']))
-# weights.append(wt.tolist())
 weights = np.concatenate(weights)
 
 ## PFLOTRAN Model Output
@@ -92,8 +56,6 @@ model_output = []
 # BTC sim output -- inter to exp data point time/locations
 model_output.append(np.interp(BTC_obs['Time [d]'],pf_out_btc.index, pf_out_btc['Total Tracer [M] middle (50) (19.8 0.5 0.5)']).tolist())
 
-# # RP sim output -- inter to exp data point time/locations
-# model_output.append(np.interp(RP_obs['distance from inlet [m]'],pf_out_rp['X [m]'],pf_out_rp['Particle_im [mol/m^3]']*MW_Fe*1000*Vt_section/g_sand_section).tolist())
 model_output = np.concatenate(model_output)
 
 ### 5.0 Write PEST Files ##############################
@@ -154,7 +116,7 @@ pflotran.tpl  pflotran.in
 trial.ins output_processed.txt
 * prior information"""
     txt_file.write(block)    
-    ## 5.4 processed output (txt)
+## 5.4 processed output (txt)
 
 with open("output_processed.txt", "w") as txt_file:
     for model_sim in model_output:

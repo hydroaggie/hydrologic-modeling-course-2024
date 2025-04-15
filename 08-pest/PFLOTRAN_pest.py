@@ -85,12 +85,21 @@ norestart  estimation
 # NTPLFLE NINSFLE    PRECIS   DPOINT [NUMCOM JACFILE MESSFILE] [OBSREREF]
     1     1 single point   1   0   0
 # RLAMBDA1 RLAMFAC PHIRATSUF PHIREDLAM NUMLAM 
+# initial Marquardt lambda, adjustment factor for lambda, 
+# PHIRATSUF: phi ratio sufficient--if the ratio of current and the lowest phi is less than this set ratio (i.e. 0.3) then iteration stops; 
+# PHIREDLAM: relative reduction in phi is less than 0.03, then iteration stops
+# NUMLAM: max number of lambdas for each iteration
   5.0   2.0   0.3  0.03    10
 # RELPARMAX FACPARMAX FACORIG [IBOUNDSTICK UPVECBEND]
+# RELPARMAX/FACPARMAX --max allowed relative/factor change for parameters, FACORIG is the factor used to times original parameter value to set the lower limit for parameters
   3.0   3.0 0.001  0
 # PHIREDSWH [NOPTSWITCH]
   0.1
 # NOPTMAX PHIREDSTP NPHISTP NPHINORED RELPARSTP NRELPAR
+# NOPTMAX--set max number of interations; 0--stop after one model run (useful for testing PEST setup)
+# PHIREDSTP--relative reduction in phi is less than 0.01 after NPHISTP (i.e., 3) iterations, then optimal parameters found.
+# NPHINORED--after this number of iterations (3), PEST will stop when phi is not lowered
+# RELPARSTP and NRELPAR -- stop if maximum relative parameter change between iterations is less than RELPARSTP over NRELPAR successive iterations
    30  0.01     3     3  0.01     3
 # ICOV ICOR IEIG 
     1     1     1
@@ -98,6 +107,7 @@ norestart  estimation
 dgr         relative 0.01  0.0  switch  2.0 parabolic
 * parameter data
 # PARNME PARTRANS PARCHGLIM PARVAL1 PARLBND PARUBND PARGP SCALE OFFSET DERCOM
+# parameter name, transformation (none, log,), change lmit, initial, lower bnd, upper bnd
 aL          none  relative    1      0.1   10 dgr             1.0000        0.0000      1
 * observation groups
 obsgroup

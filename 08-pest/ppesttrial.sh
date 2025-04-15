@@ -2,11 +2,11 @@
 #   script that executes parallel pest
 #
 DATE=04/12/25
-PSLAVES=4
+PSLAVES=4 # change this different number of slaves
 PPEST=$PEST_DIR/bin/ppest
 PSLAVE=$PEST_DIR/bin/pslave
 PFLOTRAN=pflotran
-CASE=trial
+CASE=trial # change this for different case name
 export PATH=${PATH}:.
 if [ -e pslaves.txt ]; then
     rm pslaves.txt #this file keeps track of pslave PIDs

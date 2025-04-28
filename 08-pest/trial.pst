@@ -1,0 +1,60 @@
+pcf
+* control data
+# RSTFLE PESTMODE
+norestart  estimation
+# Number of parameters, number of observations, number of parameter groups, number of prior information, number of observation groups
+    1     26     1     0     1
+# Number of pairs of input template files, number of model output reading instruction files, 
+# NTPLFLE NINSFLE    PRECIS   DPOINT [NUMCOM JACFILE MESSFILE] [OBSREREF]
+    1     1 single point   1   0   0
+# RLAMBDA1 RLAMFAC PHIRATSUF PHIREDLAM NUMLAM 
+  5.0   2.0   0.3  0.03    10
+# RELPARMAX FACPARMAX FACORIG [IBOUNDSTICK UPVECBEND]
+  3.0   3.0 0.001  0
+# PHIREDSWH [NOPTSWITCH]
+  0.1
+# NOPTMAX PHIREDSTP NPHISTP NPHINORED RELPARSTP NRELPAR
+   30  0.01     3     3  0.01     3
+# ICOV ICOR IEIG 
+    1     1     1
+* parameter groups
+dgr         relative 0.01  0.0  switch  2.0 parabolic
+* parameter data
+# PARNME PARTRANS PARCHGLIM PARVAL1 PARLBND PARUBND PARGP SCALE OFFSET DERCOM
+aL          none  relative    1      0.1   10 dgr             1.0000        0.0000      1
+* observation groups
+obsgroup
+* observation data
+# Obs Name  Observation        Weight    Group
+obs1   0.00000000000000000001    1.0    obsgroup
+obs2   0.00000000000000000001    1.0    obsgroup
+obs3   0.00000000000000000001    1.0    obsgroup
+obs4   0.00000000000000000001    1.0    obsgroup
+obs5   0.00000000000000000001    1.0    obsgroup
+obs6   0.00000000000000000001    1.0    obsgroup
+obs7   0.00000000000000000001    1.0    obsgroup
+obs8   0.00000000000000000001    1.0    obsgroup
+obs9   0.00000000000000000024    1.0    obsgroup
+obs10   0.00000000000010500000    1.0    obsgroup
+obs11   0.00000000147000000000    1.0    obsgroup
+obs12   0.00000139000000000000    1.0    obsgroup
+obs13   0.00005230000000000000    1.0    obsgroup
+obs14   0.00164999999999999999    1.0    obsgroup
+obs15   0.03049999999999999933    1.0    obsgroup
+obs16   0.10399999999999999523    1.0    obsgroup
+obs17   0.33700000000000002176    1.0    obsgroup
+obs18   0.44300000000000000488    1.0    obsgroup
+obs19   0.69199999999999994849    1.0    obsgroup
+obs20   0.83299999999999996270    1.0    obsgroup
+obs21   0.90900000000000003020    1.0    obsgroup
+obs22   0.94999999999999995559    1.0    obsgroup
+obs23   0.97299999999999997602    1.0    obsgroup
+obs24   0.98499999999999998668    1.0    obsgroup
+obs25   0.99199999999999999289    1.0    obsgroup
+obs26   0.99499999999999999556    1.0    obsgroup
+* model command line
+./trial.sh
+* model input/output
+pflotran.tpl  pflotran.in
+trial.ins output_processed.txt
+* prior information

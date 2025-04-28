@@ -12,17 +12,16 @@ Hydrothermal processes in the arctic permafrost active layer are critical for un
 ## Repository Structure
 ```
 |-- data
-|-- model
-|   |-- inputs
-|   `-- outputs
-|-- scripts
-`-- results
-|   |-- figures
+|-- inputs
+|-- notebooks
+    | -- data_processing
+    | -- output_processing
+|-- run
 ```
-- `data`: provides data needed to run the model (e.g., meshes, meterological forcing, observation, etc.)
-- `model`: provides input files and essential model outputs (e.g., observation points, mass balance)
-- `scripts`: provides the scripts or jupyter notebooks for pre- and post- processing model files
-- `results`: provides any results generated from the model analysis (e.g., figures associated with report)
+- `data`: provides data needed to run the model (mesh, meterological forcing, and final states of spin up and freeze up)
+- `inputs`: provides input files for the freeze up, spin up, transient runs. 
+- `notebooks`: provides the scripts or jupyter notebooks for pre- and post- processing forcing and output files. Also produces the figures included in the report.
+- `run`: Includes essential model outputs for post processing notebooks.
 
 ## Citations
 Liston, G. E., Reinking, A. K., & Boleman, N. T. (2023). Daily SnowModel Outputs Covering the ABoVE Core Domain, 3-km Resolution, 1980-2020 [Data set]. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/2105

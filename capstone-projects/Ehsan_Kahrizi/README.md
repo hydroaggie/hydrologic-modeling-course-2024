@@ -42,5 +42,4 @@ Reitan, T. (2022). Review of methods for automation of quality control on hydrol
 Rode, M., Wade, A. J., Cohen, M. J., Hensley, R. T., Bowes, M. J., Kirchner, J. W., Arhonditsis, G. B., Jordan, P., Kronvang, B., Halliday, S. J., Skeffington, R. A., Rozemeijer, J. C., Aubert, A. H., Rinke, K., & Jomaa, S. (2016). Sensors in the Stream: The High-Frequency Wave of the Present. Environmental Science and Technology, 50(19), 10297–10307. https://doi.org/10.1021/acs.est.6b02155
 Shen, C. (2018). A Transdisciplinary Review of Deep Learning Research and Its Relevance for Water Resources Scientists. In Water Resources Research (Vol. 54, Issue 11, pp. 8558–8593). Blackwell Publishing Ltd. https://doi.org/10.1029/2018WR022643
 Turnipseed, D. P., Sauer, V. B., & Survey, U. S. G. (2010). Discharge measurements at gaging stations. In Techniques and Methods. https://doi.org/10.3133/tm3A8
-![image](https://github.com/user-attachments/assets/b57d4f3a-85bb-44d1-8944-baec3a14a17e)
 

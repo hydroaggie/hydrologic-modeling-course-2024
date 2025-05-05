@@ -1,0 +1,2523 @@
+<ParameterList name="Main" type="ParameterList">
+  <ParameterList name="mesh" type="ParameterList">
+    <ParameterList name="domain" type="ParameterList">
+      <Parameter name="mesh type" type="string" value="read mesh file" />
+      <Parameter name="build columns from set" type="string" value="surface" />
+      <ParameterList name="read mesh file parameters" type="ParameterList">
+        <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      </ParameterList>
+    </ParameterList>
+    <ParameterList name="surface" type="ParameterList">
+      <Parameter name="mesh type" type="string" value="surface" />
+      <ParameterList name="surface parameters" type="ParameterList">
+        <Parameter name="surface sideset name" type="string" value="surface" />
+      </ParameterList>
+    </ParameterList>
+    <ParameterList name="snow" type="ParameterList">
+      <Parameter name="mesh type" type="string" value="aliased" />
+      <ParameterList name="aliased parameters" type="ParameterList">
+        <Parameter name="target" type="string" value="surface" />
+      </ParameterList>
+    </ParameterList>
+    <ParameterList name="canopy" type="ParameterList">
+      <Parameter name="mesh type" type="string" value="aliased" />
+      <ParameterList name="aliased parameters" type="ParameterList">
+        <Parameter name="target" type="string" value="surface" />
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+
+  <ParameterList name="regions" type="ParameterList">
+    <ParameterList name="computational domain" type="ParameterList">
+      <Parameter name="region type" type="string" value="all" />
+      <Parameter name="empty" type="bool" value="true" />
+    </ParameterList>
+    <ParameterList name="computational domain boundary" type="ParameterList">
+      <Parameter name="region type" type="string" value="boundary" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="surface domain" type="ParameterList">
+      <Parameter name="region type" type="string" value="all" />
+      <Parameter name="empty" type="bool" value="true" />
+    </ParameterList>
+    <ParameterList name="surface domain boundary" type="ParameterList">
+      <Parameter name="region type" type="string" value="boundary" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="snow domain" type="ParameterList">
+      <Parameter name="region type" type="string" value="all" />
+      <Parameter name="empty" type="bool" value="true" />
+    </ParameterList>
+    <ParameterList name="snow domain boundary" type="ParameterList">
+      <Parameter name="region type" type="string" value="boundary" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="canopy domain" type="ParameterList">
+      <Parameter name="region type" type="string" value="all" />
+      <Parameter name="empty" type="bool" value="true" />
+    </ParameterList>
+    <ParameterList name="canopy domain boundary" type="ParameterList">
+      <Parameter name="region type" type="string" value="boundary" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="UT20250414211933362000" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="10000" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="Grasslands" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="10" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="UT20250414211933362000 boundary" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="10002" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="UT20250414211933362000 outlet" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="10003" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="UT20250414211933362000 surface" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="10001" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="bottom" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="external_sides" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="3" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="surface" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="2" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="surface domain outlet" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="10004" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="FACE" />
+    </ParameterList>
+    <ParameterList name="GLHYMPS-765771" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="100" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="GLHYMPS-759912" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="101" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="GLHYMPS-759860" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="102" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="GLHYMPS-815409" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="103" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-482824" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1000" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-482715" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1001" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-482761" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1002" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980833" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1003" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980853" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1004" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980857" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1005" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980843" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1006" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-482716" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1007" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980852" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1008" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980856" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1009" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980832" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1010" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980858" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1011" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2899437" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1012" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2917033" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1013" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-482656" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1014" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-482703" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1015" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-482773" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1016" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-623870" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1017" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980841" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1018" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-623887" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1019" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980854" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1020" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-482713" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1021" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-623911" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1022" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980838" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1023" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2899442" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1024" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2899432" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1025" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980847" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1026" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-482719" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1027" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-2980835" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1028" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="NRCS-623912" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="1029" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+    <ParameterList name="bedrock" type="ParameterList">
+      <Parameter name="region type" type="string" value="labeled set" />
+      <Parameter name="label" type="string" value="999" />
+      <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_mesh.exo" />
+      <Parameter name="format" type="string" value="Exodus II" />
+      <Parameter name="entity" type="string" value="CELL" />
+    </ParameterList>
+  </ParameterList>
+
+  <ParameterList name="cycle driver" type="ParameterList">
+    <Parameter name="start time" type="double" value="15249" />
+    <Parameter name="start time units" type="string" value="d" />
+    <Parameter name="end time" type="double" value="15979" />
+    <Parameter name="end time units" type="string" value="d" />
+    <Parameter name="end cycle" type="int" value="-1" />
+    <Parameter name="max time step size [s]" type="double" value="86400" />
+    <Parameter name="wallclock duration [hrs]" type="double" value="23.9" />
+    <ParameterList name="required times">
+      <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" />
+      <Parameter name="times start period stop units" type="string" value="d" />
+    </ParameterList>
+    <ParameterList name="PK tree" type="ParameterList">
+      <ParameterList name="water_balance" type="ParameterList">
+        <Parameter name="PK type" type="string" value="weak MPC" />
+        <ParameterList name="canopy_water" type="ParameterList">
+          <Parameter name="PK type" type="string" value="general surface balance" />
+        </ParameterList>
+        <ParameterList name="snow" type="ParameterList">
+          <Parameter name="PK type" type="string" value="general surface balance" />
+        </ParameterList>
+        <ParameterList name="surface_subsurface_water" type="ParameterList">
+          <Parameter name="PK type" type="string" value="coupled water" />
+          <ParameterList name="flow" type="ParameterList">
+            <Parameter name="PK type" type="string" value="richards flow" />
+          </ParameterList>
+          <ParameterList name="overland_flow" type="ParameterList">
+            <Parameter name="PK type" type="string" value="overland flow, pressure basis" />
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+  <ParameterList name="PKs" type="ParameterList">
+
+    <ParameterList name="water_balance" type="ParameterList">
+      <Parameter name="PK type" type="string" value="weak MPC" />
+      <Parameter name="PKs order" type="Array(string)" value="{canopy_water, snow, surface_subsurface_water}" />
+
+    </ParameterList>
+
+    <ParameterList name="canopy_water" type="ParameterList">
+      <Parameter name="PK type" type="string" value="general surface balance" />
+      <Parameter name="primary variable key suffix" type="string" value="water_equivalent" />
+      <Parameter name="conserved quantity key suffix" type="string" value="water_content" />
+      <Parameter name="domain name" type="string" value="canopy" />
+      <Parameter name="source term" type="bool" value="true" />
+      <Parameter name="source key" type="string" value="canopy-water_source" />
+      <Parameter name="source term is differentiable" type="bool" value="true" />
+      <Parameter name="modify predictor positivity preserving" type="bool" value="true" />
+      <Parameter name="debug cells" type="Array(int)" value="{0}" />
+      <ParameterList name="initial condition" type="ParameterList">
+        <Parameter name="restart file" type="string" value="../2-spinup_cyclic/checkpoint00000.h5" />
+      </ParameterList>
+
+      <ParameterList name="inverse" type="ParameterList">
+        <Parameter name="preconditioning method" type="string" value="diagonal" />
+      </ParameterList>
+
+      <ParameterList name="time integrator" type="ParameterList">
+        <Parameter name="extrapolate initial guess" type="bool" value="true" />
+        <Parameter name="solver type" type="string" value="nka_bt_ats" />
+        <Parameter name="timestep controller type" type="string" value="smarter" />
+        <ParameterList name="nka_bt_ats parameters" type="ParameterList">
+          <Parameter name="nka lag iterations" type="int" value="2" />
+          <Parameter name="max backtrack steps" type="int" value="5" />
+          <Parameter name="backtrack lag" type="int" value="0" />
+          <Parameter name="backtrack factor" type="double" value="0.5" />
+          <Parameter name="backtrack tolerance" type="double" value="0.0001" />
+          <Parameter name="nonlinear tolerance" type="double" value="1e-06" />
+          <Parameter name="diverged tolerance" type="double" value="1000000" />
+          <Parameter name="limit iterations" type="int" value="21" />
+        </ParameterList>
+        <ParameterList name="timestep controller smarter parameters" type="ParameterList">
+          <Parameter name="max iterations" type="int" value="18" />
+          <Parameter name="min iterations" type="int" value="10" />
+          <Parameter name="time step reduction factor" type="double" value="0.5" />
+          <Parameter name="time step increase factor" type="double" value="3" />
+          <Parameter name="max time step" type="double" value="10000000" />
+          <Parameter name="min time step" type="double" value="1e-10" />
+          <Parameter name="growth wait after fail" type="int" value="2" />
+          <Parameter name="count before increasing increase factor" type="int" value="2" />
+          <Parameter name="initial time step [s]" type="double" value="259200" />
+        </ParameterList>
+      </ParameterList>
+
+    </ParameterList>
+
+    <ParameterList name="snow" type="ParameterList">
+      <Parameter name="PK type" type="string" value="general surface balance" />
+      <Parameter name="primary variable key" type="string" value="snow-depth" />
+      <Parameter name="conserved quantity key" type="string" value="snow-water_content" />
+      <Parameter name="domain name" type="string" value="snow" />
+      <Parameter name="source term" type="bool" value="true" />
+      <Parameter name="source key" type="string" value="snow-water_source" />
+      <Parameter name="source term is differentiable" type="bool" value="true" />
+      <Parameter name="modify predictor positivity preserving" type="bool" value="true" />
+      <Parameter name="debug cells" type="Array(int)" value="{0}" />
+      <ParameterList name="initial condition" type="ParameterList">
+        <Parameter name="restart file" type="string" value="../2-spinup_cyclic/checkpoint00000.h5" />
+      </ParameterList>
+
+      <ParameterList name="inverse" type="ParameterList">
+        <Parameter name="preconditioning method" type="string" value="diagonal" />
+      </ParameterList>
+
+      <ParameterList name="time integrator" type="ParameterList">
+        <Parameter name="extrapolate initial guess" type="bool" value="true" />
+        <Parameter name="solver type" type="string" value="nka_bt_ats" />
+        <Parameter name="timestep controller type" type="string" value="smarter" />
+        <ParameterList name="nka_bt_ats parameters" type="ParameterList">
+          <Parameter name="nka lag iterations" type="int" value="2" />
+          <Parameter name="max backtrack steps" type="int" value="5" />
+          <Parameter name="backtrack lag" type="int" value="0" />
+          <Parameter name="backtrack factor" type="double" value="0.5" />
+          <Parameter name="backtrack tolerance" type="double" value="0.0001" />
+          <Parameter name="nonlinear tolerance" type="double" value="1e-06" />
+          <Parameter name="diverged tolerance" type="double" value="1000000" />
+          <Parameter name="limit iterations" type="int" value="21" />
+        </ParameterList>
+        <ParameterList name="timestep controller smarter parameters" type="ParameterList">
+          <Parameter name="max iterations" type="int" value="18" />
+          <Parameter name="min iterations" type="int" value="10" />
+          <Parameter name="time step reduction factor" type="double" value="0.5" />
+          <Parameter name="time step increase factor" type="double" value="3" />
+          <Parameter name="max time step" type="double" value="10000000" />
+          <Parameter name="min time step" type="double" value="1e-10" />
+          <Parameter name="growth wait after fail" type="int" value="2" />
+          <Parameter name="count before increasing increase factor" type="int" value="2" />
+          <Parameter name="initial time step [s]" type="double" value="259200" />
+        </ParameterList>
+      </ParameterList>
+
+    </ParameterList>
+
+    <ParameterList name="surface_subsurface_water" type="ParameterList">
+      <Parameter name="PK type" type="string" value="coupled water" />
+      <Parameter name="PKs order" type="Array(string)" value="{flow, overland_flow}" />
+      <ParameterList name="water delegate" type="ParameterList">
+        <Parameter name="modify predictor damp and cap the water spurt" type="bool" value="true" />
+        <Parameter name="damp and cap the water spurt" type="bool" value="true" />
+        <Parameter name="cap over atmospheric" type="double" value="0.001" />
+      </ParameterList>
+
+      <ParameterList name="inverse" type="ParameterList">
+        <Parameter name="preconditioning method" type="string" value="block ilu" />
+        <Parameter name="iterative method" type="string" value="gmres" />
+        <ParameterList name="gmres parameters" type="ParameterList">
+          <Parameter name="preconditioning strategy" type="string" value="left" />
+          <Parameter name="error tolerance" type="double" value="1e-06" />
+          <Parameter name="convergence criteria" type="Array(string)" value="{relative residual,make one iteration}" />
+          <Parameter name="maximum number of iteration" type="int" value="10" />
+        </ParameterList>
+      </ParameterList>
+
+      <ParameterList name="time integrator" type="ParameterList">
+        <Parameter name="extrapolate initial guess" type="bool" value="true" />
+        <Parameter name="solver type" type="string" value="nka_bt_ats" />
+        <Parameter name="timestep controller type" type="string" value="smarter" />
+        <ParameterList name="nka_bt_ats parameters" type="ParameterList">
+          <Parameter name="nka lag iterations" type="int" value="2" />
+          <Parameter name="max backtrack steps" type="int" value="5" />
+          <Parameter name="backtrack lag" type="int" value="0" />
+          <Parameter name="backtrack factor" type="double" value="0.5" />
+          <Parameter name="backtrack tolerance" type="double" value="0.0001" />
+          <Parameter name="nonlinear tolerance" type="double" value="1e-06" />
+          <Parameter name="diverged tolerance" type="double" value="1000000" />
+          <Parameter name="limit iterations" type="int" value="21" />
+        </ParameterList>
+        <ParameterList name="timestep controller smarter parameters" type="ParameterList">
+          <Parameter name="max iterations" type="int" value="18" />
+          <Parameter name="min iterations" type="int" value="10" />
+          <Parameter name="time step reduction factor" type="double" value="0.5" />
+          <Parameter name="time step increase factor" type="double" value="3" />
+          <Parameter name="max time step" type="double" value="10000000" />
+          <Parameter name="min time step" type="double" value="1e-10" />
+          <Parameter name="growth wait after fail" type="int" value="2" />
+          <Parameter name="count before increasing increase factor" type="int" value="2" />
+          <Parameter name="initial time step [s]" type="double" value="259200" />
+        </ParameterList>
+      </ParameterList>
+
+    </ParameterList>
+
+    <ParameterList name="flow" type="ParameterList">
+      <Parameter name="PK type" type="string" value="richards flow" />
+      <Parameter name="primary variable key" type="string" value="pressure" />
+      <Parameter name="source term" type="bool" value="true" />
+      <Parameter name="source key" type="string" value="water_source" />
+      <Parameter name="permeability rescaling" type="double" value="10000000" />
+      <Parameter name="surface rel perm strategy" type="string" value="clobber" />
+      <Parameter name="relative permeability method" type="string" value="upwind with Darcy flux" />
+      <Parameter name="debug cells" type="Array(int)" value="{0}" />
+      <ParameterList name="diffusion" type="ParameterList">
+        <Parameter name="discretization primary" type="string" value="mfd: two-point flux approximation" />
+      </ParameterList>
+
+      <ParameterList name="diffusion preconditioner">
+        <Parameter name="include Newton correction" type="bool" value="true" />
+      </ParameterList>
+
+      <ParameterList name="boundary conditions" type="ParameterList">
+      </ParameterList>
+
+      <ParameterList name="initial condition" type="ParameterList">
+        <Parameter name="restart file" type="string" value="../2-spinup_cyclic/checkpoint00000.h5" />
+      </ParameterList>
+
+    </ParameterList>
+
+    <ParameterList name="overland_flow" type="ParameterList">
+      <Parameter name="PK type" type="string" value="overland flow, pressure basis" />
+      <Parameter name="primary variable key" type="string" value="surface-pressure" />
+      <Parameter name="domain name" type="string" value="surface" />
+      <Parameter name="source term" type="bool" value="true" />
+      <Parameter name="source key" type="string" value="surface-water_source" />
+      <Parameter name="water source in meters" type="bool" value="true" />
+      <ParameterList name="diffusion" type="ParameterList">
+        <Parameter name="discretization primary" type="string" value="fv: default" />
+      </ParameterList>
+
+      <ParameterList name="diffusion preconditioner" type="ParameterList">
+        <Parameter name="include Newton correction" type="bool" value="true" />
+      </ParameterList>
+
+      <ParameterList name="boundary conditions">
+        <ParameterList name="seepage face head">
+          <ParameterList name="surface">
+            <Parameter name="regions" type="Array(string)" value="{surface domain outlet}" />
+            <ParameterList name="boundary head">
+              <ParameterList name="function-constant">
+                <Parameter name="value" type="double" value=" 0" />
+              </ParameterList>
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+
+      <ParameterList name="initial condition" type="ParameterList">
+        <Parameter name="restart file" type="string" value="../2-spinup_cyclic/checkpoint00000.h5" />
+      </ParameterList>
+
+    </ParameterList>
+
+  </ParameterList>
+
+  <ParameterList name="state" type="ParameterList">
+    <ParameterList name="evaluators" type="ParameterList">
+      <ParameterList name="water_content" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="richards water content" />
+        <Parameter name="units" type="string" value="mol" />
+      </ParameterList>
+      <ParameterList name="capillary_pressure_gas_liq" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="capillary pressure, atmospheric gas over liquid" />
+        <Parameter name="units" type="string" value="Pa" />
+      </ParameterList>
+      <ParameterList name="surface-water_content" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="overland pressure water content" />
+        <Parameter name="units" type="string" value="mol" />
+      </ParameterList>
+      <ParameterList name="surface-ponded_depth" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="ponded depth" />
+        <Parameter name="units" type="string" value="m" />
+      </ParameterList>
+      <ParameterList name="snow-water_content" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{snow-cell_volume, snow-water_equivalent, surface-molar_density_liquid}" />
+        <Parameter name="units" type="string" value="mol" />
+      </ParameterList>
+      <ParameterList name="canopy-water_content" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{canopy-cell_volume, canopy-water_equivalent, surface-molar_density_liquid}" />
+        <Parameter name="units" type="string" value="mol" />
+      </ParameterList>
+      <ParameterList name="canopy-water_source" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{canopy-water_source_meters, surface-molar_density_liquid}" />
+        <Parameter name="units" type="string" value="mol m^-2 s^-1" />
+      </ParameterList>
+      <ParameterList name="canopy-water_source_meters" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="additive evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{canopy-interception, canopy-evaporation, canopy-drainage}" />
+        <Parameter name="canopy-evaporation coefficient" type="double" value="-1" />
+        <Parameter name="canopy-drainage coefficient" type="double" value="-1" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="canopy-throughfall_drainage_rain" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="interception fraction" />
+        <Parameter name="area index key" type="string" value="canopy-leaf_area_index" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="canopy-drainage" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="canopy drainage" />
+        <Parameter name="drainage key" type="string" value="canopy-drainage" />
+        <Parameter name="fraction wet key" type="string" value="canopy-fracwet" />
+        <Parameter name="area index key" type="string" value="canopy-leaf_area_index" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="canopy-interception" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="interception fraction" />
+        <Parameter name="area index key" type="string" value="canopy-leaf_area_index" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="canopy-fracwet" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="canopy drainage" />
+        <Parameter name="drainage key" type="string" value="canopy-drainage" />
+        <Parameter name="fraction wet key" type="string" value="canopy-fracwet" />
+        <Parameter name="area index key" type="string" value="canopy-leaf_area_index" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="canopy-evaporation" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="potential evapotranspiration, Priestley-Taylor" />
+        <Parameter name="evaporation type" type="string" value="canopy" />
+        <Parameter name="include limiter" type="bool" value="true" />
+        <Parameter name="air temperature key" type="string" value="surface-air_temperature" />
+        <Parameter name="surface temperature key" type="string" value="surface-air_temperature" />
+        <Parameter name="elevation key" type="string" value="surface-elevation" />
+        <Parameter name="net radiation key" type="string" value="canopy-radiation_balance" />
+        <Parameter name="limiter key" type="string" value="canopy-fracwet" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="canopy-radiation_balance" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="radiation balance, surface and canopy" />
+        <Parameter name="surface albedos key" type="string" value="surface-albedos" />
+        <Parameter name="surface emissivities key" type="string" value="surface-emissivities" />
+        <Parameter name="surface temperature key" type="string" value="surface-temperature" />
+        <Parameter name="snow temperature key" type="string" value="snow-temperature" />
+        <Parameter name="canopy temperature key" type="string" value="canopy-temperature" />
+        <Parameter name="incoming shortwave radiation key" type="string" value="surface-incident_shortwave_radiation" />
+        <Parameter name="incoming longwave radiation key" type="string" value="surface-incoming_longwave_radiation" />
+        <Parameter name="area fractions key" type="string" value="surface-area_fractions" />
+        <Parameter name="leaf area index key" type="string" value="canopy-leaf_area_index" />
+        <Parameter name="units" type="string" value="W m^-2" />
+      </ParameterList>
+      <ParameterList name="snow-water_source" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{snow-water_source_meters, surface-molar_density_liquid}" />
+        <Parameter name="units" type="string" value="mol m^-2 s^-1" />
+      </ParameterList>
+      <ParameterList name="snow-water_source_meters" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="additive evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{canopy-throughfall_drainage_snow, snow-melt, snow-evaporation}" />
+        <Parameter name="snow-evaporation coefficient" type="double" value="-1" />
+        <Parameter name="snow-melt coefficient" type="double" value="-1" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="snow-melt" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="snow melt rate" />
+        <Parameter name="snow melt rate [mm day^-1 C^-1]" type="double" value="2.74" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="snow-evaporation" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="potential evapotranspiration, Priestley-Taylor" />
+        <Parameter name="evaporation type" type="string" value="snow" />
+        <Parameter name="include limiter" type="bool" value="true" />
+        <Parameter name="limiter number of dofs" type="int" value="2" />
+        <Parameter name="limiter dof" type="int" value="1" />
+        <Parameter name="air temperature key" type="string" value="surface-air_temperature" />
+        <Parameter name="surface temperature key" type="string" value="surface-temperature" />
+        <Parameter name="elevation key" type="string" value="surface-elevation" />
+        <Parameter name="net radiation key" type="string" value="snow-radiation_balance" />
+        <Parameter name="limiter key" type="string" value="surface-area_fractions" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="surface-area_fractions" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="area fractions, two components" />
+        <Parameter name="units" type="string" value="-" />
+      </ParameterList>
+      <ParameterList name="snow-density">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value="150" />
+        <Parameter name="units" type="string" value="kg m^-3" />
+      </ParameterList>
+      <ParameterList name="snow-water_equivalent">
+        <Parameter name="evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{snow-depth, snow-density}" />
+        <Parameter name="coefficient" type="double" value="0.001" />
+        <Parameter name="units" type="string" value="m" />
+      </ParameterList>
+      <ParameterList name="surface-water_source" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="additive evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{canopy-throughfall_drainage_rain, snow-melt, surface-evaporation}" />
+        <Parameter name="surface-evaporation coefficient" type="double" value="-1" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="surface-evaporation" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="evaporation downregulation, soil resistance" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="surface-potential_evaporation" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="potential evapotranspiration, Priestley-Taylor" />
+        <Parameter name="evaporation type" type="string" value="bare ground" />
+        <Parameter name="include limiter" type="bool" value="true" />
+        <Parameter name="limiter number of dofs" type="int" value="2" />
+        <Parameter name="limiter dof" type="int" value="0" />
+        <Parameter name="air temperature key" type="string" value="surface-air_temperature" />
+        <Parameter name="surface temperature key" type="string" value="surface-temperature" />
+        <Parameter name="elevation key" type="string" value="surface-elevation" />
+        <Parameter name="net radiation key" type="string" value="surface-radiation_balance" />
+        <Parameter name="limiter key" type="string" value="surface-area_fractions" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="surface-albedos" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="subgrid albedos, two components" />
+      </ParameterList>
+      <ParameterList name="surface-unfrozen_fraction">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value=" 1" />
+      </ParameterList>
+      <ParameterList name="water_source" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="additive evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{transpiration}" />
+        <Parameter name="transpiration coefficient" type="double" value="-1" />
+      </ParameterList>
+      <ParameterList name="transpiration" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="transpiration distribution, rooting depth" />
+        <Parameter name="potential transpiration key" type="string" value="canopy-potential_transpiration_mols" />
+      </ParameterList>
+      <ParameterList name="plant_wilting_factor" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="plant wilting factor" />
+      </ParameterList>
+      <ParameterList name="root_fraction" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="root fraction" />
+      </ParameterList>
+      <ParameterList name="canopy-potential_transpiration_mols" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{canopy-potential_transpiration,surface-molar_density_liquid}" />
+      </ParameterList>
+      <ParameterList name="canopy-potential_transpiration" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="potential evapotranspiration, Priestley-Taylor" />
+        <Parameter name="evaporation type" type="string" value="transpiration" />
+        <Parameter name="include 1 - limiter" type="bool" value="true" />
+        <Parameter name="air temperature key" type="string" value="surface-air_temperature" />
+        <Parameter name="surface temperature key" type="string" value="surface-air_temperature" />
+        <Parameter name="elevation key" type="string" value="surface-elevation" />
+        <Parameter name="net radiation key" type="string" value="canopy-radiation_balance" />
+        <Parameter name="1 - limiter key" type="string" value="canopy-fracwet" />
+        <Parameter name="units" type="string" value="m s^-1" />
+      </ParameterList>
+      <ParameterList name="surface-transpiration" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="column sum evaluator" />
+        <Parameter name="evaluator dependency key" type="string" value="transpiration" />
+        <Parameter name="divide by density" type="bool" value="true" />
+        <Parameter name="include volume to surface area factor" type="bool" value="true" />
+      </ParameterList>
+      <ParameterList name="surface-total_evapotranspiration" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="additive evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{canopy-evaporation, snow-evaporation, surface-evaporation, surface-transpiration}" />
+      </ParameterList>
+      <ParameterList name="canopy-leaf_area_index" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable" />
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="Grasslands" type="ParameterList">
+            <Parameter name="region" type="string" value="Grasslands" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="tabular" />
+              <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_lai_raw.h5" />
+              <Parameter name="x header" type="string" value="time [s]" />
+              <Parameter name="y header" type="string" value="Grasslands LAI [-]" />
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="surface-incident_shortwave_radiation" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="incident shortwave radiation" />
+        <ParameterList name="incident shortwave radiation parameters" type="ParameterList">
+          <Parameter name="daily averaged" type="bool" value="true" />
+          <Parameter name="latitude [degrees]" type="double" value="41" />
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="surface-incoming_shortwave_radiation" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable" />
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="surface domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="bilinear and time" />
+              <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_daymet_raw.h5" />
+              <Parameter name="time header" type="string" value="time [s]" />
+              <Parameter name="row header" type="string" value="y [m]" />
+              <Parameter name="row coordinate" type="string" value="y" />
+              <Parameter name="column header" type="string" value="x [m]" />
+              <Parameter name="column coordinate" type="string" value="x" />
+              <Parameter name="value header" type="string" value="incoming shortwave radiation [W m^-2]" />
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="surface-incoming_longwave_radiation" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="incoming longwave radiation" />
+      </ParameterList>
+      <ParameterList name="surface-precipitation_rain" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable" />
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="surface domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="bilinear and time" />
+              <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_daymet_raw.h5" />
+              <Parameter name="time header" type="string" value="time [s]" />
+              <Parameter name="row header" type="string" value="y [m]" />
+              <Parameter name="row coordinate" type="string" value="y" />
+              <Parameter name="column header" type="string" value="x [m]" />
+              <Parameter name="column coordinate" type="string" value="x" />
+              <Parameter name="value header" type="string" value="precipitation rain [m s^-1]" />
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="snow-precipitation" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable" />
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="surface domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="bilinear and time" />
+              <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_daymet_raw.h5" />
+              <Parameter name="time header" type="string" value="time [s]" />
+              <Parameter name="row header" type="string" value="y [m]" />
+              <Parameter name="row coordinate" type="string" value="y" />
+              <Parameter name="column header" type="string" value="x [m]" />
+              <Parameter name="column coordinate" type="string" value="x" />
+              <Parameter name="value header" type="string" value="precipitation snow [m SWE s^-1]" />
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="surface-vapor_pressure_air" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable" />
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="surface domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="bilinear and time" />
+              <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_daymet_raw.h5" />
+              <Parameter name="time header" type="string" value="time [s]" />
+              <Parameter name="row header" type="string" value="y [m]" />
+              <Parameter name="row coordinate" type="string" value="y" />
+              <Parameter name="column header" type="string" value="x [m]" />
+              <Parameter name="column coordinate" type="string" value="x" />
+              <Parameter name="value header" type="string" value="vapor pressure air [Pa]" />
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="surface-air_temperature" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable" />
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="surface domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="bilinear and time" />
+              <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_daymet_raw.h5" />
+              <Parameter name="time header" type="string" value="time [s]" />
+              <Parameter name="row header" type="string" value="y [m]" />
+              <Parameter name="row coordinate" type="string" value="y" />
+              <Parameter name="column header" type="string" value="x [m]" />
+              <Parameter name="column coordinate" type="string" value="x" />
+              <Parameter name="value header" type="string" value="air temperature [K]" />
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="surface-temperature" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable" />
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="surface domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="composition" />
+              <ParameterList name="function1" type="ParameterList">
+                <Parameter name="function type" type="string" value="bilinear and time" />
+                <Parameter name="file" type="string" value="../../data/examples/FranklinBasin/processed/watershed_daymet_raw.h5" />
+                <Parameter name="time header" type="string" value="time [s]" />
+                <Parameter name="row header" type="string" value="y [m]" />
+                <Parameter name="row coordinate" type="string" value="y" />
+                <Parameter name="column header" type="string" value="x [m]" />
+                <Parameter name="column coordinate" type="string" value="x" />
+                <Parameter name="value header" type="string" value="air temperature [K]" />
+              </ParameterList>
+              <ParameterList name="function2" type="ParameterList">
+                <Parameter name="function type" type="string" value="linear" />
+                <Parameter name="y0" type="double" value=" 0" />
+                <Parameter name="gradient" type="Array(double)" value="{ 1, 0, 0}" />
+                <Parameter name="x0" type="Array(double)" value="{86400, 0, 0}" />
+              </ParameterList>
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="depth" type="ParameterList">
+        <Parameter name="constant in time" type="bool" value="true" />
+        <Parameter name="evaluator type" type="string" value="depth" />
+      </ParameterList>
+      <ParameterList name="surface-manning_coefficient">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value="0.15" />
+      </ParameterList>
+      <ParameterList name="base_porosity" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable" />
+        <Parameter name="constant in time" type="bool" value="true" />
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="GLHYMPS-765771" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-765771" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.06" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="GLHYMPS-759912" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-759912" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.27" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="GLHYMPS-759860" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-759860" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.22" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="GLHYMPS-815409" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-815409" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.01" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482824" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482824" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.2958436709623" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482715" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482715" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.25604651162791" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482761" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482761" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.35243084896626" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980833" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980833" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.24855263157895" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980853" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980853" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.31151515151515" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980857" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980857" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.43453003290953" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980843" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980843" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.32136612021858" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482716" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482716" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.37869152567806" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980852" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980852" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.26312101910828" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980856" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980856" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.45936688003409" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980832" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980832" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.45617003390121" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980858" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980858" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.46341856123821" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2899437" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2899437" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.45627744294477" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2917033" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2917033" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.36882611257782" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482656" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482656" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.43859496466713" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482703" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482703" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.43307816709388" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482773" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482773" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.44733631889695" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-623870" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623870" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.35775134586749" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980841" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980841" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.40001046572475" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-623887" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623887" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.4439641334473" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980854" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980854" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.42602894780363" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482713" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482713" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.4558924042719" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-623911" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623911" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.46024658069579" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980838" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980838" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.42532209560567" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2899442" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2899442" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.46005203568301" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2899432" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2899432" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.42205064774344" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980847" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980847" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.4179729981572" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482719" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482719" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.29511592862655" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980835" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980835" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.46357621693288" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-623912" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623912" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.45596675314465" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="bedrock" type="ParameterList">
+            <Parameter name="region" type="string" value="bedrock" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="0.05" />
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="porosity" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="compressible porosity" />
+        <ParameterList name="compressible porosity model parameters" type="ParameterList">
+          <ParameterList name="GLHYMPS-765771" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-765771" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="GLHYMPS-759912" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-759912" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="GLHYMPS-759860" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-759860" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="GLHYMPS-815409" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-815409" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-482824" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482824" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-482715" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482715" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-482761" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482761" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980833" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980833" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980853" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980853" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980857" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980857" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980843" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980843" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-482716" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482716" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980852" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980852" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980856" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980856" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980832" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980832" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980858" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980858" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2899437" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2899437" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2917033" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2917033" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-482656" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482656" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-482703" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482703" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-482773" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482773" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-623870" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623870" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980841" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980841" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-623887" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623887" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980854" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980854" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-482713" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482713" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-623911" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623911" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980838" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980838" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2899442" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2899442" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2899432" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2899432" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980847" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980847" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-482719" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482719" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-2980835" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980835" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="NRCS-623912" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623912" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+          <ParameterList name="bedrock" type="ParameterList">
+            <Parameter name="region" type="string" value="bedrock" />
+            <Parameter name="pore compressibility [Pa^-1]" type="double" value="1e-09" />
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="permeability" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable" />
+        <Parameter name="constant in time" type="bool" value="true" />
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="GLHYMPS-765771" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-765771" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.5848931924611e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="GLHYMPS-759912" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-759912" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="3.1622776601684e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="GLHYMPS-759860" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-759860" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="GLHYMPS-815409" type="ParameterList">
+            <Parameter name="region" type="string" value="GLHYMPS-815409" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="3.019951720402e-11" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482824" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482824" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="3.702061937544e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482715" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482715" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="4.7437053114354e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482761" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482761" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="3.3418204092335e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980833" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980833" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.4083486681293e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980853" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980853" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.3342193371962e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980857" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980857" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.7106864279732e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980843" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980843" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.3853530448341e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482716" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482716" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="3.3905348402568e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980852" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980852" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="2.3100326538596e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980856" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980856" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="5.4772255750517e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980832" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980832" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.3663753339616e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980858" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980858" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.5668020867043e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2899437" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2899437" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.7190680839843e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2917033" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2917033" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="5.1716108806668e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482656" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482656" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.5628190151523e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482703" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482703" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="4.7236256521547e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482773" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482773" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.2573537551013e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-623870" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623870" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="7.5253722443895e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980841" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980841" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="2.1745702003068e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-623887" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623887" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.8436858746174e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980854" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980854" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.1452325065546e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482713" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482713" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="2.0078689116411e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-623911" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623911" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="4.9536532057787e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980838" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980838" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="5.4035557175202e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2899442" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2899442" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="2.7626613207913e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2899432" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2899432" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="2.3029073530599e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980847" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980847" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.1581002796825e-12" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-482719" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-482719" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="8.7875271497123e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-2980835" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-2980835" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1.7462271579256e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="NRCS-623912" type="ParameterList">
+            <Parameter name="region" type="string" value="NRCS-623912" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="2.7308562023354e-13" />
+            </ParameterList>
+          </ParameterList>
+          <ParameterList name="bedrock" type="ParameterList">
+            <Parameter name="region" type="string" value="bedrock" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <Parameter name="function type" type="string" value="constant" />
+              <Parameter name="value" type="double" value="1e-16" />
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="surface-relative_permeability" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value=" 1" />
+      </ParameterList>
+      <ParameterList name="mass_density_liquid" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value="997" />
+      </ParameterList>
+      <ParameterList name="molar_density_liquid" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value="55500" />
+      </ParameterList>
+      <ParameterList name="viscosity_liquid" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value="0.00089" />
+      </ParameterList>
+      <ParameterList name="surface-molar_density_liquid" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value="55500" />
+      </ParameterList>
+      <ParameterList name="surface-mass_density_liquid" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value="997" />
+      </ParameterList>
+      <ParameterList name="surface-source_molar_density" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="independent variable constant" />
+        <Parameter name="value" type="double" value="55500" />
+      </ParameterList>
+      <ParameterList name="surface-overland_conductivity" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="overland conductivity" />
+        <ParameterList name="overland conductivity model" type="ParameterList">
+          <Parameter name="overland conductivity type " type="string" value="manning" />
+          <Parameter name="Manning exponent" type="double" value="0.66666667" />
+          <Parameter name="slope regularization epsilon" type="double" value="0.01" />
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="snow-expected_temperature" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="additive evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{surface-air_temperature}" />
+        <Parameter name="constant shift" type="double" value="-3" />
+      </ParameterList>
+      <ParameterList name="snow-temperature" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="secondary variable from function" />
+        <Parameter name="dependencies" type="Array(string)" value="{snow-expected_temperature}" />
+        <ParameterList name="function" type="ParameterList">
+          <Parameter name="function type" type="string" value="composition" />
+          <ParameterList name="function1" type="ParameterList">
+            <Parameter name="function type" type="string" value="linear" />
+            <Parameter name="gradient" type="Array(double)" value="{ 1}" />
+            <Parameter name="y0" type="double" value="273.15" />
+          </ParameterList>
+          <ParameterList name="function2" type="ParameterList">
+            <Parameter name="function type" type="string" value="standard math" />
+            <Parameter name="operator" type="string" value="negative" />
+            <Parameter name="shift" type="double" value="273.15" />
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="canopy-temperature" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="additive evaluator" />
+        <Parameter name="dependencies" type="Array(string)" value="{surface-air_temperature}" />
+        <Parameter name="constant shift" type="double" value="-1.5" />
+      </ParameterList>
+      <ParameterList name="surface-soil_resistance" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="soil resistance, Sakagucki-Zeng" />
+        <Parameter name="model parameters" type="string" value="WRM parameters" />
+      </ParameterList>
+      <ParameterList name="relative_permeability" type="ParameterList">
+        <Parameter name="evaluator type" type="string" value="relative permeability, water retention model" />
+        <Parameter name="model parameters" type="string" value="WRM parameters" />
+        <Parameter name="minimum rel perm cutoff" type="double" value=" 0" />
+        <Parameter name="use surface rel perm" type="bool" value="true" />
+      </ParameterList>
+      <ParameterList name="saturation_liquid" type="ParameterList">
+        <Parameter name="model parameters" type="string" value="WRM parameters" />
+        <Parameter name="evaluator type" type="string" value="water retention model" />
+      </ParameterList>
+      <ParameterList name="saturation_gas" type="ParameterList">
+        <Parameter name="model parameters" type="string" value="WRM parameters" />
+        <Parameter name="evaluator type" type="string" value="water retention model" />
+      </ParameterList>
+    </ParameterList>
+    <ParameterList name="initial conditions" type="ParameterList">
+
+      <ParameterList name="atmospheric_pressure" type="ParameterList">
+        <Parameter name="value" type="double" value="101325" />
+      </ParameterList>
+
+      <ParameterList name="gravity" type="ParameterList">
+        <Parameter name="value" type="Array(double)" value="{ 0, 0,-9.80665}" />
+      </ParameterList>
+
+      <ParameterList name="land cover types" type="ParameterList">
+        <ParameterList name="Grasslands" type="ParameterList">
+          <Parameter name="rooting depth max [m]" type="double" value="0.5" />
+          <Parameter name="rooting profile alpha [-]" type="double" value=" 7" />
+          <Parameter name="rooting profile beta [-]" type="double" value="1.5" />
+          <Parameter name="capillary pressure at fully closed stomata [Pa]" type="double" value="4197396" />
+          <Parameter name="capillary pressure at fully open stomata [Pa]" type="double" value="813981" />
+          <Parameter name="leaf on time [doy]" type="double" value="-1" />
+          <Parameter name="leaf off time [doy]" type="double" value="-1" />
+          <Parameter name="Priestley-Taylor alpha of snow [-]" type="double" value="1.26" />
+          <Parameter name="Priestley-Taylor alpha of bare ground [-]" type="double" value=" 1" />
+          <Parameter name="Priestley-Taylor alpha of canopy [-]" type="double" value="1.26" />
+          <Parameter name="Priestley-Taylor alpha of transpiration [-]" type="double" value="1.26" />
+          <Parameter name="albedo of bare ground [-]" type="double" value="0.4" />
+          <Parameter name="emissivity of bare ground [-]" type="double" value="0.98" />
+          <Parameter name="albedo of canopy [-]" type="double" value="0.11" />
+          <Parameter name="Beer's law extinction coefficient, shortwave [-]" type="double" value="0.6" />
+          <Parameter name="Beer's law extinction coefficient, longwave [-]" type="double" value=" 5" />
+          <Parameter name="snow transition depth [m]" type="double" value="0.02" />
+        </ParameterList>
+      </ParameterList>
+
+    </ParameterList>
+    <ParameterList name="model parameters" type="ParameterList">
+      <ParameterList name="WRM parameters" type="ParameterList">
+        <ParameterList name="GLHYMPS-765771" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="GLHYMPS-765771" />
+          <Parameter name="van Genuchten n [-]" type="double" value=" 2" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.0022401467067" />
+          <Parameter name="residual saturation [-]" type="double" value="0.01" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value=" 0" />
+        </ParameterList>
+        <ParameterList name="GLHYMPS-759912" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="GLHYMPS-759912" />
+          <Parameter name="van Genuchten n [-]" type="double" value=" 2" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.0004717047007689" />
+          <Parameter name="residual saturation [-]" type="double" value="0.01" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value=" 0" />
+        </ParameterList>
+        <ParameterList name="GLHYMPS-759860" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="GLHYMPS-759860" />
+          <Parameter name="van Genuchten n [-]" type="double" value=" 2" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.000293860183797" />
+          <Parameter name="residual saturation [-]" type="double" value="0.01" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value=" 0" />
+        </ParameterList>
+        <ParameterList name="GLHYMPS-815409" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="GLHYMPS-815409" />
+          <Parameter name="van Genuchten n [-]" type="double" value=" 2" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.023952568249684" />
+          <Parameter name="residual saturation [-]" type="double" value="0.01" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value=" 0" />
+        </ParameterList>
+        <ParameterList name="NRCS-482824" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-482824" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.444266843652" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="4.7891330099249e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.21112222416134" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-482715" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-482715" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4537243754364" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="4.6113454221997e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.21376147923334" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-482761" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-482761" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4290703755303" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="4.8242392513538e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.22247523286948" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980833" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980833" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4414209393578" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="9.4069228861141e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.18519111968271" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980853" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980853" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4167863601016" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="8.9715305700406e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.2016999057514" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980857" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980857" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.3774717139193" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="5.4959112721279e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.2375659690567" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980843" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980843" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4213380661147" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="9.8425308015939e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.19007195737966" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-482716" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-482716" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4420299307625" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="4.598350514531e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.21450415466322" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980852" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980852" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4819457176648" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.0001141136634859" />
+          <Parameter name="residual saturation [-]" type="double" value="0.16616150792504" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980856" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980856" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.3831468828001" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="9.9838279760384e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.21721615968745" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980832" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980832" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4011517130827" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="7.2428586112827e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.22113259758731" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980858" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980858" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4343322308395" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="5.067272632201e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.22257074493284" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2899437" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2899437" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.3106010323722" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="9.3807451780106e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.25667716811858" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2917033" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2917033" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.3849163982207" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="7.6148685979249e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.22835240241312" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-482656" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-482656" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4117480417766" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="8.3367209765088e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.20779747554037" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-482703" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-482703" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4175974478696" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="5.4418700669563e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.22721778814099" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-482773" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-482773" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4292382511837" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="6.3632666345791e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.21110190495479" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-623870" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-623870" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4079536232265" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="8.9748566580673e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.20708776673411" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980841" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980841" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4224877011428" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.0001200590563372" />
+          <Parameter name="residual saturation [-]" type="double" value="0.1939951961059" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-623887" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-623887" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.3375819830648" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="7.5836060731211e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.25210782992266" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980854" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980854" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.3813654961364" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="8.7195925965085e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.22331315538141" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-482713" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-482713" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4002973556732" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="7.4966329933816e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.21952805117554" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-623911" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-623911" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4237357140596" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="8.6877353032534e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.19939227518618" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980838" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980838" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.402441830592" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="6.1701955811699e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.22922696999762" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2899442" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2899442" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4302556428722" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="7.3422676631188e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.20310641895412" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2899432" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2899432" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.433202899837" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="8.4484916906216e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.19530580203507" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980847" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980847" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.3774740470737" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="9.2934714860746e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.2222482466028" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-482719" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-482719" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4145882139804" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="8.463505992862e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.20566968110103" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-2980835" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-2980835" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4335072956271" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="7.7340099228483e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.19876590122684" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="NRCS-623912" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="NRCS-623912" />
+          <Parameter name="van Genuchten n [-]" type="double" value="1.4227756281069" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="7.3505963627286e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.20740842487874" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value="0.01" />
+        </ParameterList>
+        <ParameterList name="bedrock" type="ParameterList">
+          <Parameter name="wrm type" type="string" value="van Genuchten" />
+          <Parameter name="region" type="string" value="bedrock" />
+          <Parameter name="van Genuchten n [-]" type="double" value=" 3" />
+          <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="1.9492479409593e-05" />
+          <Parameter name="residual saturation [-]" type="double" value="0.01" />
+          <Parameter name="smoothing interval width [saturation]" type="double" value=" 0" />
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+  <ParameterList name="visualization">
+    <ParameterList name="domain" type="ParameterList">
+      <Parameter name="file name base" type="string" value="ats_vis" />
+      <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" />
+      <Parameter name="times start period stop units" type="string" value="d" />
+      <Parameter name="time units" type="string" value="d" />
+    </ParameterList>
+    <ParameterList name="surface" type="ParameterList">
+      <Parameter name="file name base" type="string" value="ats_vis_surface" />
+      <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" />
+      <Parameter name="times start period stop units" type="string" value="d" />
+      <Parameter name="time units" type="string" value="d" />
+      <Parameter name="aliased domains" type="Array(string)" value="{canopy, snow}" />
+    </ParameterList>
+  </ParameterList>
+
+  <ParameterList name="checkpoint">
+    <Parameter name="times start period stop" type="Array(double)" value="{ 0,30,-1}" />
+    <Parameter name="times start period stop units" type="string" value="d" />
+  </ParameterList>
+
+  <ParameterList name="observations" type="ParameterList">
+    <ParameterList name="water_balance_computational_domain" type="ParameterList">
+      <Parameter name="observation output filename" type="string" value="water_balance_computational_domain.csv" />
+      <Parameter name="delimiter" type="string" value="," />
+      <Parameter name="time units" type="string" value="d" />
+      <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" />
+      <Parameter name="times start period stop units" type="string" value="d" />
+      <ParameterList name="observed quantities" type="ParameterList">
+        <ParameterList name="net runoff [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_flux" />
+          <Parameter name="region" type="string" value="external_sides" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="runoff only [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_flux" />
+          <Parameter name="region" type="string" value="external_sides" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="time integrated" type="bool" value="true" />
+          <ParameterList name="modifier" type="ParameterList">
+            <Parameter name="function type" type="string" value="standard math" />
+            <Parameter name="operator" type="string" value="positive" />
+            <Parameter name="amplitude" type="double" value=" 1" />
+            <Parameter name="shift" type="double" value=" 0" />
+          </ParameterList>
+        </ParameterList>
+        <ParameterList name="runon only [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_flux" />
+          <Parameter name="region" type="string" value="external_sides" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="time integrated" type="bool" value="true" />
+          <ParameterList name="modifier" type="ParameterList">
+            <Parameter name="function type" type="string" value="standard math" />
+            <Parameter name="operator" type="string" value="negative" />
+            <Parameter name="amplitude" type="double" value="-1" />
+            <Parameter name="shift" type="double" value=" 0" />
+          </ParameterList>
+        </ParameterList>
+        <ParameterList name="river discharge [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_flux" />
+          <Parameter name="region" type="string" value="surface domain outlet" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="net groundwater flux [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="water_flux" />
+          <Parameter name="region" type="string" value="external_sides" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="exfiltration [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-surface_subsurface_flux" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="rain precipitation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-precipitation_rain" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="snow precipitation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-precipitation" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="surface evaporation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-evaporation" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="snow evaporation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-evaporation" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="transpiration [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-transpiration" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="total evapotranspiration [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-total_evapotranspiration" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="snowmelt [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-melt" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="canopy evaporation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-evaporation" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="canopy drainage [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-drainage" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="water to surface [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-throughfall_drainage_rain" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="snow to surface [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-throughfall_drainage_snow" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="canopy interception [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-interception" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="surface water content [mol]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_content" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="snow water content [mol]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-water_content" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="canopy water content [mol]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-water_content" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="air temperature [K]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-air_temperature" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="snow water equivalent [m]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-water_equivalent" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="incoming shortwave radiation [W m^-2]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-incoming_shortwave_radiation" />
+          <Parameter name="region" type="string" value="surface domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="subsurface water content [mol]" type="ParameterList">
+          <Parameter name="variable" type="string" value="water_content" />
+          <Parameter name="region" type="string" value="computational domain" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList name="water_balance_UT20250414211933362000" type="ParameterList">
+      <Parameter name="observation output filename" type="string" value="water_balance_UT20250414211933362000.csv" />
+      <Parameter name="delimiter" type="string" value="," />
+      <Parameter name="time units" type="string" value="d" />
+      <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" />
+      <Parameter name="times start period stop units" type="string" value="d" />
+      <ParameterList name="observed quantities" type="ParameterList">
+        <ParameterList name="net runoff [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_flux" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 boundary" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="direction normalized flux relative to region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="runoff only [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_flux" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 boundary" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="time integrated" type="bool" value="true" />
+          <ParameterList name="modifier" type="ParameterList">
+            <Parameter name="function type" type="string" value="standard math" />
+            <Parameter name="operator" type="string" value="positive" />
+            <Parameter name="amplitude" type="double" value=" 1" />
+            <Parameter name="shift" type="double" value=" 0" />
+          </ParameterList>
+        </ParameterList>
+        <ParameterList name="runon only [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_flux" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 boundary" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="time integrated" type="bool" value="true" />
+          <ParameterList name="modifier" type="ParameterList">
+            <Parameter name="function type" type="string" value="standard math" />
+            <Parameter name="operator" type="string" value="negative" />
+            <Parameter name="amplitude" type="double" value="-1" />
+            <Parameter name="shift" type="double" value=" 0" />
+          </ParameterList>
+        </ParameterList>
+        <ParameterList name="river discharge [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_flux" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 outlet" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="direction normalized flux relative to region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="net groundwater flux [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="water_flux" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 boundary" />
+          <Parameter name="location name" type="string" value="face" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="direction normalized flux" type="bool" value="true" />
+          <Parameter name="direction normalized flux relative to region" type="string" value="UT20250414211933362000" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="exfiltration [mol d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-surface_subsurface_flux" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="rain precipitation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-precipitation_rain" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="snow precipitation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-precipitation" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="surface evaporation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-evaporation" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="snow evaporation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-evaporation" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="transpiration [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-transpiration" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="total evapotranspiration [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-total_evapotranspiration" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="snowmelt [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-melt" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="canopy evaporation [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-evaporation" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="canopy drainage [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-drainage" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="water to surface [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-throughfall_drainage_rain" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="snow to surface [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-throughfall_drainage_snow" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="canopy interception [m d^-1]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-interception" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="true" />
+        </ParameterList>
+        <ParameterList name="surface water content [mol]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-water_content" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="snow water content [mol]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-water_content" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="canopy water content [mol]" type="ParameterList">
+          <Parameter name="variable" type="string" value="canopy-water_content" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="air temperature [K]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-air_temperature" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="snow water equivalent [m]" type="ParameterList">
+          <Parameter name="variable" type="string" value="snow-water_equivalent" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="incoming shortwave radiation [W m^-2]" type="ParameterList">
+          <Parameter name="variable" type="string" value="surface-incoming_shortwave_radiation" />
+          <Parameter name="region" type="string" value="UT20250414211933362000 surface" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="average" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+        <ParameterList name="subsurface water content [mol]" type="ParameterList">
+          <Parameter name="variable" type="string" value="water_content" />
+          <Parameter name="region" type="string" value="UT20250414211933362000" />
+          <Parameter name="location name" type="string" value="cell" />
+          <Parameter name="reduction" type="string" value="extensive integral" />
+          <Parameter name="time integrated" type="bool" value="false" />
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+</ParameterList>

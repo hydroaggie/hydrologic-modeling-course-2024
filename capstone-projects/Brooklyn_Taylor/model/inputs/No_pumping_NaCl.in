@@ -1,0 +1,530 @@
+#Description: 3D groundwater flow and solute transport
+
+SIMULATION
+  SIMULATION_TYPE SUBSURFACE
+  PROCESS_MODELS
+    SUBSURFACE_FLOW flow
+      MODE RICHARDS
+    /
+    SUBSURFACE_TRANSPORT transport
+      MODE GIRT
+    /
+  /
+  CHECKPOINT
+    PERIODIC TIMESTEP 50
+    PERIODIC TIME .10 yr
+  /
+  #RESTART regional_doublet-restart.chk RESET_TO_TIME_ZERO
+END
+
+SUBSURFACE
+
+#=========================== numerical methods ================================
+NUMERICAL_METHODS FLOW
+
+  NEWTON_SOLVER
+    ITOL_UPDATE 1.d0     ! Convergences with max change in pressure is 1 Pa.
+  /
+
+END
+
+#=========================== chemistry ========================================
+CHEMISTRY
+  PRIMARY_SPECIES
+    Tracer1
+    Na+
+    Cl- 
+  /
+  OUTPUT
+    TOTAL
+    ALL
+  /
+END
+
+
+#=========================== discretization ===================================
+GRID
+  TYPE STRUCTURED
+  NXYZ 50 50 20 
+  BOUNDS
+    0.d0 0.d0 0.d0
+    2640.d0 2640.d0 70.d0 
+  /
+END
+
+#=========================== fluid properties =================================
+FLUID_PROPERTY
+  DIFFUSION_COEFFICIENT 1.d-9
+  
+END
+
+
+#=========================== material properties ==============================
+MATERIAL_PROPERTY soil1
+  ID 1
+  POROSITY 0.35d0
+  TORTUOSITY 0.7d0
+  CHARACTERISTIC_CURVES cc1
+  PERMEABILITY
+    PERM_X 3.1d-10
+    PERM_Y 3.1d-10
+    PERM_Z 3.1d-10
+  /
+END
+
+MATERIAL_PROPERTY brine_layer
+  ID 2
+  POROSITY 0.35d0
+  TORTUOSITY 0.7d0
+  CHARACTERISTIC_CURVES cc1
+  PERMEABILITY
+    PERM_X 3.1d-10
+    PERM_Y 3.1d-10
+    PERM_Z 3.1d-10
+  /
+END
+
+#MATERIAL_PROPERTY soil2
+ # ID 2
+ # POROSITY 0.35d0
+ # TORTUOSITY 0.5d0
+ # CHARACTERISTIC_CURVES cc1
+ # PERMEABILITY
+ #   PERM_X 2.d-10
+ #   PERM_Y 2.d-10
+ #   PERM_Z 2.d-11
+ # /
+#END
+
+#MATERIAL_PROPERTY soil3
+ # ID 3
+ # POROSITY 0.25d0
+ # TORTUOSITY 0.5d0
+ # CHARACTERISTIC_CURVES cc1
+ # PERMEABILITY
+ #   PERM_X 5.d-11
+#    PERM_Y 5.d-11
+  #  PERM_Z 5.d-12
+#  /
+#END
+
+#MATERIAL_PROPERTY soil4
+ # ID 4
+ # POROSITY 0.2d0
+ # TORTUOSITY 0.5d0
+ # CHARACTERISTIC_CURVES cc1
+ # PERMEABILITY
+ #   PERM_X 1.d-10
+ #   PERM_Y 1.d-10
+ #   PERM_Z 1.d-11
+ # /
+#END
+
+#=========================== saturation functions =============================
+CHARACTERISTIC_CURVES cc1
+  SATURATION_FUNCTION VAN_GENUCHTEN
+    ALPHA  1.d-4
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+    MAX_CAPILLARY_PRESSURE 1.d8
+  /
+  PERMEABILITY_FUNCTION MUALEM_VG_LIQ
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+  /
+END
+
+#=========================== output options ===================================
+OUTPUT
+  SNAPSHOT_FILE
+    PERIODIC TIME 0.1 y between 0. y and 7. y
+#    PERIODIC TIME 1. y between 0. y and 10. y
+    FORMAT TECPLOT BLOCK
+    FORMAT HDF5
+    PRINT_COLUMN_IDS
+    VARIABLES
+      LIQUID_PRESSURE
+      LIQUID_SATURATION
+      MATERIAL_ID_KLUDGE_FOR_VISIT
+    /
+  /
+  OBSERVATION_FILE
+    PERIODIC TIMESTEP 1
+  /
+  VELOCITY_AT_CENTER
+END
+
+#=========================== times ============================================
+TIME
+  FINAL_TIME 7.d0 y
+  INITIAL_TIMESTEP_SIZE 1.d-2 d
+  MAXIMUM_TIMESTEP_SIZE 0.1 y        ! produces CFL ~<= 1.
+END
+
+#=========================== regions ==========================================
+REGION all
+  COORDINATES
+    0.d0    0.d0    0.d0
+    2640.d0 2640.d0 70.d0
+  /
+END
+
+#REGION layer1
+#  COORDINATES
+#    0.d0    0.d0    0.d0
+#    5000.d0 2500.d0 30.d0
+#  /
+#END
+
+#REGION layer2
+#  COORDINATES
+#    0.d0    0.d0    30.d0
+#    5000.d0 2500.d0 50.d0
+#  /
+#END
+
+#REGION layer3
+#  COORDINATES
+#    0.d0    0.d0    50.d0
+#    5000.d0 2500.d0 70.d0
+#  /
+#END
+
+#REGION layer4
+#  COORDINATES
+#    0.d0    0.d0    70.d0
+#   5000.d0 2500.d0 100.d0
+#  /
+#END
+
+REGION brine_zone
+  COORDINATES
+    0.d0    0.d0    0.d0
+    2640.d0 2640.d0 57.d0
+  /
+  FACE BOTTOM
+END
+
+REGION fresh_water
+  COORDINATES
+    0.d0    0.d0    70.d0
+    2640.d0 2640.d0 57.d0
+  /
+  FACE BOTTOM
+END
+
+REGION west
+  COORDINATES
+    0.d0 0.d0    0.d0
+    0.d0 2640.d0 70.d0
+  /
+  FACE WEST
+END
+
+REGION east
+  COORDINATES
+    2640.d0 0.d0    0.d0
+    2640.d0 2640.d0 70.d0
+  /
+  FACE EAST
+END
+
+REGION east_tracer
+  COORDINATES
+    2640.d0 0.d0 0.d0
+    2640.d0 2640.d0 57.d0
+  /
+  FACE EAST
+END
+
+
+REGION top
+  COORDINATES
+    0.d0    0.d0    0.d0
+    2640.d0 2640.d0 70.d0
+  /
+  FACE TOP
+END
+
+REGION well_u21
+  COORDINATES 
+    528.d0 792.d0 0.d0
+    528.d0 792.d0 40.d0
+  /
+END
+
+REGION well_u14
+  COORDINATES 
+    2112.d0 1848.d0 0.d0
+    2112.d0 1848.d0 57.d0
+  /
+END
+
+REGION well_u13
+  COORDINATES 
+    2112.d0 792.d0 0.d0
+    2112.d0 792.d0 49.d0
+  /
+END
+
+REGION Obs_pt_center
+  COORDINATE 1320.d0 1320.d0 40.d0
+END
+
+REGION Obs_pt_center_lower
+  COORDINATE 1320.d0 1320.d0 30.d0
+END
+
+REGION Obs_pt_west
+  COORDINATE 100.d0 1320.d0 30.d0
+END
+
+REGION Obs_pt_east
+  COORDINATE 1650.d0 1320.d0 30.d0
+END
+
+REGION Obs_pt_north
+  COORDINATE 1320.d0 1320.d0 60.d0
+END
+
+REGION Obs_pt_south
+  COORDINATE 1320.d0 330.d0 60.d0
+END
+
+#=========================== observation points ===============================
+OBSERVATION
+  REGION Obs_pt_center
+  AT_CELL_CENTER 
+  VELOCITY 
+END
+ 
+OBSERVATION
+  REGION Obs_pt_center_lower
+  AT_CELL_CENTER
+  VELOCITY
+END
+ 
+OBSERVATION
+  REGION Obs_pt_west
+  AT_CELL_CENTER
+  VELOCITY
+END
+ 
+OBSERVATION
+  REGION Obs_pt_east
+  AT_CELL_CENTER
+  VELOCITY
+END
+ 
+OBSERVATION
+  REGION Obs_pt_south
+  AT_CELL_CENTER
+  VELOCITY
+END
+ 
+OBSERVATION
+  REGION Obs_pt_north
+  AT_CELL_CENTER
+  VELOCITY
+END
+ 
+#=========================== flow conditions ==================================
+FLOW_CONDITION initial
+  TYPE
+    LIQUID_PRESSURE HYDROSTATIC
+  /
+  INTERPOLATION LINEAR
+  DATUM 0.d0 0.d0 62.d0
+  GRADIENT
+    LIQUID_PRESSURE -0.0038 0. 0. #linear water table with a slope of -0.0038 -- a drop of 10 m across a distance of 2640 m
+  /
+  LIQUID_PRESSURE 101325.d0
+END
+
+FLOW_CONDITION colorado_river
+  TYPE
+    LIQUID_PRESSURE HYDROSTATIC
+   / 
+   DATUM 0.d0 0.d0 60.d0
+   LIQUID_PRESSURE 101325.d0
+END
+
+FLOW_CONDITION mill_creek
+  TYPE
+    LIQUID_PRESSURE HYDROSTATIC
+  /
+  DATUM 0.d0 0.d0 67.d0
+  LIQUID_PRESSURE 101325.0
+END
+
+FLOW_CONDITION east
+  TYPE
+    LIQUID_PRESSURE HYDROSTATIC
+  /
+  DATUM 2640.d0 0.d0 68.d0 
+  LIQUID_PRESSURE 101325.d0
+END
+
+FLOW_CONDITION no_flow
+  TYPE
+    LIQUID_FLUX NEUMANN
+  /
+  LIQUID_FLUX 0.0
+END
+
+FLOW_CONDITION evapotranspiration
+  TYPE
+    LIQUID_FLUX NEUMANN
+  /
+  LIQUID_FLUX -7.d-9
+END
+
+#FLOW_CONDITION injection
+#  TYPE
+#    RATE SCALED_VOLUMETRIC_RATE NEIGHBOR_PERM #volumetric rate scaled by permeability
+#  /
+#  RATE 1.d5 m^3/day # positive-->injection
+#END
+
+
+#FLOW_CONDITION extraction
+#  TYPE
+#   RATE SCALED_VOLUMETRIC_RATE NEIGHBOR_PERM
+#  /
+#  RATE -1.d5 m^3/day #negative-->extraction
+#END
+
+#=========================== transport conditions =============================
+TRANSPORT_CONDITION initial
+  TYPE DIRICHLET_ZERO_GRADIENT
+  CONSTRAINT initial
+    CONCENTRATIONS
+      Na+      1.d-10   T
+      Cl-      1.d-10  T
+      Tracer1  1.d-10     T
+    /
+  /
+END
+
+TRANSPORT_CONDITION west
+  TYPE DIRICHLET_ZERO_GRADIENT
+  CONSTRAINT west
+    CONCENTRATIONS
+      Na+      1.52d-2   T
+      Cl-      1.52d-2   T
+      Tracer1  1.d-10     T
+    /
+  /
+END
+
+TRANSPORT_CONDITION brine_initial
+  TYPE DIRICHLET_ZERO_GRADIENT
+  CONSTRAINT brine
+    CONCENTRATIONS
+     Na+      1.52d-2   T
+     Cl-      1.52d-2   T
+     Tracer1  1.d-10     T
+     /
+   /
+END  
+
+TRANSPORT_CONDITION injection
+  TYPE DIRICHLET_ZERO_GRADIENT
+  CONSTRAINT injection
+    CONCENTRATIONS
+      Na+      1.52d-2   T
+      Cl-      1.52d-2   T
+      Tracer1  1.d-10     T
+    /
+  /
+END
+
+TRANSPORT_CONDITION east_tracer
+  TYPE DIRICHLET_ZERO_GRADIENT
+  CONSTRAINT east_tracer
+  CONCENTRATIONS 
+      Na+      1.d-10   T
+      Cl-      1.d-10   T
+      Tracer1  1.d0     T
+    /
+  /
+END 
+
+#=========================== condition couplers ===============================
+# initial condition
+INITIAL_CONDITION
+  FLOW_CONDITION initial
+  TRANSPORT_CONDITION initial
+  REGION fresh_water
+END
+
+INITIAL_CONDITION
+  FLOW_CONDITION initial
+  TRANSPORT_CONDITION brine_initial
+  REGION brine_zone
+END
+
+# west boundary condition
+BOUNDARY_CONDITION west
+  FLOW_CONDITION colorado_river
+  TRANSPORT_CONDITION west
+  REGION west
+END
+
+# east boundary condition
+BOUNDARY_CONDITION east_tracer
+  FLOW_CONDITION east
+  TRANSPORT_CONDITION initial
+  REGION east_tracer
+END
+
+# top boundary condition
+BOUNDARY_CONDITION top
+  FLOW_CONDITION evapotranspiration
+  TRANSPORT_CONDITION initial
+  REGION top
+END
+
+
+
+ #source 
+#SOURCE_SINK injection_well
+#  FLOW_CONDITION injection
+#  TRANSPORT_CONDITION injection
+#  REGION well_u13
+#END
+
+# sink 
+#SOURCE_SINK extraction_well
+#  FLOW_CONDITION extraction
+  #TRANSPORT_CONDITION initial
+ # REGION extraction_well
+#END
+
+#=========================== stratigraphy couplers ============================
+STRATA
+  REGION all
+  MATERIAL soil1
+END
+
+STRATA
+  REGION brine_zone
+  MATERIAL brine_layer
+END
+
+#STRATA
+  #REGION layer2
+  #MATERIAL soil2
+#END
+
+#STRATA
+  #REGION layer3
+  #MATERIAL soil3
+#END
+
+#STRATA
+  #REGION layer4
+  #MATERIAL soil4
+#END
+
+END_SUBSURFACE

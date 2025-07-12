@@ -65,7 +65,7 @@ MATERIAL_PROPERTY soil1
     PERM_ISO 2.d-11 
   /
   CHARACTERISTIC_CURVES default
-  LONGITUDINAL_DISPERSIVITY !aL         ! m
+  LONGITUDINAL_DISPERSIVITY !aL   ! in m, true value=4
 END
 
 #=========================== characteristic curves ============================

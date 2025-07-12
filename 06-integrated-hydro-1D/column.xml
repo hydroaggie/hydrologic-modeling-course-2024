@@ -197,6 +197,7 @@
       </ParameterList>
 
     <!-- use -1 to specify water table at 1 m below surface -->
+	      <!-- need to build column set first for this to work. see discussion here: https://groups.google.com/g/ats-users/c/WhdJuPDqe7s --> 
       <!-- <ParameterList name="initial condition" type="ParameterList">
         <Parameter name="hydrostatic head [m]" type="double" value="-1" />
         <Parameter name="hydrostatic water density [kg m^-3]" type="double" value="1000" />
@@ -209,6 +210,7 @@
             <Parameter name="region" type="string" value="computational domain" />
             <Parameter name="components" type="Array(string)" value="{cell,face}" />
             <ParameterList name="function" type="ParameterList">
+                <!-- define a linear function for the hydrostatic condition, so P=y0 + grad*(x-x0) -->
               <ParameterList name="function-linear" type="ParameterList">
                 <Parameter name="x0" type="Array(double)" value="{ 0, 0, 0, 9}" />
                 <Parameter name="y0" type="double" value="101325" />
@@ -259,6 +261,7 @@
             <Parameter name="region" type="string" value="surface domain" />
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
+                <!-- define a tabular function to store a list of x values (e.g., time) and y values (e.g., rainfall rate) -->
               <ParameterList name="function-tabular" type="ParameterList">
                 <Parameter name="x values" type="Array(double)" value="{ 0,43200}" />
                 <Parameter name="y values" type="Array(double)" value="{3e-06, 0}" />

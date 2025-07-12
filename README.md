@@ -66,6 +66,7 @@ The course folder `hydrologic-modeling-course-2024` will appear on the left pane
 - If your Docker is running out of space, you might need to use [docker system prune](https://docs.docker.com/reference/cli/docker/system/prune/) with the appropriate options to clear out old containers and make space for the new one.
 
 ```bash
-$ docker system prune
+# remove all stopped and unused images/containers
+$ docker system prune -a
 ```
 
